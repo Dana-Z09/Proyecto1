@@ -5,7 +5,11 @@ package EDD;
  * @author Daniela Zambrano
  */
 public class NodoSimpleP extends Nodo{
-   
+ 
+ /**
+ *
+ * Constructores por defecto
+ */
     public NodoSimpleP() {
     }
 

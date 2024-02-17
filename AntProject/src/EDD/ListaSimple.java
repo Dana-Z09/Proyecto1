@@ -28,10 +28,18 @@ public class ListaSimple {
     }
    
     /*Booleans*/
+    /**
+     * Consulta si la lista esta vacia.
+     * @return true si el primer nodo (inicio), no apunta a otro nodo.
+     */
     public boolean isEmpty(){
         return (head == null);
     }
-   
+/**
+     * Consulta si el elemento existe dentro de la lista.
+     * @param obj 
+     * @return true si el objeto existe dentro de la lista
+     */  
     public boolean isInList(Object obj){//este espara ver si un elemento es igual al que se guardo
         Nodo aux=head;
         for (int i = 0; i < this.size; i++) {
@@ -66,6 +74,11 @@ public class ListaSimple {
            
         }
      
+/**
+     * Agrega un elemento antes del elemento en el indice dado de la lista.
+     * @param obj a agregar.
+     * @param index el indice a verificar
+     */     
     public void addBeforeElem(Object obj, int index){
         Nodo aux=head;
        
@@ -78,6 +91,11 @@ public class ListaSimple {
    
     }
    
+/**
+     * Agrega un elemento despues del elemento en el indice dado de la lista.
+     * @param obj a agregar.
+     * @param index el indice a verificar
+     */      
     public void addAfterElem(Object obj, int index){
        
         Nodo aux=head;
@@ -106,11 +124,17 @@ public class ListaSimple {
    
    
     /*Delete*/
+/**
+     * Borra la cabeza de la lista.
+     */     
     public void deleteHead(){
         head=head.getpNext();
         size--;
     }
    
+/**
+     * Borra el ultimo elemento de la lista.
+     */     
     public void deleteTail(){
         if(this.size==1){
             deleteHead();
@@ -126,7 +150,10 @@ public class ListaSimple {
         }
     }
    
-//deletes an element by its index
+/**
+     * Borra un elemento de la lista a traves de un indice
+     * @param index indice del elemento a borrar.
+     */ 
     public void deleteElemI(int index){
         if (index==0){
         head=head.getpNext();
@@ -143,7 +170,10 @@ public class ListaSimple {
         }
     }
    
-//deletes an element by its content
+/**
+     * Borra un elemento de la lista a traves de una referencia
+     * @param content contenido del elemento a borrar
+     */     
     public void deleteElemC(Object content){//elimina todos los objetos con  ese valor       <------ probar
         if (this.isInList(content)){
             Nodo anterior=head;
@@ -165,6 +195,9 @@ public class ListaSimple {
    
    
     /*Print*/
+    /** 
+     * Imprime la lista.
+     */   
     public void printList(){
         Nodo aux=head;
         for (int i = 0; i < this.size; i++) {
@@ -177,6 +210,11 @@ public class ListaSimple {
    
    
     /*Buscadores*/
+/**
+     * Retorna el contenido de un elemento a traves de un indice
+     * @return retorna el contenido del elemento
+     * @param index indice del elemento a buscar
+     */     
     public Object getContent(int index){
         int contador=0;
         Nodo temporal = head;
@@ -188,7 +226,12 @@ public class ListaSimple {
        
     }
    
-//buscar por el objeto por refrencia  retorna el indice
+   
+/**
+     * Retorna el indice de un elemento a traves de una referencia
+     * @return retorna el indice del elemento
+     * @param obj indice del elemento a buscar
+     */     
     public Integer getIndex(Object obj){ //devuelve el indice  del primero que encuentra
         Nodo aux= head;
         if (this.isInList(obj)){
@@ -202,7 +245,12 @@ public class ListaSimple {
    
    
     /*Changers*/
-    //by content
+    //Por contenido
+/**
+     * Cambio el elemento por otro a traves de una referencia, lo cambia en todos los elementos iguales que encuentre
+     * @param objRef elemento a cambiar
+     * @param objNew contenido que reemplaza al contenido anterior
+     */    
     public void changeAllContent(Object objRef, Object objNew){  //editar referencia solo el primero que tenga el valor igual lo cambia
         Nodo aux= head;
         if (this.isInList(objRef)){
@@ -214,7 +262,11 @@ public class ListaSimple {
             }
         }
     }
-    //cambia el primer valor que encuentre igual al de  la referencia
+/**
+     * Cambio el elemento por otro a traves de una referencia, solo toma el primer elemento que encuentre
+     * @param objRef contenido del elemento a cambiar
+     * @param objNew contenido que reemplaza al contenido anterior
+     */    
     public void changeFirstContent(Object objRef, Object objNew){
         Nodo aux= head;
         if (this.isInList(objRef)){
@@ -224,7 +276,13 @@ public class ListaSimple {
             aux.setContent(objNew);
         }
     }
-    //by index
+
+    //por indice
+    /**
+     * Cambio el elemento por otro a traves de un indice, solo toma el primer elemento que encuentre
+     * @param indexRef indice del elemento a cambiar
+     * @param objNew contenido que reemplaza al contenido anterior
+     */    
     public void changeContent(int indexRef, Object objNew){//editar por posicion, cambiar el valor del nodo que esta en una posicion
         Nodo aux= head;
            
