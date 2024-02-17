@@ -12,10 +12,10 @@ public class Path {
     //Atributos de la clase Path
     private City destiny;
     private City origin;
-    private float distance;
+    private double distance;
 
     //Constructor de la clase Path
-    public Path(City destiny, City origin, float distance) {
+    public Path(City destiny, City origin, double distance) {
         this.destiny = destiny;
         this.origin = origin;
         this.distance = distance;
@@ -38,13 +38,15 @@ public class Path {
         this.origin = origin;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
     
     //Primitivas
+    
+    
 }

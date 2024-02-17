@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package EDD;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,32 +8,55 @@ package EDD;
  */
 public class City {
     //Atributos de la clase City
-    private int num;
-    private ListaSimple adyacent;     
+    private int numCity;
+    private ListaSimple listAdy;     
 
     //Constructor de la clase City
-    public City(int num, ListaSimple adyacent) {
-        this.num = num;
-        this.adyacent = adyacent;
+    public City(int numCity, ListaSimple adyacent) {
+        this.numCity = numCity;
+        this.listAdy = adyacent;
     }
 
     
     //getters and setters de la clase City
-    public int getNum() {
-        return num;
+    public int getNumCity() {
+        return numCity;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNumCity(int numCity) {
+        this.numCity = numCity;
     }
 
     public ListaSimple getAdyacent() {
-        return adyacent;
+        return listAdy;
     }
 
     public void setAdyacent(ListaSimple adyacent) {
-        this.adyacent = adyacent;
+        this.listAdy = adyacent;
     }
     
     //Primitivas
+    
+    public void addPath(Path path) {
+        if (searchPath(path)) {
+            listAdy.addEnd(path);
+        }else {
+            JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public void deletePath(Path path) {
+        if (searchPath(path)) {
+            listAdy.deleteElemC(path);
+        }else {
+            JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }
+    
+    public boolean searchPath(Path path) {
+        
+        return listAdy.isInList(path);
+        
+    }
 }
