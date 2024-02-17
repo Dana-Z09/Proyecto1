@@ -8,6 +8,6 @@ package EDD;
  *
  * @author Diego Mendez
  */
-public class Path {
+public class City {
     
 }
