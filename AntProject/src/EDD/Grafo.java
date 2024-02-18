@@ -95,10 +95,10 @@ public class Grafo {
     }
     
     /**
-     * Agrega un camino al hormiguero siempre y cuando no se repita
+     * Conecta dos ciudades del hormiguero siempre y cuando no esten ya conectadas
      * @param path recibe el camino a agregar (No terminado)
      */
-    public void addPathGrafo(Path path) {
+    public void connectCity(Path path) {
         if(searchPath(path) == false) {
            for (int i = 0; i < cities.getSize();i++) {
                City auxCity = (City) cities.getContent(i);
@@ -132,10 +132,10 @@ public class Grafo {
     
     
     /**
-     * Borra un camino del hormiguero si exitse
+     * Borra un camino del hormiguero si existe
      * @param path indica el camino a eliminar
      */
-    public void deletePathGrafo(Path path) {
+    public void disconnectCity(Path path) {
         if(searchPath(path) == true) {
            for (int i = 0; i < cities.getSize();i++) {
                City auxCity = (City) cities.getContent(i);
@@ -144,7 +144,7 @@ public class Grafo {
                
                }else if (auxCity.getNumCity() == path.getDestiny().getNumCity()) {
                 Path auxPath = new Path(auxCity,path.getOrigin(),path.getDistance());
-                auxCity.getListAdy().deleteElemC(path);
+                auxCity.getListAdy().deleteElemC(auxPath);
               
            } 
            JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0); 
