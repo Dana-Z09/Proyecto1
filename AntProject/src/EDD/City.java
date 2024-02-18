@@ -55,8 +55,16 @@ public class City {
     }
     
     public boolean searchPath(Path path) {
-        
-        return listAdy.isInList(path);
+        if (path.getOrigin().getNumCity() == numCity){
+            for (int i = 0; i < listAdy.getSize(); i++) {
+                Path auxPath = (Path) listAdy.getContent(i);
+                if(auxPath.getDestiny().getNumCity() == path.getDestiny().getNumCity()) {
+                    return true;
+                }
+                
+            }
+        }
+        return false;
         
     }
 }
