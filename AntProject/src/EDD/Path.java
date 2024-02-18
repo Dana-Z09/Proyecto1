@@ -13,12 +13,14 @@ public class Path {
     private City destiny;
     private City origin;
     private double distance;
+    private int pheromones;
 
     //Constructor de la clase Path
     public Path(City destiny, City origin, double distance) {
         this.destiny = destiny;
         this.origin = origin;
         this.distance = distance;
+        this.pheromones = 0;
     }
 
     //Getters y setters de la clase Path
@@ -46,7 +48,16 @@ public class Path {
         this.distance = distance;
     }
     
-    //Primitivas
+    public int getPheromones() {
+        return pheromones;
+    }
+
+    public void setPheromones(int pheromones) {
+        this.pheromones = pheromones;
+    }
     
+    //Primitivas
+
+ 
     
 }

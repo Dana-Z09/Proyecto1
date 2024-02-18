@@ -47,4 +47,28 @@ public class Grafo {
         return cities.getSize();
     }
     
+    /**
+     * Muestra si un camino existe en el hormiguero
+     * @return true si un camino (Path) existe en el hormiguero
+     */
+    
+    
+    /**
+     * Muestra si una ciudad existe en el hormiguero
+     * @return true si una ciudad (City) existe en el hormiguero
+     */
+    
+    
+    /**
+     * Agrega una ciudad al hormiguero siempre y cuando no se repita
+     * @return true si una ciudad (City) existe en el hormiguero
+     */
+    
+    
+    /**
+     * Agrega un camino al hormiguero siempre y cuando no se repita
+     * @return true si una ciudad (City) existe en el hormiguero
+     */
+    
+    
 }
