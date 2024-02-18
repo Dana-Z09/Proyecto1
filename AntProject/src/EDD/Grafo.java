@@ -154,4 +154,26 @@ public class Grafo {
         }
     }
     
+    public String showGrafo() {
+       StringBuilder show = new StringBuilder();
+       show.append("Ciudades:\n");
+       for (int i = 0; i < cities.getSize();i++) {
+           City auxCity = (City) cities.getContent(i);
+           show.append(auxCity.getNumCity()).append("\n");
+          
+       }
+       show.append("Las aristas son:\n");
+        for (int i = 0; i < cities.getSize();i++) {
+           City auxCity = (City) cities.getContent(i);
+           for (int j = 0; j < auxCity.getListAdy().getSize();j++) {
+               Path auxPath = (Path) auxCity.getListAdy().getContent(j);
+               if(auxPath.getDestiny().getNumCity() < auxCity.getNumCity()) {
+               
+               show.append(auxPath.getOrigin().getNumCity()).append(" ,").append(auxPath.getDestiny().getNumCity()).append(" ,").append(auxPath.getDistance());
+              }
+           }
+         
+        }
+        return show.toString();
+    }
 }

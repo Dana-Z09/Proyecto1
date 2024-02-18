@@ -16,7 +16,10 @@ public class City {
         this.numCity = numCity;
         this.listAdy = listAdy;
     }
-
+    public City(int numCity) {
+        this.numCity = numCity;
+        this.listAdy = null;
+    }
     
     //getters and setters de la clase City
     public int getNumCity() {
