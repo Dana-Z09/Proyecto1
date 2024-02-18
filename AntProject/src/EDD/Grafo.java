@@ -54,7 +54,7 @@ public class Grafo {
      * @return true si un camino (Path) existe en el hormiguero
      * @param path recibe el camino a buscar
      */
-    public boolean searchPath(Path path) {
+    public boolean searchPathGrafo(Path path) {
         for ( int i = 0; i < cities.getSize();i++ ) {
             City auxCity = (City) cities.getContent(i);
             if( auxCity.searchPath(path) == true ) {
@@ -71,7 +71,7 @@ public class Grafo {
      * @return true si una ciudad (City) existe en el hormiguero
      * @param city recibe la ciudad a buscar
      */
-    public boolean searchCity(City city) {
+    public boolean searchCityGrafo(City city) {
         for (int i = 0; i < cities.getSize();i++) {
             City auxCity = (City) cities.getContent(i);
             if(auxCity.getNumCity() == city.getNumCity()) {
@@ -86,7 +86,7 @@ public class Grafo {
      * @param city recibe la ciudad a agregar
      */
     public void addCity(City city) {
-        if(searchCity(city) == false) {
+        if(searchCityGrafo(city) == false) {
            cities.addEnd(city);
            JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Waos", 0);
         } else {
@@ -99,7 +99,7 @@ public class Grafo {
      * @param path recibe el camino a agregar (No terminado)
      */
     public void connectCity(Path path) {
-        if(searchPath(path) == false) {
+        if(searchPathGrafo(path) == false) {
            for (int i = 0; i < cities.getSize();i++) {
                City auxCity = (City) cities.getContent(i);
                if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
@@ -122,7 +122,7 @@ public class Grafo {
      * @param city recibe la ciudad a borrar
      */
     public void deleteCity(City city) {
-        if(searchCity(city) == true) {
+        if(searchCityGrafo(city) == true) {
            cities.deleteElemC(city);
            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "Waos", 0);
         } else {
@@ -136,7 +136,7 @@ public class Grafo {
      * @param path indica el camino a eliminar
      */
     public void disconnectCity(Path path) {
-        if(searchPath(path) == true) {
+        if(searchPathGrafo(path) == true) {
            for (int i = 0; i < cities.getSize();i++) {
                City auxCity = (City) cities.getContent(i);
                if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
