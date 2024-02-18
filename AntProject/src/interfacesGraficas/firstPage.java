@@ -98,7 +98,7 @@ public class firstPage extends javax.swing.JFrame {
         startButton.setBackground(new java.awt.Color(221, 228, 195));
         startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
         startButton.setForeground(new java.awt.Color(51, 46, 45));
-        startButton.setText("Comenzar");
+        startButton.setText("Menú");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);

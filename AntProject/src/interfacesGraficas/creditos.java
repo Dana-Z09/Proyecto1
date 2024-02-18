@@ -4,6 +4,7 @@
  */
 package interfacesGraficas;
 
+import static Funciones.funcionesInterfaces.makeLabelStyle;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
@@ -20,20 +21,12 @@ public class creditos extends javax.swing.JFrame {
         initComponents();
         antPic.setIcon(imageAnt);
         antPic.setText("");
-        makeLabelStyle(mesi);
+        makeLabelStyle(nombres);
         this.setLocationRelativeTo(null);
     }
 
     
-    public static JTextArea makeLabelStyle(JTextArea textArea) {
-    if (textArea == null)
-      return null;
-    textArea.setEditable(false);
-    textArea.setCursor(null);
-    textArea.setOpaque(false);
-    textArea.setFocusable(false);
-    return textArea;
-    }
+    
     
     
     /**
@@ -52,7 +45,7 @@ public class creditos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         atrasButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        mesi = new javax.swing.JTextArea();
+        nombres = new javax.swing.JTextArea();
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +68,7 @@ public class creditos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(65, 23, 14));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("DIDANTS");
-        greenPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 300, 80));
+        greenPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, 80));
 
         jLabel5.setBackground(new java.awt.Color(238, 237, 236));
         jLabel5.setFont(new java.awt.Font("Futura", 0, 25)); // NOI18N
@@ -84,9 +77,9 @@ public class creditos extends javax.swing.JFrame {
         jLabel5.setText("-Ant Simulator");
         greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 50));
 
-        atrasButton.setBackground(new java.awt.Color(65, 23, 14));
+        atrasButton.setBackground(new java.awt.Color(221, 228, 195));
         atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        atrasButton.setForeground(new java.awt.Color(221, 228, 195));
+        atrasButton.setForeground(new java.awt.Color(51, 46, 45));
         atrasButton.setText("Atrás");
         atrasButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,15 +93,15 @@ public class creditos extends javax.swing.JFrame {
         });
         greenPanel.add(atrasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, 120, 50));
 
-        mesi.setEditable(false);
-        mesi.setBackground(new java.awt.Color(97, 143, 74));
-        mesi.setColumns(20);
-        mesi.setFont(new java.awt.Font("Futura Bk BT", 0, 24)); // NOI18N
-        mesi.setForeground(new java.awt.Color(221, 228, 195));
-        mesi.setRows(5);
-        mesi.setText("\n  \n\n\n  -Daniela Zambrano\n  C.I. 30956881 \n  d.zambrano@correo.unimet.edu.ve\n  \n  -Diego Méndez\n  C.I. 30830746 \n  d.mendez@correo.unimet.edu.ve\n  \n  -Alma Fuentes\n  C.I. \n  alma.fuenmayor@correo.unimet.edu.ve");
-        mesi.setBorder(null);
-        jScrollPane1.setViewportView(mesi);
+        nombres.setEditable(false);
+        nombres.setBackground(new java.awt.Color(97, 143, 74));
+        nombres.setColumns(20);
+        nombres.setFont(new java.awt.Font("Futura Bk BT", 0, 24)); // NOI18N
+        nombres.setForeground(new java.awt.Color(221, 228, 195));
+        nombres.setRows(5);
+        nombres.setText("\n  \n\n\n  -Daniela Zambrano\n  C.I. 30956881 \n  d.zambrano@correo.unimet.edu.ve\n  \n  -Diego Méndez\n  C.I. 30830746 \n  d.mendez@correo.unimet.edu.ve\n  \n  -Alma Fuentes\n  C.I. \n  alma.fuenmayor@correo.unimet.edu.ve");
+        nombres.setBorder(null);
+        jScrollPane1.setViewportView(nombres);
 
         greenPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 500, 650));
 
@@ -176,6 +169,6 @@ public class creditos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea mesi;
+    private javax.swing.JTextArea nombres;
     // End of variables declaration//GEN-END:variables
 }

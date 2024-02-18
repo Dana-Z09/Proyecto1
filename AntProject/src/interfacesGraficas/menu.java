@@ -130,7 +130,8 @@ public class menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-
+        valoresIniciales valorI = new  valoresIniciales();
+        valorI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed
 
