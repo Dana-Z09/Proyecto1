@@ -4,6 +4,8 @@
  */
 package EDD;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diego Mendez
@@ -81,16 +83,43 @@ public class Grafo {
     
     /**
      * Agrega una ciudad al hormiguero siempre y cuando no se repita
+     * @param city recibe la ciudad a agregar
      */
-    
+    public void addCity(City city) {
+        if(searchCity(city) == false) {
+           cities.addEnd(city);
+           JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Waos", 0);
+        } else {
+           JOptionPane.showMessageDialog(null, "La ciudad ya existe", "info", 0); 
+        }
+    }
     
     /**
      * Agrega un camino al hormiguero siempre y cuando no se repita
+     * @param path recibe el camino a agregar (No terminado)
      */
+    public void addPath(Path path) {
+        if(searchPath(path) == false) {
+           cities.addEnd(path);
+           JOptionPane.showMessageDialog(null, "Camino agregado correctamente", "Waos", 0);
+        } else {
+           JOptionPane.showMessageDialog(null, "El camino ya existe", "info", 0); 
+        }
+    }
     
     /**
      * Borra una ciudad del hormiguero si existe
+     * @param city recibe la ciudad a borrar
      */
+    public void deleteCity(City city) {
+        if(searchCity(city) == true) {
+           cities.deleteElemC(city);
+           JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "Waos", 0);
+        } else {
+           JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0); 
+        }
+    }
+    
     
     /**
      * Borra un camino del hormiguero si exitse
