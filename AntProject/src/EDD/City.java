@@ -36,7 +36,10 @@ public class City {
     }
     
     //Primitivas
-    
+    /**
+     * Agrega un camino a la ciudad en cuestion siempre y cuando el camino no exista ya 
+     * @param path recibe un camino a agregar
+     */
     public void addPath(Path path) {
         if (searchPath(path) == false) {
             listAdy.addEnd(path);
@@ -45,6 +48,10 @@ public class City {
         }
     }
     
+    /**
+     *Elimina un camino de la ciudad en cuestion siempre y cuando el camino no exista ya 
+     * @param path recibe un camino a agregar
+     */
     public void deletePath(Path path) {
         if (searchPath(path) == true) {
             listAdy.deleteElemC(path);
@@ -54,6 +61,11 @@ public class City {
         
     }
     
+    /**
+     *Busca si existe un camino en la ciudad en cuestion
+     * @return true si la ciudad ya existe
+     * @param path recibe un camino a agregar
+     */
     public boolean searchPath(Path path) {
         if (path.getOrigin().getNumCity() == numCity){
             for (int i = 0; i < listAdy.getSize(); i++) {
@@ -65,6 +77,15 @@ public class City {
             }
         }
         return false;
+        
+    }
+    /**
+     *(Prueba) Busca si existe un camino en la ciudad en cuestion
+     * @return true si la ciudad ya existe
+     * @param path recibe un camino a agregar
+     */
+    public boolean searchPath2(Path path) {
+        return listAdy.isInList(path);
         
     }
 }
