@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfacesGraficas;
 
 import static Funciones.funcionesInterfaces.makeLabelStyle;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -75,7 +71,7 @@ public class creditos extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(65, 23, 14));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("-Ant Simulator");
-        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 50));
+        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 300, 50));
 
         atrasButton.setBackground(new java.awt.Color(221, 228, 195));
         atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N

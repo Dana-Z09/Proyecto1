@@ -38,7 +38,7 @@ public class menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
-        creditosButton = new javax.swing.JButton();
+        createGrafo = new javax.swing.JButton();
         atrasButton = new javax.swing.JButton();
         exitButtonInicio1 = new javax.swing.JButton();
 
@@ -66,7 +66,7 @@ public class menu extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(238, 237, 236));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("-Ant Simulator");
-        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 50));
+        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 300, 50));
 
         startButton.setBackground(new java.awt.Color(221, 228, 195));
         startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
@@ -79,16 +79,16 @@ public class menu extends javax.swing.JFrame {
         });
         greenPanel.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 190, 50));
 
-        creditosButton.setBackground(new java.awt.Color(221, 228, 195));
-        creditosButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        creditosButton.setForeground(new java.awt.Color(51, 46, 45));
-        creditosButton.setText("Crear Hormiguero");
-        creditosButton.addActionListener(new java.awt.event.ActionListener() {
+        createGrafo.setBackground(new java.awt.Color(221, 228, 195));
+        createGrafo.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        createGrafo.setForeground(new java.awt.Color(51, 46, 45));
+        createGrafo.setText("Crear Hormiguero");
+        createGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditosButtonActionPerformed(evt);
+                createGrafoActionPerformed(evt);
             }
         });
-        greenPanel.add(creditosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 190, 50));
+        greenPanel.add(createGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 190, 50));
 
         atrasButton.setBackground(new java.awt.Color(221, 228, 195));
         atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
@@ -135,11 +135,12 @@ public class menu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed
 
-    private void creditosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosButtonActionPerformed
-
+    private void createGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGrafoActionPerformed
+        newGrafo newGrafoPage = new newGrafo();
+        newGrafoPage.setVisible(true);
         this.setVisible(false);
 
-    }//GEN-LAST:event_creditosButtonActionPerformed
+    }//GEN-LAST:event_createGrafoActionPerformed
 
     private void atrasButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasButtonMouseClicked
 
@@ -198,7 +199,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel antPic;
     private javax.swing.JButton atrasButton;
     private javax.swing.JPanel basicPanel;
-    private javax.swing.JButton creditosButton;
+    private javax.swing.JButton createGrafo;
     private javax.swing.JButton exitButtonInicio1;
     private javax.swing.JPanel greenPanel;
     private javax.swing.JLabel jLabel1;

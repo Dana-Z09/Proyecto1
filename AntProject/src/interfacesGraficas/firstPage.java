@@ -72,7 +72,7 @@ public class firstPage extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(238, 237, 236));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("-Ant Simulator");
-        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 50));
+        greenPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 300, 50));
 
         jLabel6.setBackground(new java.awt.Color(238, 237, 236));
         jLabel6.setFont(new java.awt.Font("Futura Lt BT", 0, 24)); // NOI18N
