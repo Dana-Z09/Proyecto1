@@ -12,9 +12,9 @@ public class City {
     private ListaSimple listAdy;     
 
     //Constructor de la clase City
-    public City(int numCity, ListaSimple adyacent) {
+    public City(int numCity, ListaSimple listAdy) {
         this.numCity = numCity;
-        this.listAdy = adyacent;
+        this.listAdy = listAdy;
     }
 
     
@@ -27,18 +27,18 @@ public class City {
         this.numCity = numCity;
     }
 
-    public ListaSimple getAdyacent() {
+    public ListaSimple getListAdy() {
         return listAdy;
     }
 
-    public void setAdyacent(ListaSimple adyacent) {
-        this.listAdy = adyacent;
+    public void setAdyacent(ListaSimple listAdy) {
+        this.listAdy = listAdy;
     }
     
     //Primitivas
     
     public void addPath(Path path) {
-        if (searchPath(path)) {
+        if (searchPath(path) == false) {
             listAdy.addEnd(path);
         }else {
             JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Info", JOptionPane.WARNING_MESSAGE);
@@ -46,7 +46,7 @@ public class City {
     }
     
     public void deletePath(Path path) {
-        if (searchPath(path)) {
+        if (searchPath(path) == true) {
             listAdy.deleteElemC(path);
         }else {
             JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Info", JOptionPane.WARNING_MESSAGE);

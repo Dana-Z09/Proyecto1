@@ -98,12 +98,22 @@ public class Grafo {
      * Agrega un camino al hormiguero siempre y cuando no se repita
      * @param path recibe el camino a agregar (No terminado)
      */
-    public void addPath(Path path) {
+    public void addPathGrafo(Path path) {
         if(searchPath(path) == false) {
-           cities.addEnd(path);
-           JOptionPane.showMessageDialog(null, "Camino agregado correctamente", "Waos", 0);
-        } else {
-           JOptionPane.showMessageDialog(null, "El camino ya existe", "info", 0); 
+           for (int i = 0; i < cities.getSize();i++) {
+               City auxCity = (City) cities.getContent(i);
+               if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
+                   auxCity.getListAdy().addEnd(path);
+               
+               }else if (auxCity.getNumCity() == path.getDestiny().getNumCity()) {
+                Path auxPath = new Path(auxCity,path.getOrigin(),path.getDistance());
+                auxCity.getListAdy().addEnd(auxPath);
+              
+           } 
+           JOptionPane.showMessageDialog(null, "Camino agregado", "info", 0); 
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "El camino ya existe", "info", 0); 
         }
     }
     
@@ -123,5 +133,25 @@ public class Grafo {
     
     /**
      * Borra un camino del hormiguero si exitse
+     * @param path indica el camino a eliminar
      */
+    public void deletePathGrafo(Path path) {
+        if(searchPath(path) == true) {
+           for (int i = 0; i < cities.getSize();i++) {
+               City auxCity = (City) cities.getContent(i);
+               if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
+                   auxCity.getListAdy().deleteElemC(path);
+               
+               }else if (auxCity.getNumCity() == path.getDestiny().getNumCity()) {
+                Path auxPath = new Path(auxCity,path.getOrigin(),path.getDistance());
+                auxCity.getListAdy().deleteElemC(path);
+              
+           } 
+           JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0); 
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "El camino no existe", "info", 0); 
+        }
+    }
+    
 }
