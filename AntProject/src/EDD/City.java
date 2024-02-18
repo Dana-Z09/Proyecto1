@@ -41,7 +41,7 @@ public class City {
         if (searchPath(path)) {
             listAdy.addEnd(path);
         }else {
-            JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Info", JOptionPane.WARNING_MESSAGE);
         }
     }
     
@@ -49,7 +49,7 @@ public class City {
         if (searchPath(path)) {
             listAdy.deleteElemC(path);
         }else {
-            JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Info", JOptionPane.WARNING_MESSAGE);
         }
         
     }
