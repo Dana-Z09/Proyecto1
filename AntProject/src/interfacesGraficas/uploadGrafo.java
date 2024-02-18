@@ -4,6 +4,14 @@
  */
 package interfacesGraficas;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Danna Star
@@ -26,23 +34,113 @@ public class uploadGrafo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        atrasButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        selectTXT = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(996, 617));
         setMinimumSize(new java.awt.Dimension(996, 617));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(97, 143, 74));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Futura", 0, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(238, 237, 236));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("DIDANTS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 50));
+
+        atrasButton.setBackground(new java.awt.Color(221, 228, 195));
+        atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        atrasButton.setForeground(new java.awt.Color(51, 46, 45));
+        atrasButton.setText("Atrás");
+        atrasButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atrasButtonMouseClicked(evt);
+            }
+        });
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(atrasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 35, 80, 40));
+
+        jLabel6.setBackground(new java.awt.Color(238, 237, 236));
+        jLabel6.setFont(new java.awt.Font("Futura", 0, 25)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(238, 237, 236));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("-Ant Simulator");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 200, 30));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(221, 228, 195));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(51, 51, 55));
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 450, 273));
+
+        selectTXT.setBackground(new java.awt.Color(49, 114, 24));
+        selectTXT.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        selectTXT.setText("Seleccionar TXT de Hormiguero");
+        selectTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTXTActionPerformed(evt);
+            }
+        });
+        jPanel1.add(selectTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 450, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atrasButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasButtonMouseClicked
+
+    }//GEN-LAST:event_atrasButtonMouseClicked
+
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        menu Menu = new  menu();
+        Menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_atrasButtonActionPerformed
+
+    private void selectTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTXTActionPerformed
+        String filePath;
+        StringBuilder fileText;
+        FileReader file;
+        BufferedReader reader;
+        JFileChooser jfilechooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "TXT");
+        jfilechooser.setFileFilter(filter);
+        int answer = jfilechooser.showOpenDialog(this);
+        
+        /*if (answer==JFileChooser.APPROVE_OPTION){
+            filePath=jfilechooser.getSelectedFile().getPath();
+            try {
+                file= new FileReader(filePath);
+                if(file.ready()){
+                    
+                    
+                    
+                    
+                }
+                jTextArea1.setText();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(uploadGrafo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        }*/
+    }//GEN-LAST:event_selectTXTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +178,12 @@ public class uploadGrafo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atrasButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton selectTXT;
     // End of variables declaration//GEN-END:variables
 }
