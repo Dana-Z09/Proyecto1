@@ -40,7 +40,7 @@ public class ListaSimple {
      * @param obj 
      * @return true si el objeto existe dentro de la lista
      */  
-    public boolean isInList(Object obj){//este espara ver si un elemento es igual al que se guardo
+    public boolean isInList(Object obj){
         Nodo aux=head;
         for (int i = 0; i < this.size; i++) {
             if (aux.getContent()==obj){
