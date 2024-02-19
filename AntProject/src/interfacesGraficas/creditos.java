@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class creditos extends javax.swing.JFrame {
     ImageIcon imageAnt = new ImageIcon("antwithgreenleaf.png");

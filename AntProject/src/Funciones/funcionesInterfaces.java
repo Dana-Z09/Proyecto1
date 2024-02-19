@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Funciones;
 
 import javax.swing.JTextArea;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class funcionesInterfaces {
     public static JTextArea makeLabelStyle(JTextArea textArea) {
