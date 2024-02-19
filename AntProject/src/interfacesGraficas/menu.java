@@ -157,7 +157,9 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonInicio1MouseClicked
 
     private void exitButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonInicio1ActionPerformed
-        // TODO add your handling code here:
+        uploadData uPage = new  uploadData();
+        uPage.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_exitButtonInicio1ActionPerformed
 
     /**
