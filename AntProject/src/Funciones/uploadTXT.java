@@ -9,8 +9,12 @@ import EDD.Path;
  *
  * @author Daniela Zambrano
  */
-public class createTXT {
-    /*public Grafo convertString(String txt){
+public class uploadTXT {
+    /**
+    *
+    * 
+    */
+    public Grafo convertString(String txt){
         String[] lines=txt.split("\n");
         Grafo grafito= new Grafo();
         ListaSimple cities = new ListaSimple();
@@ -34,29 +38,27 @@ public class createTXT {
                  
                 double distance= Double.parseDouble(elements[2]);
                 
-                City cityA = searchCity(origin, destination);
-                        
-            
+                City cityA = searchCity(origin, cities);
+                City cityB = searchCity(destination, cities);
+                cityA.getListAdy().addEnd(new Path(cityA,cityB, distance));
+                cityB.getListAdy().addEnd(new Path(cityB,cityA, distance));
+                     
             }
         }
-    
-    
+        grafito.setCities(cities);
+        return grafito;
     }
     
     
-    
-    
-    /*
     public City searchCity(int num, ListaSimple cities){
         if (!cities.isEmpty()){
-            for ()
-        
-        
+            for (int i = 0; i < 10; i++) {
+                City c = (City) cities.getContentByIndex(i);
+                if (c.getNumCity()==num){return c;}}
+            return null;
         }
-    
-    
+        return null;
     }
-    */
 }
 
 

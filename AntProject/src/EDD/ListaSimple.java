@@ -215,7 +215,7 @@ public class ListaSimple {
      * @return retorna el contenido del elemento
      * @param index indice del elemento a buscar
      */     
-    public Object getContent(int index){
+    public Object getContentByIndex(int index){
         int contador=0;
         Nodo temporal = head;
         while(contador<index){

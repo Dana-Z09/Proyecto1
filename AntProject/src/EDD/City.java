@@ -66,15 +66,15 @@ public class City {
     
     /**
      *Busca si existe un camino en la ciudad en cuestion
-     * @return true si la ciudad ya existe
      * @param path recibe un camino a agregar
+     * @return true si la ciudad ya existe
      */
     public boolean searchPath(Path path) {
         
         if (path.getOrigin().getNumCity() == numCity){
             for (int i = 0; i < listAdy.getSize(); i++) {
-                Path auxPath = (Path) listAdy.getContent(i);
-                if(auxPath.getDestiny().getNumCity() == path.getDestiny().getNumCity()) {
+                Path auxPath = (Path) listAdy.getContentByIndex(i);
+                if(auxPath.getDestination().getNumCity() == path.getDestination().getNumCity()) {
                     return true;
                 }   
             }
@@ -85,8 +85,8 @@ public class City {
     }
     /**
      *(Prueba) Busca si existe un camino en la ciudad en cuestion
-     * @return true si la ciudad ya existe
      * @param path recibe un camino a agregar
+     * @return true si la ciudad ya existe
      */
     public boolean searchPath2(Path path) {
         return listAdy.isInList(path);
