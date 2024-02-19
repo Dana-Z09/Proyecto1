@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class uploadData extends javax.swing.JFrame {
     String mainFileText;

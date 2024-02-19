@@ -16,6 +16,10 @@ public class Grafo {
     private ListaSimple cities;
 
     //Constructor
+    
+    public Grafo() {
+    }
+
     public Grafo(ListaSimple cities) {
         this.cities = cities;
     }
