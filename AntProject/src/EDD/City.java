@@ -95,7 +95,7 @@ public class City {
     
     /**
      *Busca una ciudad y la retorna a partir de su numero 
-     * @param int recibe el numero de la ciudad
+     * @param numCity recibe el numero de la ciudad
      * @return retorna la ciudad a la que pertenece el numero
      */
     public City searchPathByNumCity(int numCity) {

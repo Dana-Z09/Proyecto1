@@ -20,7 +20,9 @@ public class ListaSimple {
         this.head = head;
         this.tail = this.head;
     }
-   
+   /**
+     * Resetea la lista
+     */
     public void resetList(){
         head=null;
         tail=null;
