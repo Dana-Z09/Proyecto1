@@ -89,15 +89,17 @@ public class ListaSimple {
      * @param index el indice a verificar
      */     
     public void addBeforeElem(Object obj, int index){
-        Nodo aux=head;
-       
-        for (int i = 0; i < index-1; i++) {
-            aux=aux.getpNext();
+        if (this.indexExist(index)) {
+            Nodo aux=head;
+
+            for (int i = 0; i < index-1; i++) {
+                aux=aux.getpNext();
+            }
+            Nodo nuevo = new NodoSimpleP(obj,aux.getpNext());
+
+            aux.setpNext(nuevo);
+            size++;
         }
-        Nodo nuevo = new NodoSimpleP(obj,aux.getpNext());
-       
-        aux.setpNext(nuevo);
-   
     }
    
 /**
@@ -106,7 +108,7 @@ public class ListaSimple {
      * @param index el indice a verificar
      */      
     public void addAfterElem(Object obj, int index){
-       
+       if (this.indexExist(index)) {
         Nodo aux=head;
        
         for (int i = 0; i < index; i++) {
@@ -115,7 +117,9 @@ public class ListaSimple {
         Nodo nuevo = new NodoSimpleP(obj,aux.getpNext());
        
         aux.setpNext(nuevo);
-   
+        size++;
+       
+       }
     }      
    
     /*Getters*/
@@ -164,19 +168,21 @@ public class ListaSimple {
      * @param index indice del elemento a borrar.
      */ 
     public void deleteElemI(int index){
-        if (index==0){
-        head=head.getpNext();
-        size--;
-        }else{
-        int contador=0;
-        Nodo anterior=head;
-        while(contador <index-1){
-            anterior=anterior.getpNext();
-            contador++;
-        }
-        anterior.setpNext(anterior.getpNext().getpNext());
-        size--;
-        }
+        if (this.indexExist(index)) {
+            if (index==0){
+            head=head.getpNext();
+            size--;
+            }else{
+            int contador=0;
+            Nodo anterior=head;
+            while(contador <index-1){
+                anterior=anterior.getpNext();
+                contador++;
+            }
+            anterior.setpNext(anterior.getpNext().getpNext());
+            size--;
+            }
+        }  
     }
    
 /**
@@ -305,5 +311,12 @@ public class ListaSimple {
          
     }    
      
+    public boolean indexExist(int index) {
+      
+       if (index<0 || index>size-1) {
+       return false; 
+    }
+    return true;
+   }
    
 }
