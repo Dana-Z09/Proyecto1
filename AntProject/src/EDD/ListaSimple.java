@@ -53,6 +53,10 @@ public class ListaSimple {
     }
 
     /*Add*/
+    /**
+     * Agrega un elemento al principio de la lista.
+     * @param obj a agregar.
+     */ 
     public void addFirst(Object obj){
         if (this.isEmpty()){
             head= new NodoSimpleP(obj);
@@ -62,7 +66,10 @@ public class ListaSimple {
         }
         size++;
     }
-   
+   /**
+     * Agrega un elemento al final de la lista.
+     * @param obj a agregar.
+     */  
     public void addEnd(Object obj){
         if (this.isEmpty()){
             head= new NodoSimpleP(obj);
@@ -78,7 +85,7 @@ public class ListaSimple {
      
 /**
      * Agrega un elemento antes del elemento en el indice dado de la lista.
-     * @param obj a agregar.
+     * @param obj a agregar. si se le agrega un indice mayor al de la lista explota
      * @param index el indice a verificar
      */     
     public void addBeforeElem(Object obj, int index){
@@ -95,7 +102,7 @@ public class ListaSimple {
    
 /**
      * Agrega un elemento despues del elemento en el indice dado de la lista.
-     * @param obj a agregar.
+     * @param obj a agregar. si se le agrega un indice mayor al de la lista explota
      * @param index el indice a verificar
      */      
     public void addAfterElem(Object obj, int index){
@@ -220,7 +227,7 @@ public class ListaSimple {
     public Object getContentByIndex(int index){
         int contador=0;
         Nodo temporal = head;
-        while(contador<index){
+        while(contador<index-1){
             temporal=temporal.getpNext();
             contador++;
         }
@@ -282,7 +289,7 @@ public class ListaSimple {
     //por indice
     /**
      * Cambio el elemento por otro a traves de un indice, solo toma el primer elemento que encuentre
-     * @param indexRef indice del elemento a cambiar
+     * @param indexRef indice del elemento a cambiar. No cambia nada
      * @param objNew contenido que reemplaza al contenido anterior
      */    
     public void changeContent(int indexRef, Object objNew){//editar por posicion, cambiar el valor del nodo que esta en una posicion

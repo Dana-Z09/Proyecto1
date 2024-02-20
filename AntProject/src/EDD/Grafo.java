@@ -165,7 +165,9 @@ public class Grafo {
     }
 
     
-    
+    /**
+     * Convierte un grafo a un string donde muestra la estructura en Ciudades y Caminos
+     */
     public String toString() {
         StringBuilder show = new StringBuilder();
         show.append("Ciudades:\n");
