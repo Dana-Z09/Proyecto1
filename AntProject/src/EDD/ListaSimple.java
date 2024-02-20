@@ -237,12 +237,13 @@ public class ListaSimple {
     public Object getContentByIndex(int index){
         int contador=0;
         Nodo temporal = head;
+        if (index!=0){
         while(contador<index-1){
             temporal=temporal.getpNext();
-            contador++;
-        }
+            contador++;}
         return temporal.getpNext().getContent();
-       
+        }
+        return this.getHead().getContent();
     }
    
    

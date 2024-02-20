@@ -16,8 +16,8 @@ public class Path {
     private double pheromones;
 
     //Constructor de la clase Path
-    public Path(City origin, City destiny, double distance) {
-        this.destination = destiny;
+    public Path(City origin, City destination, double distance) {
+        this.destination = destination;
         this.origin = origin;
         this.distance = distance;
         this.pheromones = 0;
