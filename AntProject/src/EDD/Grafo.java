@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package EDD;
 
 import javax.swing.JOptionPane;
@@ -61,8 +57,8 @@ public class Grafo {
      */
     public boolean searchPathGrafo(Path path) {
         for (int i = 0; i < cities.getSize(); i++) {
-            City auxCity = (City) cities.getContent(i);
-            if (auxCity.searchPath(path) == true) {
+            City auxCity = (City) cities.getContentByIndex(i);
+            if (auxCity.searchPathByPath(path) == true) {
                 return true;
             }
         }
@@ -82,7 +78,7 @@ public class Grafo {
         for (int i = 0; i < cities.getSize(); i++) {
             c = (City) aux.getContent();
 
-            //    City auxCity = new City((int)cities.getContent(i));
+            //    City auxCity = new City((int)cities.getContentByIndex(i));
             if (c.getNumCity() == city.getNumCity()) {
                 return true;
             }
@@ -114,11 +110,11 @@ public class Grafo {
     public void connectCity(Path path) {
         if (searchPathGrafo(path) == false) {
             for (int i = 0; i < cities.getSize(); i++) {
-                City auxCity = (City) cities.getContent(i);
+                City auxCity = (City) cities.getContentByIndex(i);
                 if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
                     auxCity.getListAdy().addEnd(path);
 
-                } else if (auxCity.getNumCity() == path.getDestiny().getNumCity()) {
+                } else if (auxCity.getNumCity() == path.getDestination().getNumCity()) {
                     Path auxPath = new Path(auxCity, path.getOrigin(), path.getDistance());
                     auxCity.getListAdy().addEnd(auxPath);
 
@@ -149,14 +145,14 @@ public class Grafo {
      *
      * @param path indica el camino a eliminar
      */
-    public void disconnectCity(Path path) {
+    public void disconnectCity(Path path) { ///Hay que cambiar esta funcion 
         if (searchPathGrafo(path) == true) {
             for (int i = 0; i < cities.getSize(); i++) {
-                City auxCity = (City) cities.getContent(i);
+                City auxCity = (City) cities.getContentByIndex(i);
                 if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
                     auxCity.getListAdy().deleteElemC(path);
 
-                } else if (auxCity.getNumCity() == path.getDestiny().getNumCity()) {
+                } else if (auxCity.getNumCity() == path.getDestination().getNumCity()) {
                     Path auxPath = new Path(auxCity, path.getOrigin(), path.getDistance());
                     auxCity.getListAdy().deleteElemC(auxPath);
 
@@ -168,32 +164,11 @@ public class Grafo {
         }
     }
 
+    
+    /**
+     * Convierte un grafo a un string donde muestra la estructura en Ciudades y Caminos
+     */
     public String toString() {
-        /*
-        StringBuilder show = new StringBuilder();
-        show.append("Ciudades:\n");
-        for (int i = 0; i < cities.getSize(); i++) {
-            System.out.println("h");
-            City auxCity = (City) cities.getContent(i);//agregada de dani
-            //City auxCity = (City) cities.getContent(i); linea que estaba antes
-            show.append(auxCity.getNumCity()).append("\n");
-
-        }
-        
-        show.append("Las aristas son:\n");
-        for (int i = 0; i < cities.getSize(); i++) {
-            Object contenido = cities.getContent(i);//agregada por dani
-            Nodo nodito = (Nodo) contenido;//agregada por dani
-            City auxCity = (City) nodito.getContent();///Estoy 100% segura que lo quer hay dentro de ese nodo no es iuna ciudad
-            //City auxCity = (City) cities.getContent(i); linea que estaba antes
-            for (int j = 0; j < auxCity.getListAdy().getSize(); j++) {
-                Path auxPath = (Path) auxCity.getListAdy().getContent(j);
-                if (auxPath.getDestiny().getNumCity() < auxCity.getNumCity()) {
-
-                    show.append(auxPath.getOrigin().getNumCity()).append(" ,").append(auxPath.getDestiny().getNumCity()).append(" ,").append(auxPath.getDistance());
-                }
-            }
-        */
         StringBuilder show = new StringBuilder();
         show.append("Ciudades:\n");
         ListaSimple lG = this.cities;
@@ -211,7 +186,7 @@ public class Grafo {
             Nodo n2 = c.getListAdy().getHead();
             for (int i = 0; i < c.getListAdy().getSize(); i++) {
                 Path p = (Path) n2.getContent();
-                show.append(String.valueOf(p.getOrigin().getNumCity())).append(",").append(String.valueOf(p.getDestiny().getNumCity())).append(",").append(String.valueOf(p.getDistance()));
+                show.append(String.valueOf(p.getOrigin().getNumCity())).append(",").append(String.valueOf(p.getDestination().getNumCity())).append(",").append(String.valueOf(p.getDistance()));
                 show.append("\n");
                 n2=n2.getpNext();
             }

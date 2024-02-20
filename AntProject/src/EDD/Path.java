@@ -10,26 +10,29 @@ package EDD;
  */
 public class Path {
     //Atributos de la clase Path
-    private City destiny;
     private City origin;
+    private City destination;
     private double distance;
     private double pheromones;
 
     //Constructor de la clase Path
-    public Path(City destiny, City origin, double distance) {
-        this.destiny = destiny;
+    public Path(City origin, City destination, double distance) {
+        this.destination = destination;
         this.origin = origin;
         this.distance = distance;
         this.pheromones = 0;
     }
 
+    
+    
+    
     //Getters y setters de la clase Path
-    public City getDestiny() {
-        return destiny;
+    public City getDestination() {
+        return destination;
     }
 
-    public void setDestiny(City destiny) {
-        this.destiny = destiny;
+    public void setDestination(City destination) {
+        this.destination = destination;
     }
 
     public City getOrigin() {

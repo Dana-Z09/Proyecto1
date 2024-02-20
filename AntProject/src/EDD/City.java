@@ -44,7 +44,7 @@ public class City {
      * @param path recibe un camino a agregar
      */
     public void addPath(Path path) {
-        if (searchPath(path) == false) {
+        if (searchPathByPath(path) == false) {
             listAdy.addEnd(path);
         }else {
             JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Info", JOptionPane.WARNING_MESSAGE);
@@ -56,7 +56,7 @@ public class City {
      * @param path recibe un camino a agregar
      */
     public void deletePath(Path path) {
-        if (searchPath(path) == true) {
+        if (searchPathByPath(path) == true) {
             listAdy.deleteElemC(path);
         }else {
             JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Info", JOptionPane.WARNING_MESSAGE);
@@ -66,15 +66,15 @@ public class City {
     
     /**
      *Busca si existe un camino en la ciudad en cuestion
-     * @return true si la ciudad ya existe
      * @param path recibe un camino a agregar
+     * @return true si la ciudad ya existe
      */
-    public boolean searchPath(Path path) {
+    public boolean searchPathByPath(Path path) {
         
         if (path.getOrigin().getNumCity() == numCity){
             for (int i = 0; i < listAdy.getSize(); i++) {
-                Path auxPath = (Path) listAdy.getContent(i);
-                if(auxPath.getDestiny().getNumCity() == path.getDestiny().getNumCity()) {
+                Path auxPath = (Path) listAdy.getContentByIndex(i);
+                if(auxPath.getDestination().getNumCity() == path.getDestination().getNumCity()) {
                     return true;
                 }   
             }
@@ -85,11 +85,30 @@ public class City {
     }
     /**
      *(Prueba) Busca si existe un camino en la ciudad en cuestion
-     * @return true si la ciudad ya existe
      * @param path recibe un camino a agregar
+     * @return true si la ciudad ya existe
      */
-    public boolean searchPath2(Path path) {
+    public boolean searchPath(Path path) {
         return listAdy.isInList(path);
+        
+    }
+    
+    /**
+     *Busca una ciudad y la retorna a partir de su numero 
+     * @param numCity recibe el numero de la ciudad
+     * @return retorna la ciudad a la que pertenece el numero
+     */
+    public City searchPathByNumCity(int numCity) {
+        if (numCity != this.numCity){
+            for (int i = 0; i < listAdy.getSize(); i++) {
+                Path auxPath = (Path) listAdy.getContentByIndex(i);
+                if(auxPath.getDestination().getNumCity() == numCity) {
+                    return auxPath.getDestination();
+                }
+            }
+            return null;
+        }
+        return null;
         
     }
 }

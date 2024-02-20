@@ -1,12 +1,14 @@
 package interfacesGraficas;
 
-import java.io.BufferedReader;
+import EDD.Grafo;
+import EDD.ListaSimple;
+import Funciones.uploadTXT;
 import java.io.File;
 import java.io.FileReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -15,14 +17,22 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class uploadData extends javax.swing.JFrame {
     String mainFileText;
-
+    Grafo mainGrafo= null;
+    public  static firstPage firstpage;
+    private final uploadTXT uploader = new uploadTXT();
+    public static ListaSimple list_doc= new ListaSimple();
+    
     /**
      * Creates new form uploadGrafo
+     * @param firstpage
      */
     public uploadData() {
         initComponents();
+        //this.firstpage = firstpage;
         this.setLocationRelativeTo(null);
+        //firstpage.setVisible(false);
         this.startButton.setVisible(false);
+        this.editGrafoButton.setVisible(false);
     }
 
     /**
@@ -43,7 +53,8 @@ public class uploadData extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         filePathTextField = new javax.swing.JTextField();
         selectTXT = new javax.swing.JButton();
-        assignGrafo = new javax.swing.JButton();
+        saveAntHill = new javax.swing.JButton();
+        editGrafoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(996, 617));
@@ -61,7 +72,7 @@ public class uploadData extends javax.swing.JFrame {
         jLabel1.setText("DIDANTS");
 
         atrasButton.setBackground(new java.awt.Color(221, 228, 195));
-        atrasButton.setFont(new java.awt.Font("Futura XBlkCnIt BT", 0, 16)); // NOI18N
+        atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
         atrasButton.setForeground(new java.awt.Color(51, 46, 45));
         atrasButton.setText("Atrás");
         atrasButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,7 +101,7 @@ public class uploadData extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         startButton.setBackground(new java.awt.Color(49, 114, 24));
-        startButton.setFont(new java.awt.Font("Futura Md BT", 2, 16)); // NOI18N
+        startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         startButton.setText("Comenzar Simulación");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +121,7 @@ public class uploadData extends javax.swing.JFrame {
         });
 
         selectTXT.setBackground(new java.awt.Color(49, 114, 24));
-        selectTXT.setFont(new java.awt.Font("Futura XBlkCnIt BT", 0, 16)); // NOI18N
+        selectTXT.setFont(new java.awt.Font("MAXWELL BOLD", 0, 16)); // NOI18N
         selectTXT.setText("Buscar Archivo");
         selectTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,12 +129,21 @@ public class uploadData extends javax.swing.JFrame {
             }
         });
 
-        assignGrafo.setBackground(new java.awt.Color(49, 114, 24));
-        assignGrafo.setFont(new java.awt.Font("Futura Md BT", 2, 16)); // NOI18N
-        assignGrafo.setText("Guardar Hormiguero");
-        assignGrafo.addActionListener(new java.awt.event.ActionListener() {
+        saveAntHill.setBackground(new java.awt.Color(49, 114, 24));
+        saveAntHill.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        saveAntHill.setText("Guardar Hormiguero");
+        saveAntHill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignGrafoActionPerformed(evt);
+                saveAntHillActionPerformed(evt);
+            }
+        });
+
+        editGrafoButton.setBackground(new java.awt.Color(49, 114, 24));
+        editGrafoButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        editGrafoButton.setText("Editar Hormiguero");
+        editGrafoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editGrafoButtonActionPerformed(evt);
             }
         });
 
@@ -145,12 +165,18 @@ public class uploadData extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(selectTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(atrasButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(assignGrafo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveAntHill, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startButton)
+                            .addComponent(editGrafoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(42, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,13 +187,15 @@ public class uploadData extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(assignGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addComponent(saveAntHill)
+                        .addGap(27, 27, 27)
+                        .addComponent(editGrafoButton)
+                        .addGap(27, 27, 27)
+                        .addComponent(startButton)
+                        .addGap(38, 38, 38)
                         .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +216,8 @@ public class uploadData extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonMouseClicked
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        menu Menu = new  menu();
-        Menu.setVisible(true);
+        firstPage fPage = new  firstPage();
+        fPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed
 
@@ -205,45 +233,57 @@ public class uploadData extends javax.swing.JFrame {
     }//GEN-LAST:event_filePathTextFieldActionPerformed
 
     private void selectTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTXTActionPerformed
-        String filePath;
+        
+        JFileChooser fileChooser = new JFileChooser(); //Se crea elobjeto Jfilechooser
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt", "txt");
         String fileText="";
-        FileReader file;
-        BufferedReader reader;
-        JFileChooser fChooser = new JFileChooser(); //Se crea elobjeto Jfilechooser
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("'.TXT", "txt");
-        fChooser.setFileFilter(filter);
+        File antHill;
         
-        int answer = fChooser.showOpenDialog(this);
+        fileChooser.setFileFilter(filter);
         
-        if (answer==JFileChooser.APPROVE_OPTION){
-            filePath  =  fChooser.getSelectedFile().getPath();
-            this.filePathTextField.setText(filePath);
-            File fichero=fChooser.getSelectedFile();
+        int selected = fileChooser.showOpenDialog(this);
         
-            try {
-                file= new FileReader(fichero);
-                if(file.ready()){
-                    reader = new BufferedReader(file);
-                    int value = reader.read();
-                    while(value !=-1){
-                        fileText=fileText+(char) value;
-                        value = reader.read();}}
-                else{JOptionPane.showMessageDialog(null, "El archivo no está listo para ser leído.", "Error", JOptionPane.WARNING_MESSAGE);}
+        if(selected==JFileChooser.APPROVE_OPTION){
+            antHill = fileChooser.getSelectedFile();
+            
+            this.filePathTextField.setText(antHill.getAbsolutePath());  
+        
+            try(FileReader filereader = new FileReader(antHill)){
+                int value = filereader.read();
+                while(value!= -1){
+                    fileText = fileText+ (char) value;
+                    value = filereader.read();}
+            
                 this.jTextArea1.setText(fileText);
-                mainFileText=fileText;} 
+                this.mainFileText=fileText;
                 
-            catch (Exception ex) { Logger.getLogger(uploadData.class.getName()).log(Level.SEVERE, null, ex);
+            }catch(IOException ex){
                 ex.printStackTrace();}
         }
         else{JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún Archivo.", "Info", JOptionPane.INFORMATION_MESSAGE);}
-        
+      
     }//GEN-LAST:event_selectTXTActionPerformed
 
-    private void assignGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignGrafoActionPerformed
+    private void saveAntHillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAntHillActionPerformed
         // Aqui falta el codigo para convertir el txt a grafo si esose lee correctamente entonces 
-        this.startButton.setVisible(true);
+        //Noseguarda correctamente
+        uploadTXT uploadData = new uploadTXT();
+        if (mainFileText!=null){
+            this.mainGrafo= uploadData.convertString(jTextArea1.getText());
+            //System.out.println(jTextArea1.getText());
+        }
         
-    }//GEN-LAST:event_assignGrafoActionPerformed
+        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);}
+        
+        if (mainGrafo!=null){
+            this.startButton.setVisible(true);
+            this.editGrafoButton.setVisible(true);}
+        
+    }//GEN-LAST:event_saveAntHillActionPerformed
+
+    private void editGrafoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGrafoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editGrafoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,14 +322,15 @@ public class uploadData extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignGrafo;
     private javax.swing.JButton atrasButton;
+    private javax.swing.JButton editGrafoButton;
     private javax.swing.JTextField filePathTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton saveAntHill;
     private javax.swing.JButton selectTXT;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
