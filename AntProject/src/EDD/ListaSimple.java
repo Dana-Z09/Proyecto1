@@ -322,11 +322,7 @@ public class ListaSimple {
      * @return true si el indice entra dentro del rango de la lista
      */    
     public boolean indexExist(int index) {
-      
-       if (index<0 || index>size-1) {
-       return false; 
-    }
-    return true;
+    return !(index<0 || index>this.size-1);
    }
    
 }
