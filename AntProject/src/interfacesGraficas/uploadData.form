@@ -80,8 +80,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="assignGrafo" min="-2" pref="231" max="-2" attributes="0"/>
+                              <Component id="saveAntHill" min="-2" pref="231" max="-2" attributes="0"/>
                               <Component id="startButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="editGrafoButton" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
@@ -103,8 +104,10 @@
                   <EmptySpace pref="38" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="assignGrafo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="saveAntHill" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="editGrafoButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="startButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="atrasButton" min="-2" pref="40" max="-2" attributes="0"/>
@@ -240,7 +243,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectTXTActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="assignGrafo">
+        <Component class="javax.swing.JButton" name="saveAntHill">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="18" green="72" red="31" type="rgb"/>
@@ -251,7 +254,21 @@
             <Property name="text" type="java.lang.String" value="Guardar Hormiguero"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assignGrafoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveAntHillActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="editGrafoButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="18" green="72" red="31" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="MAXWELL BOLD" size="24" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Editar Hormiguero"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editGrafoButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

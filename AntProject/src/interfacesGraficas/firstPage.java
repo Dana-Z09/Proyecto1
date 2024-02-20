@@ -1,6 +1,7 @@
 package interfacesGraficas;
 import EDD.Grafo;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -199,6 +200,9 @@ public class firstPage extends javax.swing.JFrame {
             valoresIniciales valorI = new  valoresIniciales();
             valorI.setVisible(true);
             this.setVisible(false);}
+        else{
+        JOptionPane.showMessageDialog(null, "Debe cargar un hormiguero para iniciar la simulacion", "Info", 1);
+        }
     }//GEN-LAST:event_startButton1ActionPerformed
 
     /**

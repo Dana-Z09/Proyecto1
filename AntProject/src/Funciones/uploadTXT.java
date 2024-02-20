@@ -16,8 +16,9 @@ public class uploadTXT {
     */
     public Grafo convertString(String txt){
         String[] lines=txt.split("\n");
-        Grafo grafito= new Grafo();
         ListaSimple cities = new ListaSimple();
+        ListaSimple paths = new ListaSimple();
+         
         
         boolean isCity= true;
 
@@ -45,8 +46,10 @@ public class uploadTXT {
                      
             }
         }
-        grafito.setCities(cities);
-        return grafito;
+        
+        Grafo grafo = new Grafo();
+        grafo.setCities(cities);
+        return grafo;
     }
     
     

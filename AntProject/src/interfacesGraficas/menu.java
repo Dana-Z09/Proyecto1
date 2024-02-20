@@ -132,7 +132,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void createGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGrafoActionPerformed
-        newGrafo newGrafoPage = new newGrafo();
+        editGrafo newGrafoPage = new editGrafo();
         newGrafoPage.setVisible(true);
         this.setVisible(false);
 
