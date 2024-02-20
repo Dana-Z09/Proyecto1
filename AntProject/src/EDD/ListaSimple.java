@@ -102,6 +102,7 @@ public class ListaSimple {
 
             aux.setpNext(nuevo);
             size++;
+            }
         }
     }
    
