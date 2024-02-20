@@ -1,5 +1,7 @@
 package interfacesGraficas;
 
+import EDD.Grafo;
+import Funciones.uploadTXT;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class uploadData extends javax.swing.JFrame {
     String mainFileText;
+    Grafo mainGrafo= null;
 
     /**
      * Creates new form uploadGrafo
@@ -61,7 +65,7 @@ public class uploadData extends javax.swing.JFrame {
         jLabel1.setText("DIDANTS");
 
         atrasButton.setBackground(new java.awt.Color(221, 228, 195));
-        atrasButton.setFont(new java.awt.Font("Futura XBlkCnIt BT", 0, 16)); // NOI18N
+        atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
         atrasButton.setForeground(new java.awt.Color(51, 46, 45));
         atrasButton.setText("Atrás");
         atrasButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,7 +94,7 @@ public class uploadData extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         startButton.setBackground(new java.awt.Color(49, 114, 24));
-        startButton.setFont(new java.awt.Font("Futura Md BT", 2, 16)); // NOI18N
+        startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         startButton.setText("Comenzar Simulación");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +114,7 @@ public class uploadData extends javax.swing.JFrame {
         });
 
         selectTXT.setBackground(new java.awt.Color(49, 114, 24));
-        selectTXT.setFont(new java.awt.Font("Futura XBlkCnIt BT", 0, 16)); // NOI18N
+        selectTXT.setFont(new java.awt.Font("MAXWELL BOLD", 0, 16)); // NOI18N
         selectTXT.setText("Buscar Archivo");
         selectTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +123,7 @@ public class uploadData extends javax.swing.JFrame {
         });
 
         assignGrafo.setBackground(new java.awt.Color(49, 114, 24));
-        assignGrafo.setFont(new java.awt.Font("Futura Md BT", 2, 16)); // NOI18N
+        assignGrafo.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         assignGrafo.setText("Guardar Hormiguero");
         assignGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,12 +149,17 @@ public class uploadData extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(selectTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(atrasButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(assignGrafo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(assignGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startButton))
+                        .addContainerGap(42, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,13 +170,13 @@ public class uploadData extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(assignGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addComponent(assignGrafo)
+                        .addGap(29, 29, 29)
+                        .addComponent(startButton)
+                        .addGap(38, 38, 38)
                         .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +197,8 @@ public class uploadData extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonMouseClicked
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        menu Menu = new  menu();
-        Menu.setVisible(true);
+        firstPage fPage = new  firstPage();
+        fPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed
 
@@ -241,7 +250,15 @@ public class uploadData extends javax.swing.JFrame {
 
     private void assignGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignGrafoActionPerformed
         // Aqui falta el codigo para convertir el txt a grafo si esose lee correctamente entonces 
-        this.startButton.setVisible(true);
+        //Noseguarda correctamente
+        uploadTXT uploadData = new uploadTXT();
+        if (mainFileText!=null){
+        mainGrafo= uploadData.convertString(mainFileText);}
+        
+        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Error", WARNING_MESSAGE);}
+        
+        if (mainGrafo!=null){
+        this.startButton.setVisible(true);}
         
     }//GEN-LAST:event_assignGrafoActionPerformed
 

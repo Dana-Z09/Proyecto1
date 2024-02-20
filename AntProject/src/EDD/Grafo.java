@@ -58,7 +58,7 @@ public class Grafo {
     public boolean searchPathGrafo(Path path) {
         for (int i = 0; i < cities.getSize(); i++) {
             City auxCity = (City) cities.getContentByIndex(i);
-            if (auxCity.searchPath(path) == true) {
+            if (auxCity.searchPathByPath(path) == true) {
                 return true;
             }
         }
@@ -145,7 +145,7 @@ public class Grafo {
      *
      * @param path indica el camino a eliminar
      */
-    public void disconnectCity(Path path) {
+    public void disconnectCity(Path path) { ///Hay que cambiar esta funcion 
         if (searchPathGrafo(path) == true) {
             for (int i = 0; i < cities.getSize(); i++) {
                 City auxCity = (City) cities.getContentByIndex(i);
@@ -164,32 +164,9 @@ public class Grafo {
         }
     }
 
+    
+    
     public String toString() {
-        /*
-        StringBuilder show = new StringBuilder();
-        show.append("Ciudades:\n");
-        for (int i = 0; i < cities.getSize(); i++) {
-            System.out.println("h");
-            City auxCity = (City) cities.getContentByIndex(i);//agregada de dani
-            //City auxCity = (City) cities.getContentByIndex(i); linea que estaba antes
-            show.append(auxCity.getNumCity()).append("\n");
-
-        }
-        
-        show.append("Las aristas son:\n");
-        for (int i = 0; i < cities.getSize(); i++) {
-            Object contenido = cities.getContentByIndex(i);//agregada por dani
-            Nodo nodito = (Nodo) contenido;//agregada por dani
-            City auxCity = (City) nodito.getContentByIndex();///Estoy 100% segura que lo quer hay dentro de ese nodo no es iuna ciudad
-            //City auxCity = (City) cities.getContentByIndex(i); linea que estaba antes
-            for (int j = 0; j < auxCity.getListAdy().getSize(); j++) {
-                Path auxPath = (Path) auxCity.getListAdy().getContentByIndex(j);
-                if (auxPath.getDestiny().getNumCity() < auxCity.getNumCity()) {
-
-                    show.append(auxPath.getOrigin().getNumCity()).append(" ,").append(auxPath.getDestiny().getNumCity()).append(" ,").append(auxPath.getDistance());
-                }
-            }
-        */
         StringBuilder show = new StringBuilder();
         show.append("Ciudades:\n");
         ListaSimple lG = this.cities;

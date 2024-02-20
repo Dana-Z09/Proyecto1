@@ -1,4 +1,5 @@
 package interfacesGraficas;
+import EDD.Grafo;
 import javax.swing.ImageIcon;
 
 /**
@@ -8,7 +9,7 @@ import javax.swing.ImageIcon;
 public class firstPage extends javax.swing.JFrame {
 
     ImageIcon imageAnt = new ImageIcon("antwithgreenleaf.png");
-    
+    Grafo mainGrafo;
     
     
     /**
@@ -22,6 +23,16 @@ public class firstPage extends javax.swing.JFrame {
         antPic.setText("");
     }
 
+    public Grafo getMainGrafo() {
+        return mainGrafo;
+    }
+
+    public void setMainGrafo(Grafo mainGrafo) {
+        this.mainGrafo = mainGrafo;
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,14 +44,15 @@ public class firstPage extends javax.swing.JFrame {
 
         basePanel = new javax.swing.JPanel();
         greenPanel = new javax.swing.JPanel();
+        startButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        startButton = new javax.swing.JButton();
         creditosButton = new javax.swing.JButton();
         exitButtonInicio = new javax.swing.JButton();
+        exitButtonInicio1 = new javax.swing.JButton();
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +68,17 @@ public class firstPage extends javax.swing.JFrame {
         greenPanel.setBackground(new java.awt.Color(49, 114, 24));
         greenPanel.setMinimumSize(new java.awt.Dimension(610, 550));
         greenPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        startButton1.setBackground(new java.awt.Color(221, 228, 195));
+        startButton1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        startButton1.setForeground(new java.awt.Color(51, 46, 45));
+        startButton1.setText("Comenzar Simulación");
+        startButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButton1ActionPerformed(evt);
+            }
+        });
+        greenPanel.add(startButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 190, 50));
 
         jLabel1.setFont(new java.awt.Font("Futura", 0, 70)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 237, 236));
@@ -91,17 +114,6 @@ public class firstPage extends javax.swing.JFrame {
         jLabel7.setText("Hormigas de la Universidad");
         greenPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 310, 50));
 
-        startButton.setBackground(new java.awt.Color(221, 228, 195));
-        startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        startButton.setForeground(new java.awt.Color(51, 46, 45));
-        startButton.setText("Menú");
-        startButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButtonActionPerformed(evt);
-            }
-        });
-        greenPanel.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 160, 50));
-
         creditosButton.setBackground(new java.awt.Color(221, 228, 195));
         creditosButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
         creditosButton.setForeground(new java.awt.Color(51, 46, 45));
@@ -111,7 +123,7 @@ public class firstPage extends javax.swing.JFrame {
                 creditosButtonActionPerformed(evt);
             }
         });
-        greenPanel.add(creditosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 160, 50));
+        greenPanel.add(creditosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 190, 50));
 
         exitButtonInicio.setBackground(new java.awt.Color(221, 228, 195));
         exitButtonInicio.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
@@ -127,7 +139,23 @@ public class firstPage extends javax.swing.JFrame {
                 exitButtonInicioActionPerformed(evt);
             }
         });
-        greenPanel.add(exitButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 160, 50));
+        greenPanel.add(exitButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 190, 50));
+
+        exitButtonInicio1.setBackground(new java.awt.Color(221, 228, 195));
+        exitButtonInicio1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        exitButtonInicio1.setForeground(new java.awt.Color(51, 46, 45));
+        exitButtonInicio1.setText("Cargar Hormiguero");
+        exitButtonInicio1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitButtonInicio1MouseClicked(evt);
+            }
+        });
+        exitButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonInicio1ActionPerformed(evt);
+            }
+        });
+        greenPanel.add(exitButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 190, 50));
 
         basePanel.add(greenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 620));
 
@@ -138,12 +166,6 @@ public class firstPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        menu Menu = new  menu();
-        Menu.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_startButtonActionPerformed
 
     private void creditosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosButtonActionPerformed
         creditos Creditos = new  creditos();
@@ -159,6 +181,25 @@ public class firstPage extends javax.swing.JFrame {
     private void exitButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonInicioActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonInicioActionPerformed
+
+    private void exitButtonInicio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonInicio1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitButtonInicio1MouseClicked
+
+    private void exitButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonInicio1ActionPerformed
+        uploadData uPage = new  uploadData();
+        uPage.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_exitButtonInicio1ActionPerformed
+
+    private void startButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1ActionPerformed
+        
+        
+        if (mainGrafo!=null){
+            valoresIniciales valorI = new  valoresIniciales();
+            valorI.setVisible(true);
+            this.setVisible(false);}
+    }//GEN-LAST:event_startButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,13 +241,14 @@ public class firstPage extends javax.swing.JFrame {
     private javax.swing.JPanel basePanel;
     private javax.swing.JButton creditosButton;
     private javax.swing.JButton exitButtonInicio;
+    private javax.swing.JButton exitButtonInicio1;
     private javax.swing.JPanel greenPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton startButton;
+    private javax.swing.JButton startButton1;
     // End of variables declaration//GEN-END:variables
 
     

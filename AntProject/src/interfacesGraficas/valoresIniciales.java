@@ -1,6 +1,7 @@
 
 package interfacesGraficas;
 
+import EDD.Grafo;
 import static Funciones.funcionesInterfaces.makeLabelStyle;
 
 /**
@@ -8,7 +9,7 @@ import static Funciones.funcionesInterfaces.makeLabelStyle;
  * @author Daniela Zambrano
  */
 public class valoresIniciales extends javax.swing.JFrame {
-
+    private Grafo mainGrafo= null;
     /**
      * Creates new form valoresIniciales
      */
@@ -17,7 +18,11 @@ public class valoresIniciales extends javax.swing.JFrame {
         makeLabelStyle(grafoTextArea);
         this.setLocationRelativeTo(null);
     }
-
+    public Grafo getMainGrafo() {
+        return mainGrafo;}
+    public void setMainGrafo(Grafo mainGrafo) {
+        this.mainGrafo = mainGrafo;}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -341,6 +346,11 @@ public class valoresIniciales extends javax.swing.JFrame {
         StartSimulation.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         StartSimulation.setForeground(new java.awt.Color(221, 228, 195));
         StartSimulation.setText("Comenzar Simulación");
+        StartSimulation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartSimulationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -400,10 +410,15 @@ public class valoresIniciales extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonMouseClicked
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        menu Menu = new  menu();
-        Menu.setVisible(true);
+        firstPage fPage = new  firstPage();
+        fPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed
+
+    private void StartSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartSimulationActionPerformed
+        if (mainGrafo!=null){
+        }
+    }//GEN-LAST:event_StartSimulationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,4 +492,6 @@ public class valoresIniciales extends javax.swing.JFrame {
     private javax.swing.JSpinner rho;
     private javax.swing.JComboBox<String> startCity;
     // End of variables declaration//GEN-END:variables
+
+    
 }
