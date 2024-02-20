@@ -90,6 +90,9 @@ public class ListaSimple {
      */     
     public void addBeforeElem(Object obj, int index){
         if (this.indexExist(index)) {
+            if (index == 0 ) {
+                this.addFirst(obj);
+            } else {
             Nodo aux=head;
 
             for (int i = 0; i < index-1; i++) {
@@ -189,7 +192,7 @@ public class ListaSimple {
      * Borra un elemento de la lista a traves de una referencia
      * @param content contenido del elemento a borrar
      */     
-    public void deleteElemC(Object content){//elimina todos los objetos con  ese valor       <------ probar
+    public void deleteElemC(Object content){      
         if (this.isInList(content)){
             Nodo anterior=head;
             Nodo nodito =head.getpNext();
@@ -301,7 +304,7 @@ public class ListaSimple {
     public void changeContent(int indexRef, Object objNew){//editar por posicion, cambiar el valor del nodo que esta en una posicion
         Nodo aux= head;
            
-            if ((this.size<indexRef) && (indexRef>=0)){
+            if (indexRef>=0) {
                 for (int i = 0; i < this.size; i++){
                     if(i==indexRef){
                         aux.setContent(objNew);}
