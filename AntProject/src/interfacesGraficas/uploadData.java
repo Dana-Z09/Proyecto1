@@ -269,14 +269,15 @@ public class uploadData extends javax.swing.JFrame {
         //Noseguarda correctamente
         uploadTXT uploadData = new uploadTXT();
         if (mainFileText!=null){
-        this.mainGrafo= uploadData.convertString(jTextArea1.getText());
-        System.out.println(jTextArea1.getText());}
+            this.mainGrafo= uploadData.convertString(jTextArea1.getText());
+            //System.out.println(jTextArea1.getText());
+        }
         
         else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);}
         
         if (mainGrafo!=null){
-        this.startButton.setVisible(true);
-        this.editGrafoButton.setVisible(true);}
+            this.startButton.setVisible(true);
+            this.editGrafoButton.setVisible(true);}
         
     }//GEN-LAST:event_saveAntHillActionPerformed
 
