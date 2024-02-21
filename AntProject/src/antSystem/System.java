@@ -127,14 +127,14 @@ public class System {
         this.history = history;
     }
     
-    public void simulacion(){
+    public void simulation(){
         for (int i = 0; i < this.cycle; i++) {
             for (int j = 0; j < listAnts.getSize(); j++) {
                 Ant ant = (Ant) listAnts.getContentByIndex(i);
                 this.route(ant);
-                this.incrementarFeromonas();
+                this.increasePheromones();
             }
-            this.evaporarFeromonas();
+            this.deletePheromones();
         }
     }
     
@@ -145,23 +145,23 @@ public class System {
     
     }
     
-    public ListaSimple get(Ant ant){
+    public ListaSimple getNominatedCities(Ant ant){
         return null;
     }
     
-    public ListaSimple probability(ListaSimple ciudadesCandidatas){
+    public ListaSimple probability(ListaSimple nominatedCities){
         return null;
     }
     
-    public City decidirProximaCiudad(ListaSimple probabilidades, ListaSimple ciudadesCandidatas){
+    public City chooseNextCity(ListaSimple probability, ListaSimple nominatedCities){
         return null;
     }
     
-    public void incrementarFeromonas(){
+    public void increasePheromones(){
     
     }
     
-    public void evaporarFeromonas(){
+    public void deletePheromones(){
     
     } 
 }
