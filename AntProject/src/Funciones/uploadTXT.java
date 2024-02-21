@@ -14,12 +14,16 @@ public class uploadTXT {
     /**
     *
     * 
+     * @param txt Ingresas un String con el contenido del grafo
+     * @return Grafo Retorna un grafo a partir de un string 
+     * 
     */
     public Grafo convertString(String txt){
         txt=txt.replace("\r", "");
         String[] lines=txt.split("\n");
         ListaSimple cities = new ListaSimple(); 
         String wordCity = "ciudad";
+        Grafo grafo = new Grafo();
         
         
         boolean isCity= true;
@@ -57,7 +61,7 @@ public class uploadTXT {
                 
         }
         
-        Grafo grafo = new Grafo();
+        
         grafo.setCities(cities);
         JOptionPane.showMessageDialog(null, "Se ha creado el grafo correctamente", "Info", 1);
         return grafo;
@@ -67,11 +71,8 @@ public class uploadTXT {
     public City searchCity(int num, ListaSimple cities){
         if (!cities.isEmpty()){
             for (int i = 0; i < cities.getSize(); i++) {
-                
                 City c = (City) cities.getContentByIndex(i);
-               
                 if (c.getNumCity()==num){return c;}}
-            
             return null;
         }
         return null;

@@ -265,12 +265,10 @@ public class uploadData extends javax.swing.JFrame {
     }//GEN-LAST:event_selectTXTActionPerformed
 
     private void saveAntHillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAntHillActionPerformed
-        // Aqui falta el codigo para convertir el txt a grafo si esose lee correctamente entonces 
-        //Noseguarda correctamente
         uploadTXT uploadData = new uploadTXT();
-        if (mainFileText!=null){
+        if (mainFileText!=null){    
             this.mainGrafo= uploadData.convertString(jTextArea1.getText());
-            //System.out.println(jTextArea1.getText());
+            //System.out.println(mainGrafo.toString());
         }
         
         else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);}
