@@ -134,7 +134,7 @@ public class System {
                 this.route(ant);
                 this.increasePheromones();
             }
-            this.deletePheromones();
+            this.evaporatePheromones();
         }
     }
     
@@ -158,10 +158,10 @@ public class System {
     }
     
     public void increasePheromones(){
-    
+        
     }
     
-    public void deletePheromones(){
+    public void evaporatePheromones(){
     
     } 
 }
