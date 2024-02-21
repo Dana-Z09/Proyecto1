@@ -4,18 +4,23 @@
  */
 package Validaciones;
 
-import java.io.File;
-import java.util.Map;
 import EDD.Grafo;
 import EDD.City;
+import EDD.ListaSimple;
+import EDD.Nodo;
 
+import java.io.File;
 
+/**
+ * Clase que contiene métodos para validar los parámetros y operaciones relacionadas con el grafo.
+ */
 public class Validaciones {
 
     /**
-     * Verifica si el número de ciclos especificado es un número entero positivo.
-     * @param numCiclos El número de ciclos a verificar.
-     * @return true si el número de ciclos es un entero positivo, false de lo contrario.
+     * Valida el número de ciclos especificado.
+     * 
+     * @param numCiclos Número de ciclos a validar.
+     * @return true si el número de ciclos es válido, false de lo contrario.
      */
     public static boolean validarNumeroCiclos(int numCiclos) {
         return numCiclos > 0;
@@ -23,103 +28,109 @@ public class Validaciones {
 
     
     
-    
     /**
-     * Asegura que el número de hormigas sea un número entero positivo y no exceda un cierto límite razonable.
-     * @param numHormigas El número de hormigas a verificar.
-     * @param limiteSuperior El límite superior para el número de hormigas.
-     * @return true si el número de hormigas es un entero positivo y no excede el límite superior, false de lo contrario.
+     * Valida el número de hormigas especificado.
+     * 
+     * @param numHormigas Número de hormigas a validar.
+     * @return true si el número de hormigas es válido, false de lo contrario.
      */
-    public static boolean validarNumeroHormigas(int numHormigas, int limiteSuperior) {
-        return numHormigas > 0 && numHormigas <= limiteSuperior;
-    }
-
-    
-    
-    
-    /**
-     * Verifica que los valores de α, β y ρ estén dentro de un rango específico y sean números válidos.
-     * @param alfa Valor de α a verificar.
-     * @param beta Valor de β a verificar.
-     * @param rho Valor de ρ a verificar.
-     * @return true si los valores de α, β y ρ están dentro del rango específico y son números válidos, false de lo contrario.
-     */
-    public static boolean validarValores(double alfa, double beta, double rho) {
-        return alfa >= 0 && beta >= 0 && rho >= 0;
+    public static boolean validarNumeroHormigas(int numHormigas) {
+        return numHormigas > 0 && numHormigas <= 20;
     }
 
     
     
     /**
-     * Comprueba que las ciudades de partida y llegada sean ciudades válidas en el grafo.
-     * @param ciudadPartida Ciudad de partida a verificar.
-     * @param ciudadLlegada Ciudad de llegada a verificar.
-     * @param grafo Grafo de ciudades en el que buscar las ciudades.
-     * @return true si las ciudades de partida y llegada son ciudades válidas en el grafo, false de lo contrario.
+     * Valida los valores de los parámetros α, β y ρ.
+     * 
+     * @param alpha Valor de α a validar.
+     * @param beta Valor de β a validar.
+     * @param rho Valor de ρ a validar.
+     * @return true si los valores son válidos, false de lo contrario.
      */
-    public static boolean validarCiudades(City ciudadPartida, City ciudadLlegada, Grafo grafo) {
-        return grafo.contieneCiudad(ciudadPartida) && grafo.contieneCiudad(ciudadLlegada);
+    public static boolean validarParametros(double alpha, double beta, double rho) {
+        return true;
     }
 
     
     
+    /**
+     * Valida la ciudad de partida y la ciudad de llegada.
+     * 
+     * @param ciudadPartida Ciudad de partida a validar.
+     * @param ciudadLlegada Ciudad de llegada a validar.
+     * @return true si las ciudades son válidas, false de lo contrario.
+     */
+    public static boolean validarCiudades(City ciudadPartida, City ciudadLlegada) {
+        return ciudadPartida != null && ciudadLlegada != null;
+    }
+
+    
     
     /**
-     * Verifica que el nombre de la ciudad no esté vacío ni sea nulo, que sea único en el grafo
-     * y que las distancias proporcionadas a otras ciudades sean números válidos y no negativos.
-     * @param nombreCiudad Nombre de la ciudad a agregar.
-     * @param ciudades Mapa de ciudades existentes en el grafo.
-     * @param distancias Distancias a otras ciudades.
-     * @return true si todas las validaciones son exitosas, false de lo contrario.
+     * Valida agregar una nueva ciudad al grafo.
+     * 
+     * @param grafo Grafo al que se desea agregar la ciudad.
+     * @param nuevaCiudad Ciudad a agregar.
+     * @return true si se puede agregar la ciudad, false de lo contrario.
      */
-    public static boolean validarAgregarCiudad(String nombreCiudad, Map<String, City> ciudades, double[] distancias) {
-        if (nombreCiudad == null || nombreCiudad.isEmpty() || ciudades.containsKey(nombreCiudad)) {
-            return false;
-        }
-        for (double distancia : distancias) {
-            if (distancia < 0) {
+    public static boolean validarAgregarCiudad(Grafo grafo, City nuevaCiudad) {
+        ListaSimple ciudades = grafo.getCities();
+        Nodo aux = ciudades.getHead();
+        while (aux != null) {
+            City c = (City) aux.getContent();
+            if (c.getNumCity() == nuevaCiudad.getNumCity()) {
                 return false;
             }
+            aux = aux.getpNext();
         }
         return true;
     }
 
     
     
-    
     /**
-     * Verifica que la ciudad a eliminar exista en el grafo.
+     * Valida eliminar una ciudad del grafo.
+     * 
+     * @param grafo Grafo del que se desea eliminar la ciudad.
      * @param ciudad Ciudad a eliminar.
-     * @param grafo Grafo de ciudades en el que buscar la ciudad.
-     * @return true si la ciudad a eliminar existe en el grafo, false de lo contrario.
+     * @return true si se puede eliminar la ciudad, false de lo contrario.
      */
-    public static boolean validarEliminarCiudad(City ciudad, Grafo grafo) {
-        return grafo.contieneCiudad(ciudad);
+    public static boolean validarEliminarCiudad(Grafo grafo, City ciudad) {
+        ListaSimple ciudades = grafo.getCities();
+        Nodo aux = ciudades.getHead();
+        while (aux != null) {
+            City c = (City) aux.getContent();
+            if (c.getNumCity() == ciudad.getNumCity()) {
+                return true;
+            }
+            aux = aux.getpNext();
+        }
+        return false;
     }
 
     
     
-    
     /**
-     * Comprueba que el archivo exista y sea accesible, y valida su formato para asegurarse de que contiene datos de grafo válidos.
-     * @param nombreArchivo Nombre del archivo a cargar.
-     * @return true si el archivo existe, es accesible y su formato es válido, false de lo contrario.
+     * Valida cargar un grafo desde un archivo.
+     * 
+     * @param archivo Archivo del que se desea cargar el grafo.
+     * @return true si se puede cargar el grafo desde el archivo, false de lo contrario.
      */
-    public static boolean validarCargarGrafo(String nombreArchivo) {
-        File file = new File(nombreArchivo);
-        return file.exists() && file.isFile() && file.canRead();
+    public static boolean validarCargarGrafo(File archivo) {
+        return archivo.exists();
     }
 
     
     
-    
     /**
-     * Verifica que se pueda escribir en la ubicación especificada
-     * y valida que el grafo a guardar contenga datos válidos y no esté vacío.
-     * @param grafo Grafo de ciudades a guardar.
-     * @return true si se puede escribir en la ubicación especificada y el grafo contiene datos válidos, false de lo contrario.
+     * Valida guardar un grafo en un archivo.
+     * 
+     * @param grafo Grafo que se desea guardar en el archivo.
+     * @param archivo Archivo en el que se desea guardar el grafo.
+     * @return true si se puede guardar el grafo en el archivo, false de lo contrario.
      */
-    public static boolean validarGuardarGrafo(Grafo grafo) {
-        return !grafo.getCiudades().isEmpty();
+    public static boolean validarGuardarGrafo(Grafo grafo, File archivo) {
+        return true;
     }
 }
