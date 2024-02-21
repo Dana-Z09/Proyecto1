@@ -95,7 +95,7 @@ public class creditos extends javax.swing.JFrame {
         nombres.setFont(new java.awt.Font("Futura Bk BT", 0, 24)); // NOI18N
         nombres.setForeground(new java.awt.Color(221, 228, 195));
         nombres.setRows(5);
-        nombres.setText("\n  \n\n\n  -Daniela Zambrano\n  C.I. 30956881 \n  d.zambrano@correo.unimet.edu.ve\n  \n  -Diego Méndez\n  C.I. 30830746 \n  d.mendez@correo.unimet.edu.ve\n  \n  -Alma Fuentes\n  C.I. \n  alma.fuenmayor@correo.unimet.edu.ve");
+        nombres.setText("\n  \n\n\n  -Daniela Zambrano\n  C.I. 30956881 \n  d.zambrano@correo.unimet.edu.ve\n  \n  -Diego Méndez\n  C.I. 30830746 \n  d.mendez@correo.unimet.edu.ve\n  \n  -Alma Fuentes\n  C.I. ");
         nombres.setBorder(null);
         jScrollPane1.setViewportView(nombres);
 

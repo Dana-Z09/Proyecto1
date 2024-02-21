@@ -20,7 +20,7 @@ public class Path {
         this.destination = destination;
         this.origin = origin;
         this.distance = distance;
-        this.pheromones = 0;
+        this.pheromones = 1;
     }
 
     
@@ -55,7 +55,7 @@ public class Path {
         return pheromones;
     }
 
-    public void setPheromones(int pheromones) {
+    public void setPheromones(double pheromones) {
         this.pheromones = pheromones;
     }
     

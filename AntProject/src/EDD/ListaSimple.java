@@ -300,7 +300,7 @@ public class ListaSimple {
     //por indice
     /**
      * Cambio el elemento por otro a traves de un indice, solo toma el primer elemento que encuentre
-     * @param indexRef indice del elemento a cambiar. No cambia nada
+     * @param indexRef indice del elemento a cambiar.
      * @param objNew contenido que reemplaza al contenido anterior
      */    
     public void changeContent(int indexRef, Object objNew){//editar por posicion, cambiar el valor del nodo que esta en una posicion
@@ -315,13 +315,14 @@ public class ListaSimple {
             }
          
     }    
-     
+    
+    /**
+     * Revisa que el indice pertenezca al rango de la lista
+     * @param index indice a verificar
+     * @return true si el indice entra dentro del rango de la lista
+     */    
     public boolean indexExist(int index) {
-      
-       if (index<0 || index>size-1) {
-       return false; 
-    }
-    return true;
+    return !(index<0 || index>this.size-1);
    }
    
 }
