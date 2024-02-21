@@ -131,25 +131,25 @@ public class System {
         for (int i = 0; i < this.cycle; i++) {
             for (int j = 0; j < listAnts.getSize(); j++) {
                 Ant ant = (Ant) listAnts.getContentByIndex(i);
-                this.recorridoCompleto(ant);
+                this.route(ant);
                 this.incrementarFeromonas();
             }
             this.evaporarFeromonas();
         }
     }
     
-    public void recorridoCompleto(Ant ant){
+    public void route(Ant ant){
         for (int i = 0; i < grafo.citiesQuantity(); i++) {
             break;
         }
     
     }
     
-    public ListaSimple obtenerCiudadesCandidatas(Ant ant){
+    public ListaSimple get(Ant ant){
         return null;
     }
     
-    public ListaSimple probabilidades(ListaSimple ciudadesCandidatas){
+    public ListaSimple probability(ListaSimple ciudadesCandidatas){
         return null;
     }
     
