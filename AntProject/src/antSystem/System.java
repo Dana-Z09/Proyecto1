@@ -7,10 +7,11 @@ package antSystem;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
+import EDD.Path;
 
 /**
  *
- * @author dams2
+ * @author Diego Mendez y Daniela Zambrano
  */
 public class System {
    private Grafo grafo;
@@ -131,14 +132,14 @@ public class System {
         for (int i = 0; i < this.cycle; i++) {
             for (int j = 0; j < listAnts.getSize(); j++) {
                 Ant ant = (Ant) listAnts.getContentByIndex(i);
-                this.route(ant);
+                this.completeRoute(ant);
                 this.increasePheromones();
             }
             this.evaporatePheromones();
         }
     }
     
-    public void route(Ant ant){
+    public void completeRoute(Ant ant){
         for (int i = 0; i < grafo.citiesQuantity(); i++) {
             break;
         }
@@ -149,7 +150,7 @@ public class System {
         return null;
     }
     
-    public ListaSimple probability(ListaSimple nominatedCities){
+    public ListaSimple probabilitysList(ListaSimple nominatedCities){
         return null;
     }
     
@@ -159,9 +160,18 @@ public class System {
     
     public void increasePheromones(){
         
+        
     }
     
     public void evaporatePheromones(){
+        for (int i = 0; i < grafo.getCities().getSize(); i++) {
+            City currentCity= (City) grafo.getCities().getContentByIndex(i);
+            for (int j = 0; j < currentCity.getListAdy().getSize(); j++) {
+                Path currentPath = (Path) currentCity.getListAdy().getContentByIndex(j);
+                double evaporatePheromones = (1-this.rho)* currentPath.getPheromones();
+                currentPath.setPheromones(evaporatePheromones);
+            }
+        }
     
     } 
 }

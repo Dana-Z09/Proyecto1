@@ -55,7 +55,7 @@ public class Path {
         return pheromones;
     }
 
-    public void setPheromones(int pheromones) {
+    public void setPheromones(double pheromones) {
         this.pheromones = pheromones;
     }
     
