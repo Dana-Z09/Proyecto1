@@ -11,14 +11,17 @@ import javax.swing.JOptionPane;
 public class Ant {
    private City currentCity;
     private ListaSimple visitedCities;
-    private double walked;
-
+    private double walkedDistance;
+    
+    
+    //Constructor
     public Ant() {
         this.currentCity = null;
         this.visitedCities = new ListaSimple();
-        this.walked = 0;
+        this.walkedDistance = 0;
     }
-
+    
+    //Setters and Getters///////////////////////////////////////////////////////
     public City getCurrentCity() {
         return currentCity;
     }
@@ -35,24 +38,32 @@ public class Ant {
         this.visitedCities = visitedCities;
     }
 
-    public double getWalked() {
-        return walked;
+    public double getWalkedDistance() {
+        return walkedDistance;
     }
 
-    public void setWalked(double walked) {
-        this.walked = walked;
+    public void setWalkedDistance(double walkedDistance) {
+        this.walkedDistance = walkedDistance;
     }
+    ////////////////////////////////////////////////////////////////////////////
     
+    /**
+     * Metodo que hace que la hormiga se mueva por las ciudades y guarda las ciudad en la que se mueve y la nueva distancia recorrida
+     * @param numCity
+     * @param distance 
+     */
     public void move(int numCity, double distance){
         if(!visited(numCity)){
             City nextCity = this.currentCity.searchPathByNumCity(numCity);
             this.setCurrentCity(nextCity);
             this.visitedCities.addEnd(nextCity);
-            this.walked += distance;
+            this.walkedDistance += distance;
         }else{
             JOptionPane.showMessageDialog(null, "La hormiga ha recorrido todos los caminos");
         }
     }
+    
+    
     /**
      * Metodo para probar si la ciudad ya ha sido visitada por la hormiga 
      * @param numCity recibe el numero de la ciudad a comparar

@@ -111,6 +111,19 @@ public class City {
         return null;
         
     }
+    public Path searchPathByNumCity2(int numCity) {
+        if (numCity != this.numCity){
+            for (int i = 0; i < listAdy.getSize(); i++) {
+                Path auxPath = (Path) listAdy.getContentByIndex(i);
+                if(auxPath.getDestination().getNumCity() == numCity) {
+                    return auxPath;
+                }
+            }
+            return null;
+        }
+        return null;
+        
+    }
     
     
 }
