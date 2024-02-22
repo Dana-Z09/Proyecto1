@@ -255,20 +255,36 @@ public class System {
     }
    
 /**
- * No esta lista
+ * 
  * Esta es la funcion simulacion, la funcion principal donde va a ocurrir toda la magia. 
+ * 
  */
     public void simulation(){
+        String numCycle;
+        AntRecord auxRecordAnt=null;
         for (int i = 0; i < this.numCycles; i++) {
             for (int j = 0; j < this.antsList.getSize(); j++) {
                 Ant auxAnt = (Ant) antsList.getContentByIndex(j);
                 this.completeRoute(auxAnt);
-                //AntRecord auxRecord = new AntRecord(j, auxAnt); // Aqui me falta colocar el resto de argumentos del contructor pero necesito crear una funcion que convierta una lista a una lista de strings o a una cadena separada por algo significativo
+                auxRecordAnt = new AntRecord(j, auxAnt.getVisitedCities().toStringCities(),String.valueOf(auxAnt.getWalkedDistance())); // Aqui me falta colocar el resto de argumentos del contructor pero necesito crear una funcion que convierta una lista a una lista de strings o a una cadena separada por algo significativo
+                this.auxRecord.addEnd(auxRecordAnt);
+                
                 this.increasePheromones(auxAnt);
             }
+            numCycle="Ciclo numero "+(i+1);
+            String antRecords= auxRecordAnt.toString();    
+            MainRecord mainrecord = new MainRecord(numCycle,auxRecordAnt.toString(), this.bestRoute.toString(),this.bestDistance);
+            this.mainRecord.addEnd(mainrecord);
             this.evaporatePheromones();
             this.restarAntsList();
         }
     }
     
+    public String toStringRecord(){
+    String LastRecord="";
+            for (int i = 0; i < this.mainRecord.getSize(); i++){
+                MainRecord auxrecord=(MainRecord)  this.mainRecord.getContentByIndex(i);
+                LastRecord+=auxrecord.toString()+"\n";}
+            return LastRecord;
+}
 }

@@ -4,13 +4,13 @@ package antSystem;
  *
  * @author Daniela Zambrano
  */
-public class GeneralRecord {
+public class MainRecord {
     private String title; //numero del ciclo
     private String antRecords; //Los records de cada hormiga
     private String bestRoute; //La mejor ruta, la más optima
     private double bestDistance; //La mejor distancia, la más óptima
 
-    public GeneralRecord(String title, String antRecords, String bestRoute, double bestDistance) {
+    public MainRecord(String title, String antRecords, String bestRoute, double bestDistance) {
         this.title = title;
         this.antRecords = antRecords;
         this.bestRoute = bestRoute;

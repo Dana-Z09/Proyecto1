@@ -322,7 +322,29 @@ public class ListaSimple {
      * @return true si el indice entra dentro del rango de la lista
      */    
     public boolean indexExist(int index) {
-    return !(index<0 || index>this.size-1);
+    return !(index<0 || index>this.size-1);    
    }
-   
+    
+    //Convierte una lista de ciudades en un texto y las separa por coma
+    public String toStringCities(){
+        String texto ="";
+        if(!this.isEmpty()){
+            for (int i = 0; i < this.size; i++) {
+                texto+=(String) this.getContentByIndex(i)+",";}
+        return texto;}
+        
+        return "La lista es vacia";
+    }
+    
+    ///Devuelve un String con una lista de los elementos de la lista
+    public String toString(){
+        String texto ="";
+        if(!this.isEmpty()){
+            for (int i = 0; i < this.size; i++) {
+                texto+=(String) this.getContentByIndex(i)+",";}
+        return texto;}
+        
+        return "La lista es vacia";
+    }
+    
 }
