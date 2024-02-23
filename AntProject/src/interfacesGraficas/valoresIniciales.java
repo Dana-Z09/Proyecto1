@@ -9,12 +9,13 @@ import static Funciones.funcionesInterfaces.makeLabelStyle;
  * @author Daniela Zambrano
  */
 public class valoresIniciales extends javax.swing.JFrame {
-    private Grafo mainGrafo= null;
+    private static Grafo mainGrafo= null;
     /**
      * Creates new form valoresIniciales
      */
-    public valoresIniciales() {
+    public valoresIniciales(Grafo maingrafo) {
         initComponents();
+        mainGrafo=maingrafo;
         makeLabelStyle(grafoTextArea);
         this.setLocationRelativeTo(null);
     }
@@ -450,7 +451,7 @@ public class valoresIniciales extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new valoresIniciales().setVisible(true);
+                new valoresIniciales(mainGrafo).setVisible(true);
             }
         });
     }

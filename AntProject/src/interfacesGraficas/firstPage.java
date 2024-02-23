@@ -53,7 +53,7 @@ public class firstPage extends javax.swing.JFrame {
         creditosButton = new javax.swing.JButton();
         exitButtonInicio = new javax.swing.JButton();
         exitButtonInicio1 = new javax.swing.JButton();
-        creditosButton1 = new javax.swing.JButton();
+        instructionButton = new javax.swing.JButton();
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,16 +147,16 @@ public class firstPage extends javax.swing.JFrame {
         });
         greenPanel.add(exitButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 190, 50));
 
-        creditosButton1.setBackground(new java.awt.Color(221, 228, 195));
-        creditosButton1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        creditosButton1.setForeground(new java.awt.Color(51, 46, 45));
-        creditosButton1.setText("Instruciones");
-        creditosButton1.addActionListener(new java.awt.event.ActionListener() {
+        instructionButton.setBackground(new java.awt.Color(221, 228, 195));
+        instructionButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        instructionButton.setForeground(new java.awt.Color(51, 46, 45));
+        instructionButton.setText("Instruciones");
+        instructionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditosButton1ActionPerformed(evt);
+                instructionButtonActionPerformed(evt);
             }
         });
-        greenPanel.add(creditosButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 190, 50));
+        greenPanel.add(instructionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 190, 50));
 
         basePanel.add(greenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 620));
 
@@ -193,9 +193,11 @@ public class firstPage extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_exitButtonInicio1ActionPerformed
 
-    private void creditosButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creditosButton1ActionPerformed
+    private void instructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionButtonActionPerformed
+        instructions instruction = new  instructions();
+        instruction.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_instructionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,10 +238,10 @@ public class firstPage extends javax.swing.JFrame {
     private javax.swing.JLabel antPic;
     private javax.swing.JPanel basePanel;
     private javax.swing.JButton creditosButton;
-    private javax.swing.JButton creditosButton1;
     private javax.swing.JButton exitButtonInicio;
     private javax.swing.JButton exitButtonInicio1;
     private javax.swing.JPanel greenPanel;
+    private javax.swing.JButton instructionButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
