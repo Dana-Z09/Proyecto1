@@ -32,6 +32,7 @@ public class editData extends javax.swing.JFrame {
         numCitiesLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         deleteCity = new javax.swing.JButton();
+        addOptionCitys = new javax.swing.JComboBox<>();
         deleteOptionCitys = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         newGrafoButton = new javax.swing.JButton();
@@ -92,7 +93,7 @@ public class editData extends javax.swing.JFrame {
                 addCityActionPerformed(evt);
             }
         });
-        jPanel4.add(addCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 201, -1));
+        jPanel4.add(addCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 201, -1));
 
         numCitiesLabel.setFont(new java.awt.Font("Futura Lt BT", 3, 24)); // NOI18N
         numCitiesLabel.setForeground(new java.awt.Color(51, 51, 55));
@@ -115,6 +116,9 @@ public class editData extends javax.swing.JFrame {
             }
         });
         jPanel4.add(deleteCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 201, -1));
+
+        addOptionCitys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(addOptionCitys, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 120, 30));
 
         deleteOptionCitys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(deleteOptionCitys, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 120, 30));
@@ -290,7 +294,7 @@ public class editData extends javax.swing.JFrame {
                     .addComponent(showAnthillButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateTXTButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -298,7 +302,10 @@ public class editData extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(611, Short.MAX_VALUE)
+                .addComponent(newGrafoButton)
+                .addGap(84, 84, 84))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(38, 38, 38)
@@ -317,16 +324,15 @@ public class editData extends javax.swing.JFrame {
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(23, 23, 23)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(newGrafoButton)))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(38, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(540, Short.MAX_VALUE)
+                .addComponent(newGrafoButton)
+                .addGap(38, 38, 38))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(27, 27, 27)
@@ -344,10 +350,7 @@ public class editData extends javax.swing.JFrame {
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(12, 12, 12)
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(newGrafoButton)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(28, Short.MAX_VALUE)))
         );
 
@@ -445,6 +448,7 @@ public class editData extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCity;
     private javax.swing.JButton addConection;
+    private javax.swing.JComboBox<String> addOptionCitys;
     private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> cityA;
     private javax.swing.JComboBox<String> cityB;
