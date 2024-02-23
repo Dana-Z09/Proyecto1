@@ -23,12 +23,12 @@ public class EditTXT {
         
         try {
             //Este string de la ruta es de prueba, hay que colocar el anthill del Jchooser
-            String ruta = "C:\\Users\\dams2\\Desktop\\ubicaciontxt\\Grafo.txt";
+            String ruta = "C:\\Users\\Username\\Desktop\\Grafos\\Grafo.txt";
             Path fuente = Paths.get(ruta);
-            Path destino = Paths.get("C:\\Users\\dams2\\Desktop\\ubicaciontxt\\NewGrafo.txt");
+            Path destino = Paths.get("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt");
             
             Files.copy(fuente, destino, StandardCopyOption.REPLACE_EXISTING);
-        } catch (Exception e) {
+        } catch (IOException e) {
         System.out.println("fuap");
         }
     }
@@ -82,36 +82,54 @@ public class EditTXT {
         
             
            }
-    public void deleteCity(int numCity){
+     public void deleteCity(int numCity){
+        
         try(
                 //Hay que hacer que tome el anhill del file chooser
-                BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\dams2\\Desktop\\ubicaciontxt\\Grafo.txt"));
-                BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\dams2\\Desktop\\ubicaciontxt\\NewGrafo.txt"));
-                BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\dams2\\Desktop\\ubicaciontxt\\NewGrafo.txt"))
+                BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Username\\Desktop\\Grafos\\Grafo.txt"));
+                BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt"));
+                BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt"))
                 
                 
                 ) {
             String linea = br.readLine();
+            int countaristas = 0;
             while(linea!=null) {
                 String deleteCity = Integer.toString(numCity) ;
                 if (linea.equals(deleteCity)){
                     linea= br.readLine();
                 }
-                bw.write(linea);
-                bw.newLine();
-                linea= br.readLine();
+                if (linea.equals("aristas")) {
+                    countaristas++;
+                    bw.write(linea);
+                    bw.newLine();
                 
-            }
-            bw.flush();
-            
-            /*
-            while(linea!=null) {
+                    linea = br.readLine();
+                } 
+                if (countaristas > 0) {
+                    String[] arista = linea.split(",");
+                    if (arista[0].equals(deleteCity)||arista[1].equals(deleteCity)) {
+                    linea = br.readLine();
+                    } else {
+                    bw.write(linea);
+                    bw.newLine();
+                
+                
+                    linea = br.readLine();
+                    }
+                } else {
+                
                 bw.write(linea);
                 bw.newLine();
-                linea= br.readLine();
+                
+                
+                linea = br.readLine();
+                }
             }
+         
             bw.flush();
-             */
+           
+         
             String linea2 = br2.readLine();
             
             while(linea2!=null) {
@@ -122,7 +140,5 @@ public class EditTXT {
         } catch(IOException o) {
           System.out.println("Error");  
         }
-        
-        
-    }
+     }
 }
