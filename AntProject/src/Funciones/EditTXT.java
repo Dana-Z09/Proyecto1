@@ -60,14 +60,6 @@ public class EditTXT {
             }
             bw.flush();
             
-            /*
-            while(linea!=null) {
-                bw.write(linea);
-                bw.newLine();
-                linea= br.readLine();
-            }
-            bw.flush();
-             */
             String linea2 = br2.readLine();
             
             while(linea2!=null) {
