@@ -13,25 +13,46 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Scanner;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author dams2
  */
 public class EditTXT {
-    public void copyCity(){
+     /*
+        Copia el txt en donde se encuentre el original
+    
+    
+    */
+    
+
+    public void copytxt(){
         
         try {
+            
+        
             //Este string de la ruta es de prueba, hay que colocar el anthill del Jchooser
-            String ruta = "C:\\Users\\Username\\Desktop\\Grafos\\Grafo.txt";
+            String ruta = "C:\\Users\\dams2\\Desktop\\ubicaciontxt\\Grafo.txt";
+            String copia = "C:\\Users\\dams2\\Desktop\\ubicaciontxt\\";
+            System.out.println(copia);
             Path fuente = Paths.get(ruta);
-            Path destino = Paths.get("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt");
+            Scanner newgrafo = new Scanner(System.in);
+            String nombre = newgrafo.nextLine();
+            Path destino = Paths.get(copia);
             
             Files.copy(fuente, destino, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
         System.out.println("fuap");
         }
     }
+    /*
+    Agrega una ciudad al txt
+    
+    
+    */
     public void addCityTxt(){
         
         try(//Hay que hacer que tome el anhill del file chooser
@@ -74,6 +95,10 @@ public class EditTXT {
         
             
            }
+    /*
+    Recibe el numero de la ciudad a eliminar y la borra de todo el txt
+    
+    */
      public void deleteCity(int numCity){
         
         try(
@@ -133,4 +158,38 @@ public class EditTXT {
           System.out.println("Error");  
         }
      }
-}
+        
+     public void copyCity2(){
+         //Aqui se supone que toma la direccion del chooser, pero por alguna razon despues de tomarla el programa se queda ejecutando, como si estuviera esperando algo
+        JFileChooser fileChooser = new JFileChooser(); //Se crea elobjeto Jfilechooser
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt", "txt");
+        String antHill = null;
+        
+        fileChooser.setFileFilter(filter);
+        int selected = fileChooser.showOpenDialog(fileChooser);
+        
+        if(selected==JFileChooser.APPROVE_OPTION){
+            antHill = fileChooser.getSelectedFile().getAbsolutePath();
+            System.out.println(antHill);
+        
+         System.out.println(antHill);
+        try {
+        
+        
+            //Este string de la ruta es de prueba, hay que colocar el anthill del Jchooser
+            String ruta = antHill;
+            String copia = antHill;
+            Path fuente = Paths.get(ruta);
+            Scanner newgrafo = new Scanner(System.in);
+            String nombre = newgrafo.nextLine();
+            Path destino = Paths.get(copia);
+            
+            Files.copy(fuente, destino, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+        System.out.println("fuap");
+        }
+     }
+    }
+        
+ }
+
