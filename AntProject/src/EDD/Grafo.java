@@ -126,7 +126,7 @@ public class Grafo {
     public void addNextCity(){
      
         City ultimaciudad = (City) cities.getTail().getContent();
-        int numNuevaCiudad = ultimaciudad.getNumCity();
+        int numNuevaCiudad = ultimaciudad.getNumCity() + 1;
 
         City nueva = new City(numNuevaCiudad);
         this.addCity(nueva);
