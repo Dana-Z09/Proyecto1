@@ -350,7 +350,9 @@ public class uploadData extends javax.swing.JFrame {
             //System.out.println(mainGrafo.toString());
         }
         
-        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);}
+        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);
+            saveAntHill.setVisible(true);
+        }
         
         if (mainGrafo!=null){
             this.startButton.setVisible(true);

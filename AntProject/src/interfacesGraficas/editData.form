@@ -424,7 +424,7 @@
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="2"/>
                 <Property name="tabSize" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="     &#xa;   Al precionar Guardar TXT se&#xa;  actualizar&#xe1; el archivo TXT antes&#xa;  ingresado con la informaci&#xf3;n&#xa;  del nuevo hormiguero"/>
+                <Property name="text" type="java.lang.String" value="     &#xa;   Al presionar Guardar TXT se&#xa;  actualizar&#xe1; el archivo TXT antes&#xa;  ingresado con la informaci&#xf3;n&#xa;  del nuevo hormiguero"/>
               </Properties>
             </Component>
           </SubComponents>

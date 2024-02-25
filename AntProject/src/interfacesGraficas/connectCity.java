@@ -3,7 +3,6 @@ package interfacesGraficas;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
-import static interfacesGraficas.editData.mainGrafo;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 

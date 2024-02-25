@@ -263,7 +263,7 @@ public class editData extends javax.swing.JFrame {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(2);
         jTextArea2.setTabSize(4);
-        jTextArea2.setText("     \n   Al precionar Guardar TXT se\n  actualizará el archivo TXT antes\n  ingresado con la información\n  del nuevo hormiguero");
+        jTextArea2.setText("     \n   Al presionar Guardar TXT se\n  actualizará el archivo TXT antes\n  ingresado con la información\n  del nuevo hormiguero");
         jScrollPane3.setViewportView(jTextArea2);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 290, 150));
@@ -362,14 +362,6 @@ public class editData extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_addConectionActionPerformed
 
-    private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateTXTButtonActionPerformed
-
-    private void newGrafoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGrafoButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newGrafoButton1ActionPerformed
-
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
 
         valoresIniciales valorI = new  valoresIniciales(mainGrafo);
@@ -380,6 +372,14 @@ public class editData extends javax.swing.JFrame {
     private void updateAnthillStringViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAnthillStringViewActionPerformed
         showTextArea.setText(mainGrafo.toString());
     }//GEN-LAST:event_updateAnthillStringViewActionPerformed
+
+    private void newGrafoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGrafoButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newGrafoButton1ActionPerformed
+
+    private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateTXTButtonActionPerformed
 
     /**
      * @param args the command line arguments
