@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class uploadData extends javax.swing.JFrame {
     String mainFileText;
+    public static String mainFilePath;
     public  static Grafo mainGrafo;
     
     /**
@@ -295,6 +296,7 @@ public class uploadData extends javax.swing.JFrame {
         if(selected==JFileChooser.APPROVE_OPTION){
             antHill = fileChooser.getSelectedFile();
             
+            mainFilePath=antHill.getAbsolutePath();
             this.filePathTextField.setText(antHill.getAbsolutePath());  
         
             try(FileReader filereader = new FileReader(antHill)){

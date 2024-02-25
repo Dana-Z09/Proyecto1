@@ -3,6 +3,8 @@ package interfacesGraficas;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
+import Funciones.EditTXT;
+import static interfacesGraficas.uploadData.mainFilePath;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
@@ -54,20 +56,15 @@ public class editData extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         updateTXTButton = new javax.swing.JButton();
-        newGrafoButton1 = new javax.swing.JButton();
+        updateAnthillStringView = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         mainCity = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         showTextArea = new javax.swing.JTextArea();
-        updateAnthillStringView = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(996, 619));
@@ -223,16 +220,6 @@ public class editData extends javax.swing.JFrame {
         jLabel6.setText("-Ant Simulator");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 65, 200, 30));
 
-        jTextArea1.setBackground(new java.awt.Color(221, 228, 195));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Futura Bk BT", 2, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(51, 51, 55));
-        jTextArea1.setRows(2);
-        jTextArea1.setText("    \n  Al presionar Actualizar Hormiguero \n  se actualizará el hormiguero en el \n  programa, pero no se modificará \n  el TXT");
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 310, 150));
-
         updateTXTButton.setBackground(new java.awt.Color(49, 114, 24));
         updateTXTButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         updateTXTButton.setForeground(new java.awt.Color(221, 228, 195));
@@ -242,18 +229,18 @@ public class editData extends javax.swing.JFrame {
                 updateTXTButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(updateTXTButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 290, 40));
+        jPanel1.add(updateTXTButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 290, 30));
 
-        newGrafoButton1.setBackground(new java.awt.Color(49, 114, 24));
-        newGrafoButton1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
-        newGrafoButton1.setForeground(new java.awt.Color(221, 228, 195));
-        newGrafoButton1.setText("Actualizar Hormiguero");
-        newGrafoButton1.addActionListener(new java.awt.event.ActionListener() {
+        updateAnthillStringView.setBackground(new java.awt.Color(49, 114, 24));
+        updateAnthillStringView.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
+        updateAnthillStringView.setForeground(new java.awt.Color(221, 228, 195));
+        updateAnthillStringView.setText("Actualizar Visualización");
+        updateAnthillStringView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newGrafoButton1ActionPerformed(evt);
+                updateAnthillStringViewActionPerformed(evt);
             }
         });
-        jPanel1.add(newGrafoButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, 310, -1));
+        jPanel1.add(updateAnthillStringView, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
 
         jTextArea2.setEditable(false);
         jTextArea2.setBackground(new java.awt.Color(221, 228, 195));
@@ -266,7 +253,7 @@ public class editData extends javax.swing.JFrame {
         jTextArea2.setText("     \n   Al presionar Guardar TXT se\n  actualizará el archivo TXT antes\n  ingresado con la información\n  del nuevo hormiguero");
         jScrollPane3.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 290, 150));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 290, 150));
 
         mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
         mainCity.setForeground(new java.awt.Color(221, 228, 195));
@@ -275,23 +262,19 @@ public class editData extends javax.swing.JFrame {
 
         startButton.setBackground(new java.awt.Color(49, 114, 24));
         startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        startButton.setForeground(new java.awt.Color(221, 228, 195));
         startButton.setText("Comenzar Simulación");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, 50));
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, 50));
 
-        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 30)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel20.setText("Visualización");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel18.setText("Actual");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, -1, -1));
+        jLabel20.setText("Visualización Hormiguero Actual");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
 
         showTextArea.setBackground(new java.awt.Color(221, 228, 195));
         showTextArea.setColumns(20);
@@ -301,22 +284,7 @@ public class editData extends javax.swing.JFrame {
         showTextArea.setBorder(null);
         jScrollPane1.setViewportView(showTextArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 370, 230));
-
-        updateAnthillStringView.setBackground(new java.awt.Color(49, 114, 24));
-        updateAnthillStringView.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
-        updateAnthillStringView.setText("Actualizar Visualización");
-        updateAnthillStringView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateAnthillStringViewActionPerformed(evt);
-            }
-        });
-        jPanel1.add(updateAnthillStringView, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel21.setText("Hormiguero");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 600, 230));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 617));
 
@@ -373,12 +341,10 @@ public class editData extends javax.swing.JFrame {
         showTextArea.setText(mainGrafo.toString());
     }//GEN-LAST:event_updateAnthillStringViewActionPerformed
 
-    private void newGrafoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGrafoButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newGrafoButton1ActionPerformed
-
     private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
-        // TODO add your handling code here:
+        EditTXT edittxt= new EditTXT();
+        edittxt.actualizarArchivo(mainFilePath, mainGrafo.toString());
+        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 2);
     }//GEN-LAST:event_updateTXTButtonActionPerformed
 
     /**
@@ -426,10 +392,8 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JButton deleteCity;
     private javax.swing.JComboBox<String> deleteOptionCitys;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -437,13 +401,10 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel mainCity;
-    private javax.swing.JButton newGrafoButton1;
     private javax.swing.JLabel numCitiesLabel;
     private javax.swing.JTextArea showTextArea;
     private javax.swing.JButton startButton;
