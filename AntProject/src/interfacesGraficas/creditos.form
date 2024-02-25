@@ -157,7 +157,7 @@
                       <Color blue="c3" green="e4" red="dd" type="rgb"/>
                     </Property>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="&#xa;  &#xa;&#xa;&#xa;  -Daniela Zambrano&#xa;  C.I. 30956881 &#xa;  d.zambrano@correo.unimet.edu.ve&#xa;  &#xa;  -Diego M&#xe9;ndez&#xa;  C.I. 30830746 &#xa;  d.mendez@correo.unimet.edu.ve&#xa;  &#xa;  -Alma Fuentes&#xa;  C.I. "/>
+                    <Property name="text" type="java.lang.String" value="&#xa;  &#xa;&#xa;&#xa;  -Daniela Zambrano&#xa;  C.I. 30956881 &#xa;  d.zambrano@correo.unimet.edu.ve&#xa;  &#xa;  -Diego M&#xe9;ndez&#xa;  C.I. 30830746 &#xa;  d.mendez@correo.unimet.edu.ve&#xa;  &#xa;  -Alma Fuentes&#xa;  C.I. 31186539&#xa;  alma.fuenmayor@correo.unimet.edu.ve "/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
