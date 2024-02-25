@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
  * @author Daniela Zambrano
  */
 public class connectCity extends javax.swing.JFrame {
-    private static Grafo mainGrafo= null;
+    public static Grafo mainGrafo= null;
     ImageIcon imageAnt = new ImageIcon("antie.png");
     /**
      * Creates new form connectCity
@@ -18,7 +18,7 @@ public class connectCity extends javax.swing.JFrame {
         initComponents();
         antPic.setIcon(imageAnt);
         antPic.setText("");
-        mainGrafo=maingrafo;
+        this.mainGrafo=maingrafo;
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
         for (int i = 0; i < mainGrafo.citiesQuantity(); i++) {
@@ -207,8 +207,8 @@ public class connectCity extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonMouseClicked
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        firstPage Menu = new  firstPage();
-        Menu.setVisible(true);
+        editData editPage = new  editData(this.mainGrafo);
+        editPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed
 

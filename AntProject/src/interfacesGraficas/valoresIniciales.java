@@ -15,7 +15,7 @@ public class valoresIniciales extends javax.swing.JFrame {
      */
     public valoresIniciales(Grafo maingrafo) {
         initComponents();
-        mainGrafo=maingrafo;
+        this.mainGrafo=maingrafo;
         makeLabelStyle(grafoTextArea);
         this.setLocationRelativeTo(null);
     }
@@ -412,6 +412,7 @@ public class valoresIniciales extends javax.swing.JFrame {
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
         firstPage fPage = new  firstPage();
+        mainGrafo=null;
         fPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed

@@ -7,15 +7,19 @@ import EDD.Grafo;
  * @author Daniela Zambrano
  */
 public class editData extends javax.swing.JFrame {
-    private static Grafo mainGrafo= null;
+    public static Grafo mainGrafo;
     /**
      * Creates new form editData
      */
     public editData(Grafo maingrafo) {
         initComponents();
-        mainGrafo=maingrafo;
         this.setLocationRelativeTo(null);
-        //showTextArea.setText(mainGrafo.toString());
+        this.mainGrafo=maingrafo;
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        showTextArea.setText(mainGrafo.toString());
+        for (int i = 0; i < mainGrafo.citiesQuantity(); i++) {
+            this.deleteOptionCitys.addItem(String.valueOf(i+1));
+        }
     }
 
     /**
@@ -31,7 +35,6 @@ public class editData extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         atrasButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
         addCity = new javax.swing.JButton();
         numCitiesLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,6 +44,7 @@ public class editData extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -50,6 +54,10 @@ public class editData extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         mainCity = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        showTextArea = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,12 +88,6 @@ public class editData extends javax.swing.JFrame {
         jPanel1.add(atrasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(871, 35, 80, 40));
 
         jPanel4.setBackground(new java.awt.Color(221, 228, 195));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel18.setText("Ciudades");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         addCity.setBackground(new java.awt.Color(49, 114, 24));
         addCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
@@ -96,18 +98,15 @@ public class editData extends javax.swing.JFrame {
                 addCityActionPerformed(evt);
             }
         });
-        jPanel4.add(addCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 250, -1));
 
         numCitiesLabel.setFont(new java.awt.Font("Futura Lt BT", 3, 36)); // NOI18N
         numCitiesLabel.setForeground(new java.awt.Color(51, 51, 55));
         numCitiesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numCitiesLabel.setText("4");
-        jPanel4.add(numCitiesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 80, 40));
 
         jLabel3.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 55));
         jLabel3.setText("Elija la ciudad que desea eliminar:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 260, -1));
 
         deleteCity.setBackground(new java.awt.Color(49, 114, 24));
         deleteCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
@@ -118,7 +117,6 @@ public class editData extends javax.swing.JFrame {
                 deleteCityActionPerformed(evt);
             }
         });
-        jPanel4.add(deleteCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 250, -1));
 
         addConection.setBackground(new java.awt.Color(49, 114, 24));
         addConection.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
@@ -129,23 +127,78 @@ public class editData extends javax.swing.JFrame {
                 addConectionActionPerformed(evt);
             }
         });
-        jPanel4.add(addConection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 250, -1));
-
-        deleteOptionCitys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(deleteOptionCitys, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 210, 40));
 
         jLabel4.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 55));
         jLabel4.setText("Número de Ciudades");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 55));
         jLabel5.setText("Actuales del Hormiguero:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, -1));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 20));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 320, 480));
+        jLabel19.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 55));
+        jLabel19.setText("Ciudades");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel19))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(numCitiesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(addCity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(addConection, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(deleteOptionCitys, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(deleteCity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel19)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5))
+                    .addComponent(numCitiesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(addCity)
+                .addGap(36, 36, 36)
+                .addComponent(addConection)
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel3)
+                .addGap(27, 27, 27)
+                .addComponent(deleteOptionCitys, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(deleteCity))
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 310, 480));
 
         jLabel6.setBackground(new java.awt.Color(238, 237, 236));
         jLabel6.setFont(new java.awt.Font("Futura", 0, 25)); // NOI18N
@@ -159,10 +212,10 @@ public class editData extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Futura Bk BT", 2, 18)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(51, 51, 55));
         jTextArea1.setRows(2);
-        jTextArea1.setText("    \n    Al presionar Actualizar Hormiguero se actualizará el hormiguero en el \n    programa pero no se modificará el TXT");
+        jTextArea1.setText("    \n  Al presionar Actualizar Hormiguero \n  se actualizará el hormiguero en el \n  programa, pero no se modificará \n  el TXT");
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 590, 90));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 310, 150));
 
         updateTXTButton.setBackground(new java.awt.Color(49, 114, 24));
         updateTXTButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
@@ -173,7 +226,7 @@ public class editData extends javax.swing.JFrame {
                 updateTXTButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(updateTXTButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 300, 40));
+        jPanel1.add(updateTXTButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 290, 40));
 
         newGrafoButton1.setBackground(new java.awt.Color(49, 114, 24));
         newGrafoButton1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
@@ -184,7 +237,7 @@ public class editData extends javax.swing.JFrame {
                 newGrafoButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(newGrafoButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 290, -1));
+        jPanel1.add(newGrafoButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, 310, -1));
 
         jTextArea2.setEditable(false);
         jTextArea2.setBackground(new java.awt.Color(221, 228, 195));
@@ -194,12 +247,13 @@ public class editData extends javax.swing.JFrame {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(2);
         jTextArea2.setTabSize(4);
-        jTextArea2.setText("     \n    Al precionar Guardar TXT se actualizará el archivo TXT antes ingresado\n   con la información del nuevo hormiguero");
+        jTextArea2.setText("     \n   Al precionar Guardar TXT se\n  actualizará el archivo TXT antes\n  ingresado con la información\n  del nuevo hormiguero");
         jScrollPane3.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 590, 100));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 290, 150));
 
         mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
+        mainCity.setForeground(new java.awt.Color(221, 228, 195));
         mainCity.setText("Edición del Hormiguero");
         jPanel1.add(mainCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
@@ -211,7 +265,26 @@ public class editData extends javax.swing.JFrame {
                 startButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, -1, -1));
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, -1, -1));
+
+        showTextArea.setBackground(new java.awt.Color(221, 228, 195));
+        showTextArea.setColumns(20);
+        showTextArea.setFont(new java.awt.Font("Futura Bk BT", 0, 18)); // NOI18N
+        showTextArea.setForeground(new java.awt.Color(51, 51, 55));
+        showTextArea.setRows(5);
+        jScrollPane1.setViewportView(showTextArea);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 350, 270));
+
+        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel18.setText("Actual");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel20.setText("Hormiguero");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 617));
 
@@ -300,12 +373,15 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> deleteOptionCitys;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -314,6 +390,7 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JLabel mainCity;
     private javax.swing.JButton newGrafoButton1;
     private javax.swing.JLabel numCitiesLabel;
+    private javax.swing.JTextArea showTextArea;
     private javax.swing.JButton startButton;
     private javax.swing.JButton updateTXTButton;
     // End of variables declaration//GEN-END:variables

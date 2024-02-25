@@ -17,10 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class uploadData extends javax.swing.JFrame {
     String mainFileText;
-    public  static Grafo mainGrafo= null;
-    public  static firstPage firstpage;
-    private final uploadTXT uploader = new uploadTXT();
-    public static ListaSimple list_doc= new ListaSimple();
+    public  static Grafo mainGrafo;
     
     /**
      * Creates new form uploadGrafo
@@ -28,20 +25,28 @@ public class uploadData extends javax.swing.JFrame {
      */
     public uploadData() {
         initComponents();
-        //this.firstpage = firstpage;
+        mainGrafo=null;
         this.setLocationRelativeTo(null);
-        //firstpage.setVisible(false);
         this.startButton.setVisible(false);
         this.editGrafoButton.setVisible(false);
+        this.deleteAntHill.setVisible(false);
+        
     }
     public uploadData(Grafo maingrafo) {
+        
         initComponents();
-        mainGrafo=maingrafo;
-        //this.firstpage = firstpage;
+        this.mainGrafo=maingrafo;
+        jTextArea1.setText(mainGrafo.toString());
         this.setLocationRelativeTo(null);
-        //firstpage.setVisible(false);
-        this.startButton.setVisible(false);
-        this.editGrafoButton.setVisible(false);
+        
+        if (mainGrafo!=null){
+            saveAntHill.setVisible(false);
+            selectTXT.setVisible(false);
+            filePathTextField.setVisible(false);
+            this.startButton.setVisible(true);
+            this.editGrafoButton.setVisible(true);}
+        filePathTextField.setText("");
+        
     }
 
     /**
@@ -62,10 +67,11 @@ public class uploadData extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         filePathTextField = new javax.swing.JTextField();
         selectTXT = new javax.swing.JButton();
-        saveAntHill = new javax.swing.JButton();
+        deleteAntHill = new javax.swing.JButton();
         editGrafoButton = new javax.swing.JButton();
         mainCity = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        saveAntHill = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(996, 617));
@@ -140,12 +146,12 @@ public class uploadData extends javax.swing.JFrame {
             }
         });
 
-        saveAntHill.setBackground(new java.awt.Color(49, 114, 24));
-        saveAntHill.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
-        saveAntHill.setText("Guardar Hormiguero");
-        saveAntHill.addActionListener(new java.awt.event.ActionListener() {
+        deleteAntHill.setBackground(new java.awt.Color(49, 114, 24));
+        deleteAntHill.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        deleteAntHill.setText("Borrar Hormiguero");
+        deleteAntHill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveAntHillActionPerformed(evt);
+                deleteAntHillActionPerformed(evt);
             }
         });
 
@@ -164,6 +170,15 @@ public class uploadData extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Futura Lt BT", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(221, 228, 195));
         jLabel2.setText("Información del Hormiguero elegido");
+
+        saveAntHill.setBackground(new java.awt.Color(49, 114, 24));
+        saveAntHill.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        saveAntHill.setText("Guardar Hormiguero");
+        saveAntHill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAntHillActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,9 +213,10 @@ public class uploadData extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(saveAntHill, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(deleteAntHill, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(startButton)
-                                    .addComponent(editGrafoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(editGrafoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(saveAntHill, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(42, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,7 +233,10 @@ public class uploadData extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(saveAntHill)
+                        .addGap(29, 29, 29)
+                        .addComponent(deleteAntHill)
                         .addGap(27, 27, 27)
                         .addComponent(editGrafoButton)
                         .addGap(27, 27, 27)
@@ -228,9 +247,9 @@ public class uploadData extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(filePathTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52))
         );
@@ -293,10 +312,39 @@ public class uploadData extends javax.swing.JFrame {
       
     }//GEN-LAST:event_selectTXTActionPerformed
 
+    private void deleteAntHillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAntHillActionPerformed
+        selectTXT.setVisible(true);
+        saveAntHill.setVisible(true);
+        filePathTextField.setVisible(true);
+        
+        if (mainGrafo!=null){
+        mainGrafo=null;
+        mainFileText=null;
+        JOptionPane.showMessageDialog(rootPane, "Se ha borrado el hormiguero exitosamente", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }else{JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún Archivo.", "Info", JOptionPane.INFORMATION_MESSAGE);}
+
+        filePathTextField.setText("");
+        jTextArea1.setText("");
+        this.startButton.setVisible(false);
+        this.editGrafoButton.setVisible(false);
+        
+        
+    }//GEN-LAST:event_deleteAntHillActionPerformed
+
+    private void editGrafoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGrafoButtonActionPerformed
+        editData pageEdit = new editData(mainGrafo);
+        pageEdit.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_editGrafoButtonActionPerformed
+
     private void saveAntHillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAntHillActionPerformed
         uploadTXT uploadData = new uploadTXT();
+        selectTXT.setVisible(false);
+        filePathTextField.setVisible(false);
         if (mainFileText!=null){    
             this.mainGrafo= uploadData.convertString(jTextArea1.getText());
+            this.deleteAntHill.setVisible(true);
+            this.saveAntHill.setVisible(false);
             //System.out.println(mainGrafo.toString());
         }
         
@@ -305,14 +353,7 @@ public class uploadData extends javax.swing.JFrame {
         if (mainGrafo!=null){
             this.startButton.setVisible(true);
             this.editGrafoButton.setVisible(true);}
-        
     }//GEN-LAST:event_saveAntHillActionPerformed
-
-    private void editGrafoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGrafoButtonActionPerformed
-        editData pageEdit = new editData(mainGrafo);
-        pageEdit.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_editGrafoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +393,7 @@ public class uploadData extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
+    private javax.swing.JButton deleteAntHill;
     private javax.swing.JButton editGrafoButton;
     private javax.swing.JTextField filePathTextField;
     private javax.swing.JLabel jLabel1;

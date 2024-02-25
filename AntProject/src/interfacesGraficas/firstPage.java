@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class firstPage extends javax.swing.JFrame {
 
     ImageIcon imageAnt = new ImageIcon("antwithgreenleaf.png");
-    Grafo mainGrafo;
+    public static Grafo mainGrafo;
     
     
     /**
