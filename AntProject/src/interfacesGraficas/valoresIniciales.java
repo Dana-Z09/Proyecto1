@@ -1,28 +1,37 @@
 
 package interfacesGraficas;
 
+import EDD.City;
 import EDD.Grafo;
+import EDD.ListaSimple;
 import static Funciones.funcionesInterfaces.makeLabelStyle;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
  * @author Daniela Zambrano
  */
 public class valoresIniciales extends javax.swing.JFrame {
-    private static Grafo mainGrafo= null;
+    private static Grafo mainGrafo;
     /**
      * Creates new form valoresIniciales
+     * @param maingrafo
      */
     public valoresIniciales(Grafo maingrafo) {
         initComponents();
-        this.mainGrafo=maingrafo;
+        valoresIniciales.mainGrafo=maingrafo;
         makeLabelStyle(grafoTextArea);
+        grafoTextArea.setText(mainGrafo.toString());
         this.setLocationRelativeTo(null);
-    }
-    public Grafo getMainGrafo() {
-        return mainGrafo;}
-    public void setMainGrafo(Grafo mainGrafo) {
-        this.mainGrafo = mainGrafo;}
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.startCity.addItem(String.valueOf(numcity));
+            this.finalCity.addItem(String.valueOf(numcity));
+    }}
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,7 +122,7 @@ public class valoresIniciales extends javax.swing.JFrame {
         jLabel8.setText("Factor de evaporacion de las ferormonas");
 
         rho.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
-        rho.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.001d, 1.0d, 0.01d));
+        rho.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.0d, 1.0d, 0.01d));
         rho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         alpha.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
@@ -229,7 +238,7 @@ public class valoresIniciales extends javax.swing.JFrame {
         jLabel7.setText("Número de Hormigas");
 
         numHormigas.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
-        numHormigas.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        numHormigas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         numHormigas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 22)); // NOI18N
@@ -243,6 +252,12 @@ public class valoresIniciales extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 55));
         jLabel9.setText("Ciudad de Partida");
+
+        startCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startCityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -418,9 +433,26 @@ public class valoresIniciales extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void StartSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartSimulationActionPerformed
+        Object itemStartCity=startCity.getSelectedItem();
+        Object itemDestinationCity=finalCity.getSelectedItem();
+        boolean sameCity = itemStartCity.equals(itemDestinationCity);
+        double rhoSpinner = (double) this.rho.getValue();
         if (mainGrafo!=null){
+            if(!sameCity)
+            {
+                if (rhoSpinner<1){
+                //comienza simulacion
+                }
+                else{JOptionPane.showMessageDialog(null, "El Factor de evaporacion de las ferormonas no puede ser igual a 1, es recomendable que sea 0.5", "Error", 2);}  
+            }
+            else{ JOptionPane.showMessageDialog(null, "La ciudad de inicio y la ciudad destino no pueden ser la misma", "Error", WARNING_MESSAGE);}
         }
+        else {JOptionPane.showMessageDialog(null, "No hay ningun hormiguero seleccionado ", "Error", WARNING_MESSAGE);}
     }//GEN-LAST:event_StartSimulationActionPerformed
+
+    private void startCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startCityActionPerformed
 
     /**
      * @param args the command line arguments

@@ -23,7 +23,8 @@ public class connectCity extends javax.swing.JFrame {
         antPic.setText("");
         this.mainGrafo=maingrafo;
         this.setLocationRelativeTo(null);
-        this.setLocationRelativeTo(null);ListaSimple citiesList=mainGrafo.getCities();
+        this.setLocationRelativeTo(null);
+        ListaSimple citiesList=mainGrafo.getCities();
         for (int i = 0; i < citiesList.getSize(); i++) {
             City auxCity = (City) citiesList.getContentByIndex(i);
             int numcity= auxCity.getNumCity();
@@ -122,7 +123,7 @@ public class connectCity extends javax.swing.JFrame {
         jLabel12.setText("Distancia entre ciudad A y ciudad B");
 
         distance.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
-        distance.setModel(new javax.swing.SpinnerNumberModel(1.0d, 0.1d, null, 1.0d));
+        distance.setModel(new javax.swing.SpinnerNumberModel(1.0d, 0.0d, null, 1.0d));
         distance.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel13.setFont(new java.awt.Font("Futura Bk BT", 1, 30)); // NOI18N
@@ -231,9 +232,23 @@ public class connectCity extends javax.swing.JFrame {
     }//GEN-LAST:event_cityBActionPerformed
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        if (cityA.getItemCount()!=cityB.getItemCount()){
-        }
-        else{
+        Object itemStartCity=cityA.getSelectedItem();
+        Object itemDestinationCity=cityB.getSelectedItem();
+        boolean sameCity = itemStartCity.equals(itemDestinationCity);
+        Object spinnerNum=this.distance.getValue();
+        double numDistance= (double) spinnerNum;
+        
+        if (!sameCity){
+            if(numDistance>0){
+                //crear path
+                //ver si ese path exite
+                //si existe entonces Joptionpane
+                //sino agregar coneccion y avisar 
+                //guardar grafo
+            }
+            else{JOptionPane.showMessageDialog(null, "La ciudad A y la ciudad B no pueden tener una distancia igual a 0", "Error", 2);}
+           
+        }else{
             JOptionPane.showMessageDialog(null, "La ciudad A y la ciudad B no pueden ser la misma", "Error", 2);}
     }//GEN-LAST:event_addConectionActionPerformed
 

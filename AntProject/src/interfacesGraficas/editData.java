@@ -67,6 +67,7 @@ public class editData extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         showTextArea = new javax.swing.JTextArea();
         updateAnthillStringView = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(996, 619));
@@ -280,23 +281,24 @@ public class editData extends javax.swing.JFrame {
                 startButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, -1, 70));
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, 50));
 
         jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel20.setText("Hormiguero");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, -1, -1));
+        jLabel20.setText("Visualización");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(221, 228, 195));
         jLabel18.setText("Actual");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, -1, -1));
 
         showTextArea.setBackground(new java.awt.Color(221, 228, 195));
         showTextArea.setColumns(20);
         showTextArea.setFont(new java.awt.Font("Futura Bk BT", 0, 18)); // NOI18N
         showTextArea.setForeground(new java.awt.Color(51, 51, 55));
         showTextArea.setRows(5);
+        showTextArea.setBorder(null);
         jScrollPane1.setViewportView(showTextArea);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 370, 230));
@@ -310,6 +312,11 @@ public class editData extends javax.swing.JFrame {
             }
         });
         jPanel1.add(updateAnthillStringView, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel21.setText("Hormiguero");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 617));
 
@@ -422,6 +429,7 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

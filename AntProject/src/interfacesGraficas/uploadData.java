@@ -30,6 +30,7 @@ public class uploadData extends javax.swing.JFrame {
         this.startButton.setVisible(false);
         this.editGrafoButton.setVisible(false);
         this.deleteAntHill.setVisible(false);
+        this.saveAntHill.setVisible(false);
         
     }
     public uploadData(Grafo maingrafo) {
@@ -304,6 +305,7 @@ public class uploadData extends javax.swing.JFrame {
             
                 this.jTextArea1.setText(fileText);
                 this.mainFileText=fileText;
+                this.saveAntHill.setVisible(true);
                 
             }catch(IOException ex){
                 ex.printStackTrace();}
