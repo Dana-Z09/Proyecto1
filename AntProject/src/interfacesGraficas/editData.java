@@ -340,7 +340,7 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteCityActionPerformed
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        connectCity connectPage = new connectCity(mainGrafo);
+        connectCity connectPage= new connectCity(this.mainGrafo); 
         connectPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addConectionActionPerformed

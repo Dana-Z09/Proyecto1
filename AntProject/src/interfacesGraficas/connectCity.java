@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Daniela Zambrano
  */
 public class connectCity extends javax.swing.JFrame {
-    public static Grafo mainGrafo= null;
+    public static Grafo mainGrafo;
     ImageIcon imageAnt = new ImageIcon("antie.png");
     /**
      * Creates new form connectCity
@@ -231,7 +231,9 @@ public class connectCity extends javax.swing.JFrame {
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
         Object itemStartCity=cityA.getSelectedItem();
+        int numCityA= Integer.parseInt( itemStartCity.toString());
         Object itemDestinationCity=cityB.getSelectedItem();
+        int numCityB= Integer.parseInt (itemDestinationCity.toString());
         boolean sameCity = itemStartCity.equals(itemDestinationCity);
         Object spinnerNum=this.distance.getValue();
         double numDistance= (double) spinnerNum;
@@ -243,6 +245,7 @@ public class connectCity extends javax.swing.JFrame {
                 //si existe entonces Joptionpane
                 //sino agregar coneccion y avisar 
                 //guardar grafo
+                mainGrafo.addPath(numCityA, numCityB, numDistance);
             }
             else{JOptionPane.showMessageDialog(null, "La ciudad A y la ciudad B no pueden tener una distancia igual a 0", "Error", 2);}
            
