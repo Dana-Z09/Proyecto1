@@ -119,6 +119,21 @@ public class Grafo {
         }
     }
 
+    
+    /**
+     * Agrega una ciudad al hormiguero con el numero siguiente a la ultima ciudad de la lista
+     */
+    public void addNextCity(){
+     
+        City ultimaciudad = (City) cities.getTail().getContent();
+        int numNuevaCiudad = ultimaciudad.getNumCity();
+
+        City nueva = new City(numNuevaCiudad);
+        this.addCity(nueva);
+        
+    }
+    
+    
     /**
      * Conecta dos ciudades del hormiguero siempre y cuando no esten ya
      * conectadas
@@ -206,6 +221,7 @@ public class Grafo {
     /**
      * Convierte un grafo a un string donde muestra la estructura en Ciudades y Caminos
      */
+    @Override
     public String toString() {
         StringBuilder show = new StringBuilder();
         show.append("Ciudades:\n");

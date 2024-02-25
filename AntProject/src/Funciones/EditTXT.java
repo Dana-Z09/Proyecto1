@@ -22,7 +22,25 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author dams2
  */
 public class EditTXT {
-     /*
+     private String direccionrom;
+
+    public EditTXT() {
+        this.direccionrom = null;
+    }
+
+    public String getDireccionrom() {
+        return direccionrom;
+    }
+
+    public void setDireccionrom(String direccionrom) {
+        this.direccionrom = direccionrom;
+    }
+    
+    
+    
+    
+    
+    /*
         Copia el txt en donde se encuentre el original
     
     
