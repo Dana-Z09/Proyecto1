@@ -59,9 +59,7 @@ public class connectCity extends javax.swing.JFrame {
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(997, 619));
         setMinimumSize(new java.awt.Dimension(997, 619));
-        setPreferredSize(new java.awt.Dimension(996, 619));
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,6 +193,7 @@ public class connectCity extends javax.swing.JFrame {
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 440, 450));
 
         mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
+        mainCity.setForeground(new java.awt.Color(221, 228, 195));
         mainCity.setText("Conexión de Ciudades");
         getContentPane().add(mainCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
@@ -276,6 +275,9 @@ public class connectCity extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(connectCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -304,7 +304,17 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void addCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityActionPerformed
-        // TODO add your handling code here:
+        if(mainGrafo.citiesQuantity()<20){
+        mainGrafo.addNextCity();
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        deleteOptionCitys.removeAllItems();
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));}}
+        else{JOptionPane.showMessageDialog(null, "No se puede agregar otra ciudad porque llegó al máximo de ciudades posibles.", "Error", WARNING_MESSAGE);}
+        
     }//GEN-LAST:event_addCityActionPerformed
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed

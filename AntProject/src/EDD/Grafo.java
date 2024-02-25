@@ -184,7 +184,7 @@ public class Grafo {
             
             cities.deleteElemC(auxCity);
             
-            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamennte", "info", 2);
         } else {
             JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
         }
@@ -203,11 +203,9 @@ public class Grafo {
                     Path auxPath=  (Path) auxCity1.getListAdy().getContentByIndex(j);
                     if(auxPath.getDestination().getNumCity()==numCity){
                         auxCity1.deletePath(auxPath);
-                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} 
-                    /*
-                    if(auxPath.getOrigin().getNumCity()==numCity){
-                        auxCity1.deletePath(auxPath);
-                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} */
+                        //JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);
+                    } 
+                    
                     }
                 
                 }
