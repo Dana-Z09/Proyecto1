@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EDD">
+  <ClassDiagramComponents>
+    <Class name="City" package="EDD" visibility="public" xPosition="539.0" yPosition="20.0">
+      <Fields>
+        <Field name="numCity" type="int" visibility="private"/>
+        <Field name="listAdy" type="ListaSimple" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numCity"/>
+          <Argument type="ListaSimple" name="listAdy"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumCity" returnType="int" visibility="public"/>
+        <Method name="setNumCity" returnType="void" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+        <Method name="getListAdy" returnType="ListaSimple" visibility="public"/>
+        <Method name="setAdyacent" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="listAdy"/>
+        </Method>
+        <Method name="addPath" returnType="void" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="deletePath" returnType="void" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="searchPathByPath" returnType="boolean" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="searchPath" returnType="boolean" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="searchPathByNumCity" returnType="City" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+        <Method name="searchPathByNumCity2" returnType="Path" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Grafo" package="EDD" visibility="public" xPosition="39.0" yPosition="483.0">
+      <Fields>
+        <Field name="cities" type="ListaSimple" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="ListaSimple" name="cities"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCities" returnType="ListaSimple" visibility="public"/>
+        <Method name="setCities" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="cities"/>
+        </Method>
+        <Method name="grafoIsEmpty" returnType="boolean" visibility="public"/>
+        <Method name="isPathInGrafo" returnType="boolean" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="isCityInGrafo" returnType="boolean" visibility="public">
+          <Argument type="City" name="city"/>
+        </Method>
+        <Method name="citiesQuantity" returnType="int" visibility="public"/>
+        <Method name="searchCityGrafo" returnType="City" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+        <Method name="addCity" returnType="void" visibility="public">
+          <Argument type="City" name="city"/>
+        </Method>
+        <Method name="addNextCity" returnType="void" visibility="public"/>
+        <Method name="connectCity" returnType="void" visibility="public">
+          <Argument type="Path" name="path"/>
+        </Method>
+        <Method name="deleteCity" returnType="void" visibility="public">
+          <Argument type="City" name="city"/>
+        </Method>
+        <Method name="deleteCity2" returnType="void" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+        <Method name="disconnectCity" returnType="void" visibility="public">
+          <Argument type="int" name="numCity"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="addPath" returnType="void" visibility="public">
+          <Argument type="int" name="numCityA"/>
+          <Argument type="int" name="numCityB"/>
+          <Argument type="double" name="distanceAB"/>
+        </Method>
+        <Method name="searchCity" returnType="City" visibility="public">
+          <Argument type="int" name="num"/>
+          <Argument type="ListaSimple" name="cities"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ListaSimple" package="EDD" visibility="public" xPosition="556.0" yPosition="503.0">
+      <Fields>
+        <Field name="head" type="Nodo" visibility="private"/>
+        <Field name="tail" type="Nodo" visibility="private"/>
+        <Field name="size" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Nodo" name="head"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="resetList" returnType="void" visibility="public"/>
+        <Method name="isEmpty" returnType="boolean" visibility="public"/>
+        <Method name="isInList" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="addFirst" returnType="void" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="addEnd" returnType="void" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="addBeforeElem" returnType="void" visibility="public">
+          <Argument type="Object" name="obj"/>
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="addAfterElem" returnType="void" visibility="public">
+          <Argument type="Object" name="obj"/>
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getSize" returnType="int" visibility="public"/>
+        <Method name="getHead" returnType="Nodo" visibility="public"/>
+        <Method name="getTail" returnType="Nodo" visibility="public"/>
+        <Method name="deleteHead" returnType="void" visibility="public"/>
+        <Method name="deleteTail" returnType="void" visibility="public"/>
+        <Method name="deleteElemI" returnType="void" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="deleteElemC" returnType="void" visibility="public">
+          <Argument type="Object" name="content"/>
+        </Method>
+        <Method name="printList" returnType="void" visibility="public"/>
+        <Method name="getContentByIndex" returnType="Object" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getIndex" returnType="Integer" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="changeAllContent" returnType="void" visibility="public">
+          <Argument type="Object" name="objRef"/>
+          <Argument type="Object" name="objNew"/>
+        </Method>
+        <Method name="changeFirstContent" returnType="void" visibility="public">
+          <Argument type="Object" name="objRef"/>
+          <Argument type="Object" name="objNew"/>
+        </Method>
+        <Method name="changeContent" returnType="void" visibility="public">
+          <Argument type="int" name="indexRef"/>
+          <Argument type="Object" name="objNew"/>
+        </Method>
+        <Method name="indexExist" returnType="boolean" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="toStringCities" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Nodo" package="EDD" visibility="public" isAbstract="true" xPosition="937.0" yPosition="50.0">
+      <Fields>
+        <Field name="pNext" type="Nodo" visibility="private"/>
+        <Field name="content" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Object" name="contenido"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Object" name="contenido"/>
+          <Argument type="Nodo" name="pNext"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getpNext" returnType="Nodo" visibility="public"/>
+        <Method name="setpNext" returnType="void" visibility="public">
+          <Argument type="Nodo" name="pNext"/>
+        </Method>
+        <Method name="getContent" returnType="Object" visibility="public"/>
+        <Method name="setContent" returnType="void" visibility="public">
+          <Argument type="Object" name="contenido"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="NodoSimpleP" package="EDD" visibility="public" xPosition="961.0" yPosition="517.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Object" name="contenido"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Object" name="contenido"/>
+          <Argument type="Nodo" name="pNext"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Path" package="EDD" visibility="public" xPosition="50.0" yPosition="20.0">
+      <Fields>
+        <Field name="origin" type="City" visibility="private"/>
+        <Field name="destination" type="City" visibility="private"/>
+        <Field name="distance" type="double" visibility="private"/>
+        <Field name="pheromones" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="City" name="origin"/>
+          <Argument type="City" name="destination"/>
+          <Argument type="double" name="distance"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDestination" returnType="City" visibility="public"/>
+        <Method name="setDestination" returnType="void" visibility="public">
+          <Argument type="City" name="destination"/>
+        </Method>
+        <Method name="getOrigin" returnType="City" visibility="public"/>
+        <Method name="setOrigin" returnType="void" visibility="public">
+          <Argument type="City" name="origin"/>
+        </Method>
+        <Method name="getDistance" returnType="double" visibility="public"/>
+        <Method name="setDistance" returnType="void" visibility="public">
+          <Argument type="double" name="distance"/>
+        </Method>
+        <Method name="getPheromones" returnType="double" visibility="public"/>
+        <Method name="setPheromones" returnType="void" visibility="public">
+          <Argument type="double" name="pheromones"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="head" source="EDD.ListaSimple" target="EDD.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.Grafo" target="EDD.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.Path" target="EDD.City" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listAdy" source="EDD.City" target="EDD.ListaSimple" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ListaSimple"/>
+    <HasRelation name="destination" source="EDD.Path" target="EDD.City" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="EDD.NodoSimpleP" target="EDD.Nodo"/>
+    <UseRelation source="EDD.Grafo" target="EDD.City" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cities" source="EDD.Grafo" target="EDD.ListaSimple" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ListaSimple"/>
+    <UseRelation source="EDD.ListaSimple" target="EDD.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.City" target="EDD.City" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.City" target="EDD.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.City" target="EDD.Path" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tail" source="EDD.ListaSimple" target="EDD.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.Nodo" target="EDD.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pNext" source="EDD.Nodo" target="EDD.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EDD.Grafo" target="EDD.Path" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="origin" source="EDD.Path" target="EDD.City" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

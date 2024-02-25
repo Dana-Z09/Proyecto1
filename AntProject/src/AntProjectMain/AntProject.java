@@ -1,19 +1,15 @@
-package antproject;
+package AntProjectMain;
 
 import interfacesGraficas.firstPage;
 
 /**
  *
- * @author Daniela Zambrano
+ * @author Daniela Zambrano Diego Mendez
  */
 public class AntProject {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         firstPage inicio = new firstPage();
-        
         inicio.setVisible(true);
         
         

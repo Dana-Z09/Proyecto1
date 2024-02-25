@@ -1,17 +1,35 @@
 package interfacesGraficas;
 
+import EDD.City;
+import EDD.Grafo;
+import EDD.ListaSimple;
+import Funciones.EditTXT;
+import static interfacesGraficas.uploadData.mainFilePath;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+
 /**
  *
  * @author Daniela Zambrano
  */
 public class editData extends javax.swing.JFrame {
-
+    public static Grafo mainGrafo;
     /**
      * Creates new form editData
      */
-    public editData() {
+    public editData(Grafo maingrafo) {
         initComponents();
         this.setLocationRelativeTo(null);
+        editData.mainGrafo=maingrafo;
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        showTextArea.setText(mainGrafo.toString());
+        
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));
+        }
     }
 
     /**
@@ -27,38 +45,44 @@ public class editData extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         atrasButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
         addCity = new javax.swing.JButton();
         numCitiesLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         deleteCity = new javax.swing.JButton();
-        deleteOptionCitys = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        newGrafoButton = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        cityA = new javax.swing.JComboBox<>();
-        cityB = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        distance = new javax.swing.JSpinner();
-        jLabel13 = new javax.swing.JLabel();
         addConection = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        showAnthillButton = new javax.swing.JButton();
+        deleteOptionCitys = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         updateTXTButton = new javax.swing.JButton();
+        updateAnthillStringView = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        mainCity = new javax.swing.JLabel();
+        startButton = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        showTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(996, 619));
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(97, 143, 74));
+        jPanel1.setMaximumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setMinimumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setPreferredSize(new java.awt.Dimension(996, 619));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Futura", 0, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 237, 236));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("DIDANTS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 27, -1, 50));
 
         atrasButton.setBackground(new java.awt.Color(221, 228, 195));
         atrasButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
@@ -74,17 +98,12 @@ public class editData extends javax.swing.JFrame {
                 atrasButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(atrasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(871, 35, 80, 40));
 
         jPanel4.setBackground(new java.awt.Color(221, 228, 195));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 22)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel18.setText("Ciudades");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         addCity.setBackground(new java.awt.Color(49, 114, 24));
-        addCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        addCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
         addCity.setForeground(new java.awt.Color(221, 228, 195));
         addCity.setText("Agregar Nueva Ciudad");
         addCity.addActionListener(new java.awt.event.ActionListener() {
@@ -92,21 +111,18 @@ public class editData extends javax.swing.JFrame {
                 addCityActionPerformed(evt);
             }
         });
-        jPanel4.add(addCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 201, -1));
 
-        numCitiesLabel.setFont(new java.awt.Font("Futura Lt BT", 3, 24)); // NOI18N
+        numCitiesLabel.setFont(new java.awt.Font("Futura Lt BT", 3, 36)); // NOI18N
         numCitiesLabel.setForeground(new java.awt.Color(51, 51, 55));
         numCitiesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numCitiesLabel.setText("4");
-        jPanel4.add(numCitiesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 70, 40));
 
         jLabel3.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel3.setText("Número de Cidades Actuales del Hormiguero:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 390, -1));
+        jLabel3.setText("Elija la ciudad que desea eliminar:");
 
         deleteCity.setBackground(new java.awt.Color(49, 114, 24));
-        deleteCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        deleteCity.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
         deleteCity.setForeground(new java.awt.Color(221, 228, 195));
         deleteCity.setText("Eliminar Ciudad");
         deleteCity.addActionListener(new java.awt.event.ActionListener() {
@@ -114,63 +130,9 @@ public class editData extends javax.swing.JFrame {
                 deleteCityActionPerformed(evt);
             }
         });
-        jPanel4.add(deleteCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 201, -1));
-
-        deleteOptionCitys.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(deleteOptionCitys, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 120, 30));
-
-        jLabel6.setBackground(new java.awt.Color(238, 237, 236));
-        jLabel6.setFont(new java.awt.Font("Futura", 0, 25)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(238, 237, 236));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("-Ant Simulator");
-
-        newGrafoButton.setBackground(new java.awt.Color(49, 114, 24));
-        newGrafoButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
-        newGrafoButton.setForeground(new java.awt.Color(221, 228, 195));
-        newGrafoButton.setText("Actualización de Hormiguero");
-        newGrafoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newGrafoButtonActionPerformed(evt);
-            }
-        });
-
-        jPanel6.setBackground(new java.awt.Color(221, 228, 195));
-
-        jLabel11.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel11.setText("Ciudad A");
-
-        jLabel8.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel8.setText("Ciudad B");
-
-        cityA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityAActionPerformed(evt);
-            }
-        });
-
-        cityB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityBActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel12.setText("Distancia entre ciudad A y ciudad B");
-
-        distance.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
-        distance.setModel(new javax.swing.SpinnerNumberModel(1.0d, 0.1d, null, 1.0d));
-        distance.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel13.setFont(new java.awt.Font("Futura Bk BT", 1, 22)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(51, 51, 55));
-        jLabel13.setText("Asignación de Conexiones");
 
         addConection.setBackground(new java.awt.Color(49, 114, 24));
-        addConection.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        addConection.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
         addConection.setForeground(new java.awt.Color(221, 228, 195));
         addConection.setText("Agregar Conexion");
         addConection.addActionListener(new java.awt.event.ActionListener() {
@@ -179,80 +141,87 @@ public class editData extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cityA, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addGap(28, 28, 28)
-                        .addComponent(cityB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(addConection, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jLabel4.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 55));
+        jLabel4.setText("Número de Ciudades");
+
+        jLabel5.setFont(new java.awt.Font("Futura Lt BT", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 55));
+        jLabel5.setText("Actuales del Hormiguero:");
+
+        jLabel19.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 55));
+        jLabel19.setText("Ciudades");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel19))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(numCitiesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(addCity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(addConection, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(deleteOptionCitys, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(deleteCity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel13)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel19)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5))
+                    .addComponent(numCitiesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(cityA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(cityB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(addCity)
+                .addGap(36, 36, 36)
                 .addComponent(addConection)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel3)
+                .addGap(27, 27, 27)
+                .addComponent(deleteOptionCitys, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(deleteCity))
         );
 
-        jPanel2.setBackground(new java.awt.Color(49, 114, 24));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 310, 480));
 
-        jLabel14.setFont(new java.awt.Font("Futura Bk BT", 1, 22)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel14.setText("Información del Hormiguero");
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(221, 228, 195));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Futura Lt BT", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(51, 51, 55));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        showAnthillButton.setBackground(new java.awt.Color(49, 114, 24));
-        showAnthillButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        showAnthillButton.setForeground(new java.awt.Color(221, 228, 195));
-        showAnthillButton.setText("Mostrar Información");
-        showAnthillButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showAnthillButtonActionPerformed(evt);
-            }
-        });
+        jLabel6.setBackground(new java.awt.Color(238, 237, 236));
+        jLabel6.setFont(new java.awt.Font("Futura", 0, 25)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(238, 237, 236));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("-Ant Simulator");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 65, 200, 30));
 
         updateTXTButton.setBackground(new java.awt.Color(49, 114, 24));
-        updateTXTButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        updateTXTButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
         updateTXTButton.setForeground(new java.awt.Color(221, 228, 195));
         updateTXTButton.setText("Guardar TXT");
         updateTXTButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,107 +229,64 @@ public class editData extends javax.swing.JFrame {
                 updateTXTButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(updateTXTButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 290, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel14))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(showAnthillButton)
-                                .addGap(61, 61, 61)
-                                .addComponent(updateTXTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showAnthillButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateTXTButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        updateAnthillStringView.setBackground(new java.awt.Color(49, 114, 24));
+        updateAnthillStringView.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
+        updateAnthillStringView.setForeground(new java.awt.Color(221, 228, 195));
+        updateAnthillStringView.setText("Actualizar Visualización");
+        updateAnthillStringView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateAnthillStringViewActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updateAnthillStringView, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(13, 13, 13)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(593, 593, 593)
-                            .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(23, 23, 23)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(newGrafoButton)))))
-                    .addContainerGap(38, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(27, 27, 27)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(38, 38, 38)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(14, 14, 14)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(newGrafoButton)))
-                    .addContainerGap(28, Short.MAX_VALUE)))
-        );
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(221, 228, 195));
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Futura Bk BT", 2, 18)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(51, 51, 55));
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(2);
+        jTextArea2.setTabSize(4);
+        jTextArea2.setText("     \n   Al presionar Guardar TXT se\n  actualizará el archivo TXT antes\n  ingresado con la información\n  del nuevo hormiguero");
+        jScrollPane3.setViewportView(jTextArea2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 290, 150));
+
+        mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
+        mainCity.setForeground(new java.awt.Color(221, 228, 195));
+        mainCity.setText("Edición del Hormiguero");
+        jPanel1.add(mainCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+
+        startButton.setBackground(new java.awt.Color(49, 114, 24));
+        startButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 24)); // NOI18N
+        startButton.setForeground(new java.awt.Color(221, 228, 195));
+        startButton.setText("Comenzar Simulación");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, 50));
+
+        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 30)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel20.setText("Visualización Hormiguero Actual");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+
+        showTextArea.setBackground(new java.awt.Color(221, 228, 195));
+        showTextArea.setColumns(20);
+        showTextArea.setFont(new java.awt.Font("Futura Bk BT", 0, 18)); // NOI18N
+        showTextArea.setForeground(new java.awt.Color(51, 51, 55));
+        showTextArea.setRows(5);
+        showTextArea.setBorder(null);
+        jScrollPane1.setViewportView(showTextArea);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 600, 230));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 617));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -370,41 +296,68 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonMouseClicked
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        firstPage Menu = new  firstPage();
-        Menu.setVisible(true);
+        uploadData dataPage = new  uploadData(mainGrafo);
+        dataPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void addCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityActionPerformed
-        // TODO add your handling code here:
+        if(mainGrafo.citiesQuantity()<20){
+        mainGrafo.addNextCity();
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        deleteOptionCitys.removeAllItems();
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));}}
+        else{JOptionPane.showMessageDialog(null, "No se puede agregar otra ciudad porque llegó al máximo de ciudades posibles.", "Error", WARNING_MESSAGE);}
+        
     }//GEN-LAST:event_addCityActionPerformed
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed
-        // TODO add your handling code here:
+        if(deleteOptionCitys.getItemCount()>4){
+        //eliminar ciudad
+        String deleteOpString= deleteOptionCitys.getSelectedItem().toString();
+        int deleteOp= Integer.parseInt(deleteOpString);
+        mainGrafo.disconnectCity(deleteOp);
+        mainGrafo.deleteCity2(deleteOp);
+        System.out.println(deleteOp);
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        deleteOptionCitys.removeAllItems();
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));}
+        }
+        else{
+                JOptionPane.showMessageDialog(null, "Es necesario tener al menos 4 ciudades para que el simulador funcione,\n si quiere eliminar el hormiguero lo puede realizar desde la pagina de 'Elegir Hormiguero' y cargar un nuevo hormiguero", "Error", WARNING_MESSAGE);
+                }
+        
     }//GEN-LAST:event_deleteCityActionPerformed
 
-    private void newGrafoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGrafoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newGrafoButtonActionPerformed
-
-    private void cityAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityAActionPerformed
-
-    private void cityBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityBActionPerformed
-
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        // TODO add your handling code here:
+        connectCity connectPage= new connectCity(this.mainGrafo); 
+        connectPage.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_addConectionActionPerformed
 
-    private void showAnthillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAnthillButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showAnthillButtonActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+
+        valoresIniciales valorI = new  valoresIniciales(mainGrafo);
+        valorI.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_startButtonActionPerformed
+
+    private void updateAnthillStringViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAnthillStringViewActionPerformed
+        showTextArea.setText(mainGrafo.toString());
+    }//GEN-LAST:event_updateAnthillStringViewActionPerformed
 
     private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
-        // TODO add your handling code here:
+        EditTXT edittxt= new EditTXT();
+        edittxt.actualizarArchivo(mainFilePath, mainGrafo.toString());
+        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 1);
     }//GEN-LAST:event_updateTXTButtonActionPerformed
 
     /**
@@ -433,11 +386,14 @@ public class editData extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(editData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new editData().setVisible(true);
+                new editData(mainGrafo).setVisible(true);
             }
         });
     }
@@ -446,29 +402,26 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JButton addCity;
     private javax.swing.JButton addConection;
     private javax.swing.JButton atrasButton;
-    private javax.swing.JComboBox<String> cityA;
-    private javax.swing.JComboBox<String> cityB;
     private javax.swing.JButton deleteCity;
     private javax.swing.JComboBox<String> deleteOptionCitys;
-    private javax.swing.JSpinner distance;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton newGrafoButton;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel mainCity;
     private javax.swing.JLabel numCitiesLabel;
-    private javax.swing.JButton showAnthillButton;
+    private javax.swing.JTextArea showTextArea;
+    private javax.swing.JButton startButton;
+    private javax.swing.JButton updateAnthillStringView;
     private javax.swing.JButton updateTXTButton;
     // End of variables declaration//GEN-END:variables
 }

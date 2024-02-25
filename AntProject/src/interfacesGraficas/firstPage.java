@@ -1,7 +1,6 @@
 package interfacesGraficas;
 import EDD.Grafo;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,7 +9,7 @@ import javax.swing.JOptionPane;
 public class firstPage extends javax.swing.JFrame {
 
     ImageIcon imageAnt = new ImageIcon("antwithgreenleaf.png");
-    Grafo mainGrafo;
+    public static Grafo mainGrafo;
     
     
     /**
@@ -45,7 +44,6 @@ public class firstPage extends javax.swing.JFrame {
 
         basePanel = new javax.swing.JPanel();
         greenPanel = new javax.swing.JPanel();
-        startButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -53,7 +51,8 @@ public class firstPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         creditosButton = new javax.swing.JButton();
         exitButtonInicio = new javax.swing.JButton();
-        exitButtonInicio1 = new javax.swing.JButton();
+        uploadAnthillButton = new javax.swing.JButton();
+        instructionButton = new javax.swing.JButton();
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,17 +68,6 @@ public class firstPage extends javax.swing.JFrame {
         greenPanel.setBackground(new java.awt.Color(49, 114, 24));
         greenPanel.setMinimumSize(new java.awt.Dimension(610, 550));
         greenPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        startButton1.setBackground(new java.awt.Color(221, 228, 195));
-        startButton1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        startButton1.setForeground(new java.awt.Color(51, 46, 45));
-        startButton1.setText("Comenzar Simulación");
-        startButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButton1ActionPerformed(evt);
-            }
-        });
-        greenPanel.add(startButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 190, 50));
 
         jLabel1.setFont(new java.awt.Font("Futura", 0, 70)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 237, 236));
@@ -124,7 +112,7 @@ public class firstPage extends javax.swing.JFrame {
                 creditosButtonActionPerformed(evt);
             }
         });
-        greenPanel.add(creditosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 190, 50));
+        greenPanel.add(creditosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 190, 50));
 
         exitButtonInicio.setBackground(new java.awt.Color(221, 228, 195));
         exitButtonInicio.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
@@ -142,21 +130,32 @@ public class firstPage extends javax.swing.JFrame {
         });
         greenPanel.add(exitButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 190, 50));
 
-        exitButtonInicio1.setBackground(new java.awt.Color(221, 228, 195));
-        exitButtonInicio1.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
-        exitButtonInicio1.setForeground(new java.awt.Color(51, 46, 45));
-        exitButtonInicio1.setText("Cargar Hormiguero");
-        exitButtonInicio1.addMouseListener(new java.awt.event.MouseAdapter() {
+        uploadAnthillButton.setBackground(new java.awt.Color(221, 228, 195));
+        uploadAnthillButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        uploadAnthillButton.setForeground(new java.awt.Color(51, 46, 45));
+        uploadAnthillButton.setText("Cargar Hormiguero");
+        uploadAnthillButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitButtonInicio1MouseClicked(evt);
+                uploadAnthillButtonMouseClicked(evt);
             }
         });
-        exitButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
+        uploadAnthillButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonInicio1ActionPerformed(evt);
+                uploadAnthillButtonActionPerformed(evt);
             }
         });
-        greenPanel.add(exitButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 190, 50));
+        greenPanel.add(uploadAnthillButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 190, 50));
+
+        instructionButton.setBackground(new java.awt.Color(221, 228, 195));
+        instructionButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
+        instructionButton.setForeground(new java.awt.Color(51, 46, 45));
+        instructionButton.setText("Instrucciones");
+        instructionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instructionButtonActionPerformed(evt);
+            }
+        });
+        greenPanel.add(instructionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 190, 50));
 
         basePanel.add(greenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 620));
 
@@ -183,27 +182,21 @@ public class firstPage extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitButtonInicioActionPerformed
 
-    private void exitButtonInicio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonInicio1MouseClicked
+    private void uploadAnthillButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadAnthillButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_exitButtonInicio1MouseClicked
+    }//GEN-LAST:event_uploadAnthillButtonMouseClicked
 
-    private void exitButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonInicio1ActionPerformed
+    private void uploadAnthillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadAnthillButtonActionPerformed
         uploadData uPage = new  uploadData();
         uPage.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_exitButtonInicio1ActionPerformed
+    }//GEN-LAST:event_uploadAnthillButtonActionPerformed
 
-    private void startButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1ActionPerformed
-        
-        
-        if (mainGrafo!=null){
-            valoresIniciales valorI = new  valoresIniciales();
-            valorI.setVisible(true);
-            this.setVisible(false);}
-        else{
-        JOptionPane.showMessageDialog(null, "Debe cargar un hormiguero para iniciar la simulacion", "Info", 1);
-        }
-    }//GEN-LAST:event_startButton1ActionPerformed
+    private void instructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionButtonActionPerformed
+        instructions instruction = new  instructions();
+        instruction.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_instructionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,14 +238,14 @@ public class firstPage extends javax.swing.JFrame {
     private javax.swing.JPanel basePanel;
     private javax.swing.JButton creditosButton;
     private javax.swing.JButton exitButtonInicio;
-    private javax.swing.JButton exitButtonInicio1;
     private javax.swing.JPanel greenPanel;
+    private javax.swing.JButton instructionButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton startButton1;
+    private javax.swing.JButton uploadAnthillButton;
     // End of variables declaration//GEN-END:variables
 
     

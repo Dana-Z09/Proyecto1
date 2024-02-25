@@ -197,7 +197,7 @@ public class ListaSimple {
         if (this.isInList(content)){
             Nodo anterior=head;
             Nodo nodito =head.getpNext();
-            if (anterior==content){
+            if (anterior.getContent()==content){
                 this.deleteHead();}
             else{
                 for (int i = 0; i < this.size; i++) {
@@ -237,13 +237,16 @@ public class ListaSimple {
     public Object getContentByIndex(int index){
         int contador=0;
         Nodo temporal = head;
-        if (index!=0){
-        while(contador<index-1){
+        if (index==(this.getSize()-1)){
+            return this.getTail().getContent();}
+        else if(index==0){
+        return this.getHead().getContent();}
+        else if(index!=0){
+            while(contador<index-1){
             temporal=temporal.getpNext();
             contador++;}
-        return temporal.getpNext().getContent();
-        }
-        return this.getHead().getContent();
+            return temporal.getpNext().getContent();}
+        else{return null;}
     }
    
    
@@ -322,7 +325,29 @@ public class ListaSimple {
      * @return true si el indice entra dentro del rango de la lista
      */    
     public boolean indexExist(int index) {
-    return !(index<0 || index>this.size-1);
+    return !(index<0 || index>this.size-1);    
    }
-   
+    
+    //Convierte una lista de ciudades en un texto y las separa por coma
+    public String toStringCities(){
+        String texto ="";
+        if(!this.isEmpty()){
+            for (int i = 0; i < this.size; i++) {
+                texto+=(String) this.getContentByIndex(i)+",";}
+        return texto;}
+        
+        return "La lista es vacia";
+    }
+    
+    ///Devuelve un String con una lista de los elementos de la lista
+    public String toString(){
+        String texto ="";
+        if(!this.isEmpty()){
+            for (int i = 0; i < this.size; i++) {
+                texto+=(String) this.getContentByIndex(i)+",";}
+        return texto;}
+        
+        return "La lista es vacia";
+    }
+    
 }

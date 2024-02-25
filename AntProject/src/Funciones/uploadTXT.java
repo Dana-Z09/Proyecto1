@@ -63,7 +63,7 @@ public class uploadTXT {
         
         
         grafo.setCities(cities);
-        JOptionPane.showMessageDialog(null, "Se ha creado el grafo correctamente", "Info", 1);
+        JOptionPane.showMessageDialog(null, "Se ha creado el grafo exitosamente", "Info", 1);
         return grafo;
     }
     

@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Diego Mendez
+ * @author Diego Mendez y Daniela Zambrano
  */
 public class City {
     //Atributos de la clase City
@@ -47,7 +47,7 @@ public class City {
         if (searchPathByPath(path) == false) {
             listAdy.addEnd(path);
         }else {
-            JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Info", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El camino solicitado ya existe", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }
     
@@ -59,7 +59,7 @@ public class City {
         if (searchPathByPath(path) == true) {
             listAdy.deleteElemC(path);
         }else {
-            JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Info", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El camino solicitado no existe", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
     }
@@ -71,7 +71,7 @@ public class City {
      */
     public boolean searchPathByPath(Path path) {
         
-        if (path.getOrigin().getNumCity() == numCity){
+        if (path.getOrigin().getNumCity() == this.numCity){
             for (int i = 0; i < listAdy.getSize(); i++) {
                 Path auxPath = (Path) listAdy.getContentByIndex(i);
                 if(auxPath.getDestination().getNumCity() == path.getDestination().getNumCity()) {
@@ -104,6 +104,19 @@ public class City {
                 Path auxPath = (Path) listAdy.getContentByIndex(i);
                 if(auxPath.getDestination().getNumCity() == numCity) {
                     return auxPath.getDestination();
+                }
+            }
+            return null;
+        }
+        return null;
+        
+    }
+    public Path searchPathByNumCity2(int numCity) {
+        if (numCity != this.numCity){
+            for (int i = 0; i < listAdy.getSize(); i++) {
+                Path auxPath = (Path) listAdy.getContentByIndex(i);
+                if(auxPath.getDestination().getNumCity() == numCity) {
+                    return auxPath;
                 }
             }
             return null;
