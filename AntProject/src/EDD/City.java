@@ -71,7 +71,7 @@ public class City {
      */
     public boolean searchPathByPath(Path path) {
         
-        if (path.getOrigin().getNumCity() == numCity){
+        if (path.getOrigin().getNumCity() == this.numCity){
             for (int i = 0; i < listAdy.getSize(); i++) {
                 Path auxPath = (Path) listAdy.getContentByIndex(i);
                 if(auxPath.getDestination().getNumCity() == path.getDestination().getNumCity()) {

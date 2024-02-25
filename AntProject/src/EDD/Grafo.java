@@ -86,6 +86,24 @@ public class Grafo {
         }
         return false;
     }
+    
+    
+    public City searchCityGrafo2(int numCity) {
+        Nodo aux = this.getCities().getHead();
+        City c;
+        if(numCity<=this.getCities().getSize()){
+            for (int i = 0; i < cities.getSize(); i++) {
+                c = (City) aux.getContent();
+
+                //    City auxCity = new City((int)cities.getContentByIndex(i));
+                if (c.getNumCity() == numCity) {
+                    return c;
+                }
+                aux = aux.getpNext();
+            }
+            }
+            return null;
+        }
 
     /**
      * Agrega una ciudad al hormiguero siempre y cuando no se repita
@@ -134,6 +152,23 @@ public class Grafo {
     public void deleteCity(City city) {
         if (searchCityGrafo(city) == true) {
             cities.deleteElemC(city);
+            
+            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
+        } else {
+            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
+        }
+    }
+    /**
+     * Borra una ciudad del hormiguero si existe
+     *
+     * @param int recibe el numero de la ciudad a borrar
+     */
+    public void deleteCity2(int numCity) {
+        City auxCity=searchCityGrafo2(numCity);
+        if (searchCityGrafo(auxCity) == true) {
+            
+            cities.deleteElemC(auxCity);
+            
             JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
         } else {
             JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
@@ -145,25 +180,28 @@ public class Grafo {
      *
      * @param path indica el camino a eliminar
      */
-    public void disconnectCity(Path path) { ///Hay que cambiar esta funcion 
-        if (searchPathGrafo(path) == true) {
-            for (int i = 0; i < cities.getSize(); i++) {
-                City auxCity = (City) cities.getContentByIndex(i);
-                if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
-                    auxCity.getListAdy().deleteElemC(path);
-
-                } else if (auxCity.getNumCity() == path.getDestination().getNumCity()) {
-                    Path auxPath = new Path(auxCity, path.getOrigin(), path.getDistance());
-                    auxCity.getListAdy().deleteElemC(auxPath);
-
+    public void disconnectCity(int numCity) { ///Hay que cambiar esta funcion 
+        if (numCity<=this.getCities().getSize()) {
+            for (int i = 0; i < cities.getSize()-1; i++) {
+                City auxCity1 = (City) cities.getContentByIndex(i);
+                for (int j = 0; j < auxCity1.getListAdy().getSize(); j++) {
+                    Path auxPath=  (Path) auxCity1.getListAdy().getContentByIndex(j);
+                    if(auxPath.getDestination().getNumCity()==numCity){
+                        auxCity1.deletePath(auxPath);
+                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} 
+                    /*
+                    if(auxPath.getOrigin().getNumCity()==numCity){
+                        auxCity1.deletePath(auxPath);
+                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} */
+                    }
+                
                 }
-                JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);
-            }
-        } else {
+        }
+        else {
             JOptionPane.showMessageDialog(null, "El camino no existe", "info", 0);
         }
     }
-
+    
     
     /**
      * Convierte un grafo a un string donde muestra la estructura en Ciudades y Caminos

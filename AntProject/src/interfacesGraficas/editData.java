@@ -3,6 +3,8 @@ package interfacesGraficas;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
+import EDD.Nodo;
+import EDD.Path;
 import Funciones.EditTXT;
 import static interfacesGraficas.uploadData.mainFilePath;
 import javax.swing.JOptionPane;
@@ -308,9 +310,12 @@ public class editData extends javax.swing.JFrame {
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed
         if(deleteOptionCitys.getItemCount()>4){
         //eliminar ciudad
-        String deleteOp= deleteOptionCitys.getSelectedItem().toString();
-        int cityNum = Integer.parseInt(deleteOp);
+        String deleteOpString= deleteOptionCitys.getSelectedItem().toString();
+        int deleteOp= Integer.parseInt(deleteOpString);
+        mainGrafo.disconnectCity(deleteOp);
+        mainGrafo.deleteCity2(deleteOp);
         System.out.println(deleteOp);
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
         deleteOptionCitys.removeAllItems();
         ListaSimple citiesList=mainGrafo.getCities();
         for (int i = 0; i < citiesList.getSize(); i++) {
