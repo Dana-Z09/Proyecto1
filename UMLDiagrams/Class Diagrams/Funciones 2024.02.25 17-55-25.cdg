@@ -35,7 +35,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="uploadTXT" package="Funciones" visibility="public" xPosition="744.0" yPosition="196.0">
+    <Class name="uploadTXT" package="Funciones" visibility="public" xPosition="411.0" yPosition="329.0">
       <Fields/>
       <Constructors/>
       <Methods>
