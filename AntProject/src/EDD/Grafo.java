@@ -189,7 +189,7 @@ public class Grafo {
     /**
      * Borra una ciudad del hormiguero si existe
      *
-     * @param int recibe el numero de la ciudad a borrar
+     * @param numCity recibe el numero de la ciudad a borrar
      */
     public void deleteCity2(int numCity) {
         City auxCity=searchCityGrafo(numCity);
@@ -206,7 +206,7 @@ public class Grafo {
     /**
      * Borra un camino del hormiguero si existe
      *
-     * @param path indica el camino a eliminar
+     * @param numCity indica el camino a eliminar
      */
     public void disconnectCity(int numCity) { ///Hay que cambiar esta funcion 
         if (numCity<=this.getCities().getSize()) {
