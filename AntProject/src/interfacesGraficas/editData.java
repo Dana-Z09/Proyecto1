@@ -3,8 +3,6 @@ package interfacesGraficas;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
-import EDD.Nodo;
-import EDD.Path;
 import Funciones.EditTXT;
 import static interfacesGraficas.uploadData.mainFilePath;
 import javax.swing.JOptionPane;
@@ -359,7 +357,7 @@ public class editData extends javax.swing.JFrame {
     private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
         EditTXT edittxt= new EditTXT();
         edittxt.actualizarArchivo(mainFilePath, mainGrafo.toString());
-        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 2);
+        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 1);
     }//GEN-LAST:event_updateTXTButtonActionPerformed
 
     /**

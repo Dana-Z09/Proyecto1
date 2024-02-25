@@ -1,7 +1,6 @@
 package interfacesGraficas;
 
 import EDD.Grafo;
-import EDD.ListaSimple;
 import Funciones.uploadTXT;
 import java.io.File;
 import java.io.FileReader;
@@ -22,7 +21,6 @@ public class uploadData extends javax.swing.JFrame {
     
     /**
      * Creates new form uploadGrafo
-     * @param firstpage
      */
     public uploadData() {
         initComponents();
@@ -354,7 +352,7 @@ public class uploadData extends javax.swing.JFrame {
             //System.out.println(mainGrafo.toString());
         }
         
-        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);
+        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar el Hormiguero  porque no se ha seleccionado ningun Archivo TXT", "Error", WARNING_MESSAGE);
             saveAntHill.setVisible(true);
         }
         

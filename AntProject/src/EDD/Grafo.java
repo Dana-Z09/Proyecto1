@@ -1,10 +1,11 @@
 package EDD;
 
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
- * @author Diego Mendez
+ * @author Diego Mendez y Daniela Zambrano
  */
 public class Grafo {
     //Atributos de la clase
@@ -124,9 +125,9 @@ public class Grafo {
     public void addCity(City city) {
         if (isCityInGrafo(city) == false) {
             cities.addEnd(city);
-            JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad ya existe", "Info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad ya existe", "Info", 1);
         }
     }
 
@@ -163,10 +164,10 @@ public class Grafo {
                     auxCity.getListAdy().addEnd(auxPath);
 
                 }
-                JOptionPane.showMessageDialog(null, "Camino agregado", "info", 0);
+                JOptionPane.showMessageDialog(null, "Camino agregado exitosamente", "Info", 1);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El camino ya existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "El camino ya existe", "Info",1);
         }
     }
 
@@ -179,9 +180,9 @@ public class Grafo {
         if (isCityInGrafo(city) == true) {
             cities.deleteElemC(city);
             
-            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamente", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "Error", WARNING_MESSAGE);
         }
     }
     
@@ -196,9 +197,9 @@ public class Grafo {
             
             cities.deleteElemC(auxCity);
             
-            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamennte", "info", 2);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamennte", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "Error", WARNING_MESSAGE);
         }
     }
 
@@ -223,7 +224,7 @@ public class Grafo {
                 }
         }
         else {
-            JOptionPane.showMessageDialog(null, "El camino no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "El camino que se desea desconectar no existe", "Info", 1);
         }
     }
     

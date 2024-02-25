@@ -1,7 +1,6 @@
 package interfacesGraficas;
 import EDD.Grafo;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
