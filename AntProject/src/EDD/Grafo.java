@@ -1,13 +1,13 @@
 package EDD;
 
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
- * @author Diego Mendez
+ * @author Diego Mendez y Daniela Zambrano
  */
 public class Grafo {
-
     //Atributos de la clase
     private ListaSimple cities;
 
@@ -29,7 +29,9 @@ public class Grafo {
         this.cities = cities;
     }
 
-    //Primtivas
+    /*Primtivas*/
+    
+    //Booleans//////////////////////////////////////////////////////////////////
     /**
      * Verifica si el grafo esta vacio
      *
@@ -41,21 +43,12 @@ public class Grafo {
     }
 
     /**
-     * Muestra cuantas ciudades hay en el hormiguero
-     *
-     * @return cuantas ciudades tiene el hormiguero
-     */
-    public int citiesQuantity() {
-        return cities.getSize();
-    }
-
-    /**
      * Muestra si un camino existe en el hormiguero
      *
      * @return true si un camino (Path) existe en el hormiguero
      * @param path recibe el camino a buscar
      */
-    public boolean searchPathGrafo(Path path) {
+    public boolean isPathInGrafo(Path path) {
         for (int i = 0; i < cities.getSize(); i++) {
             City auxCity = (City) cities.getContentByIndex(i);
             if (auxCity.searchPathByPath(path) == true) {
@@ -72,7 +65,7 @@ public class Grafo {
      * @return true si una ciudad (City) existe en el hormiguero
      * @param city recibe la ciudad a buscar
      */
-    public boolean searchCityGrafo(City city) {
+    public boolean isCityInGrafo(City city) {
         Nodo aux = this.getCities().getHead();
         City c;
         for (int i = 0; i < cities.getSize(); i++) {
@@ -88,7 +81,22 @@ public class Grafo {
     }
     
     
-    public City searchCityGrafo2(int numCity) {
+    /**
+     * Muestra cuantas ciudades hay en el hormiguero
+     *
+     * @return cuantas ciudades tiene el hormiguero
+     */
+    public int citiesQuantity() {
+        return cities.getSize();
+    }
+
+ /**
+     * Funcion de busqueda de ciudad en el grafo
+     *
+     * @param int recibe el numero de la ciudad que  desa buscar
+     * @return City la ciudad encontrada o null si no se encuentra nada
+     */
+    public City searchCityGrafo(int numCity) {
         Nodo aux = this.getCities().getHead();
         City c;
         if(numCity<=this.getCities().getSize()){
@@ -105,17 +113,21 @@ public class Grafo {
             return null;
         }
 
+    
+    
+    
+    
     /**
      * Agrega una ciudad al hormiguero siempre y cuando no se repita
      *
      * @param city recibe la ciudad a agregar
      */
     public void addCity(City city) {
-        if (searchCityGrafo(city) == false) {
+        if (isCityInGrafo(city) == false) {
             cities.addEnd(city);
-            JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad agregada correctamente", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad ya existe", "Info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad ya existe", "Info", 1);
         }
     }
 
@@ -141,7 +153,7 @@ public class Grafo {
      * @param path recibe el camino a agregar (No terminado)
      */
     public void connectCity(Path path) {
-        if (searchPathGrafo(path) == false) {
+        if (isPathInGrafo(path) == false) {
             for (int i = 0; i < cities.getSize(); i++) {
                 City auxCity = (City) cities.getContentByIndex(i);
                 if (auxCity.getNumCity() == path.getOrigin().getNumCity()) {
@@ -152,10 +164,10 @@ public class Grafo {
                     auxCity.getListAdy().addEnd(auxPath);
 
                 }
-                JOptionPane.showMessageDialog(null, "Camino agregado", "info", 0);
+                JOptionPane.showMessageDialog(null, "Camino agregado exitosamente", "Info", 1);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El camino ya existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "El camino ya existe", "Info",1);
         }
     }
 
@@ -165,28 +177,29 @@ public class Grafo {
      * @param city recibe la ciudad a borrar
      */
     public void deleteCity(City city) {
-        if (searchCityGrafo(city) == true) {
+        if (isCityInGrafo(city) == true) {
             cities.deleteElemC(city);
             
-            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamente", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "Error", WARNING_MESSAGE);
         }
     }
+    
     /**
      * Borra una ciudad del hormiguero si existe
      *
      * @param numCity recibe el numero de la ciudad a borrar
      */
     public void deleteCity2(int numCity) {
-        City auxCity=searchCityGrafo2(numCity);
-        if (searchCityGrafo(auxCity) == true) {
+        City auxCity=searchCityGrafo(numCity);
+        if (isCityInGrafo(auxCity) == true) {
             
             cities.deleteElemC(auxCity);
             
-            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada exitosamennte", "Info", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "Error", WARNING_MESSAGE);
         }
     }
 
@@ -203,17 +216,15 @@ public class Grafo {
                     Path auxPath=  (Path) auxCity1.getListAdy().getContentByIndex(j);
                     if(auxPath.getDestination().getNumCity()==numCity){
                         auxCity1.deletePath(auxPath);
-                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} 
-                    /*
-                    if(auxPath.getOrigin().getNumCity()==numCity){
-                        auxCity1.deletePath(auxPath);
-                        JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);} */
+                        //JOptionPane.showMessageDialog(null, "Camino eliminado", "info", 0);
+                    } 
+                    
                     }
                 
                 }
         }
         else {
-            JOptionPane.showMessageDialog(null, "El camino no existe", "info", 0);
+            JOptionPane.showMessageDialog(null, "El camino que se desea desconectar no existe", "Info", 1);
         }
     }
     
@@ -251,4 +262,36 @@ public class Grafo {
         }
         return show.toString();
     }
+    
+    public void addPath(int numCityA, int numCityB, double distanceAB){
+       
+        int origin= numCityA;
+        int destination= numCityB;
+        double distance= distanceAB;
+
+        City cityA = searchCity(origin, this.cities);
+        City cityB = searchCity(destination, this.cities);
+        Path pathA=new Path(cityA,cityB, distance);
+        Path pathB=new Path(cityB,cityA, distance);
+        if (!isPathInGrafo(pathA) && !isPathInGrafo(pathB)){
+        cityA.getListAdy().addEnd(pathA);
+        cityB.getListAdy().addEnd(pathB);
+        JOptionPane.showMessageDialog(null, "El camino fue agregado existosamente", "Info", 1);
+        }else{JOptionPane.showMessageDialog(null, "Esta camino ya existe entre las ciudades", "Info", 1);}
+        
+    }
+    
+    public City searchCity(int num, ListaSimple cities){
+        if (!cities.isEmpty()){
+            for (int i = 0; i < cities.getSize(); i++) {
+                City c = (City) cities.getContentByIndex(i);
+                if (c.getNumCity()==num){return c;}}
+            return null;
+        }
+        return null;
+    }
+    
+
+
+
 }

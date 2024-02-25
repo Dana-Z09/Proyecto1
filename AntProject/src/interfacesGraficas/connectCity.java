@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Daniela Zambrano
  */
 public class connectCity extends javax.swing.JFrame {
-    public static Grafo mainGrafo= null;
+    public static Grafo mainGrafo;
     ImageIcon imageAnt = new ImageIcon("antie.png");
     /**
      * Creates new form connectCity
@@ -59,9 +59,7 @@ public class connectCity extends javax.swing.JFrame {
         antPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(997, 619));
         setMinimumSize(new java.awt.Dimension(997, 619));
-        setPreferredSize(new java.awt.Dimension(996, 619));
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,6 +193,7 @@ public class connectCity extends javax.swing.JFrame {
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 440, 450));
 
         mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
+        mainCity.setForeground(new java.awt.Color(221, 228, 195));
         mainCity.setText("Conexión de Ciudades");
         getContentPane().add(mainCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
@@ -232,7 +231,9 @@ public class connectCity extends javax.swing.JFrame {
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
         Object itemStartCity=cityA.getSelectedItem();
+        int numCityA= Integer.parseInt( itemStartCity.toString());
         Object itemDestinationCity=cityB.getSelectedItem();
+        int numCityB= Integer.parseInt (itemDestinationCity.toString());
         boolean sameCity = itemStartCity.equals(itemDestinationCity);
         Object spinnerNum=this.distance.getValue();
         double numDistance= (double) spinnerNum;
@@ -244,6 +245,7 @@ public class connectCity extends javax.swing.JFrame {
                 //si existe entonces Joptionpane
                 //sino agregar coneccion y avisar 
                 //guardar grafo
+                mainGrafo.addPath(numCityA, numCityB, numDistance);
             }
             else{JOptionPane.showMessageDialog(null, "La ciudad A y la ciudad B no pueden tener una distancia igual a 0", "Error", 2);}
            
@@ -276,6 +278,9 @@ public class connectCity extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(connectCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

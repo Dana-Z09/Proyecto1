@@ -1,7 +1,6 @@
 package interfacesGraficas;
 import EDD.Grafo;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -150,7 +149,7 @@ public class firstPage extends javax.swing.JFrame {
         instructionButton.setBackground(new java.awt.Color(221, 228, 195));
         instructionButton.setFont(new java.awt.Font("MAXWELL BOLD", 0, 18)); // NOI18N
         instructionButton.setForeground(new java.awt.Color(51, 46, 45));
-        instructionButton.setText("Introducción");
+        instructionButton.setText("Instrucciones");
         instructionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 instructionButtonActionPerformed(evt);

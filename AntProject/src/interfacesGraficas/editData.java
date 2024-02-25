@@ -3,8 +3,6 @@ package interfacesGraficas;
 import EDD.City;
 import EDD.Grafo;
 import EDD.ListaSimple;
-import EDD.Nodo;
-import EDD.Path;
 import Funciones.EditTXT;
 import static interfacesGraficas.uploadData.mainFilePath;
 import javax.swing.JOptionPane;
@@ -304,7 +302,17 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void addCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityActionPerformed
-        // TODO add your handling code here:
+        if(mainGrafo.citiesQuantity()<20){
+        mainGrafo.addNextCity();
+        numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
+        deleteOptionCitys.removeAllItems();
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));}}
+        else{JOptionPane.showMessageDialog(null, "No se puede agregar otra ciudad porque llegó al máximo de ciudades posibles.", "Error", WARNING_MESSAGE);}
+        
     }//GEN-LAST:event_addCityActionPerformed
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed
@@ -330,7 +338,7 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteCityActionPerformed
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        connectCity connectPage = new connectCity(mainGrafo);
+        connectCity connectPage= new connectCity(this.mainGrafo); 
         connectPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addConectionActionPerformed
@@ -349,7 +357,7 @@ public class editData extends javax.swing.JFrame {
     private void updateTXTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTXTButtonActionPerformed
         EditTXT edittxt= new EditTXT();
         edittxt.actualizarArchivo(mainFilePath, mainGrafo.toString());
-        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 2);
+        JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Info", 1);
     }//GEN-LAST:event_updateTXTButtonActionPerformed
 
     /**

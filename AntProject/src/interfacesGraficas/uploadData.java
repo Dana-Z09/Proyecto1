@@ -1,7 +1,6 @@
 package interfacesGraficas;
 
 import EDD.Grafo;
-import EDD.ListaSimple;
 import Funciones.uploadTXT;
 import java.io.File;
 import java.io.FileReader;
@@ -22,7 +21,6 @@ public class uploadData extends javax.swing.JFrame {
     
     /**
      * Creates new form uploadGrafo
-     * @param firstpage
      */
     public uploadData() {
         initComponents();
@@ -167,6 +165,7 @@ public class uploadData extends javax.swing.JFrame {
         });
 
         mainCity.setFont(new java.awt.Font("Futura Bk BT", 3, 36)); // NOI18N
+        mainCity.setForeground(new java.awt.Color(221, 228, 195));
         mainCity.setText("Elegir Hormiguero");
 
         jLabel2.setFont(new java.awt.Font("Futura Lt BT", 0, 30)); // NOI18N
@@ -343,16 +342,17 @@ public class uploadData extends javax.swing.JFrame {
 
     private void saveAntHillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAntHillActionPerformed
         uploadTXT uploadData = new uploadTXT();
-        selectTXT.setVisible(false);
-        filePathTextField.setVisible(false);
+        
         if (mainFileText!=null){    
+            selectTXT.setVisible(false);
+            filePathTextField.setVisible(false);
             this.mainGrafo= uploadData.convertString(jTextArea1.getText());
             this.deleteAntHill.setVisible(true);
             this.saveAntHill.setVisible(false);
             //System.out.println(mainGrafo.toString());
         }
         
-        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar nada porque no se ha seleccionado ningun Archivo TXT", "Aviso", WARNING_MESSAGE);
+        else{ JOptionPane.showMessageDialog(rootPane, "No se puede guardar el Hormiguero  porque no se ha seleccionado ningun Archivo TXT", "Error", WARNING_MESSAGE);
             saveAntHill.setVisible(true);
         }
         
