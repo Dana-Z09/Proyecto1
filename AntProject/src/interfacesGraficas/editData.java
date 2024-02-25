@@ -1,6 +1,10 @@
 package interfacesGraficas;
 
+import EDD.City;
 import EDD.Grafo;
+import EDD.ListaSimple;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
@@ -14,11 +18,15 @@ public class editData extends javax.swing.JFrame {
     public editData(Grafo maingrafo) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.mainGrafo=maingrafo;
+        editData.mainGrafo=maingrafo;
         numCitiesLabel.setText(String.valueOf(mainGrafo.citiesQuantity()));
         showTextArea.setText(mainGrafo.toString());
-        for (int i = 0; i < mainGrafo.citiesQuantity(); i++) {
-            this.deleteOptionCitys.addItem(String.valueOf(i+1));
+        
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));
         }
     }
 
@@ -54,15 +62,22 @@ public class editData extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         mainCity = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         showTextArea = new javax.swing.JTextArea();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        updateAnthillStringView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(996, 619));
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(97, 143, 74));
+        jPanel1.setMaximumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setMinimumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setPreferredSize(new java.awt.Dimension(996, 619));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Futura", 0, 50)); // NOI18N
@@ -265,7 +280,17 @@ public class editData extends javax.swing.JFrame {
                 startButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, -1, -1));
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, -1, 70));
+
+        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel20.setText("Hormiguero");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(221, 228, 195));
+        jLabel18.setText("Actual");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
 
         showTextArea.setBackground(new java.awt.Color(221, 228, 195));
         showTextArea.setColumns(20);
@@ -274,17 +299,17 @@ public class editData extends javax.swing.JFrame {
         showTextArea.setRows(5);
         jScrollPane1.setViewportView(showTextArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 350, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 370, 230));
 
-        jLabel18.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel18.setText("Actual");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Futura Bk BT", 1, 36)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(221, 228, 195));
-        jLabel20.setText("Hormiguero");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        updateAnthillStringView.setBackground(new java.awt.Color(49, 114, 24));
+        updateAnthillStringView.setFont(new java.awt.Font("MAXWELL BOLD", 0, 20)); // NOI18N
+        updateAnthillStringView.setText("Actualizar Visualización");
+        updateAnthillStringView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateAnthillStringViewActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updateAnthillStringView, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 617));
 
@@ -306,7 +331,22 @@ public class editData extends javax.swing.JFrame {
     }//GEN-LAST:event_addCityActionPerformed
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed
-        // TODO add your handling code here:
+        if(deleteOptionCitys.getItemCount()>4){
+        //eliminar ciudad
+        String deleteOp= deleteOptionCitys.getSelectedItem().toString();
+        int cityNum = Integer.parseInt(deleteOp);
+        System.out.println(deleteOp);
+        deleteOptionCitys.removeAllItems();
+        ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.deleteOptionCitys.addItem(String.valueOf(numcity));}
+        }
+        else{
+                JOptionPane.showMessageDialog(null, "Es necesario tener al menos 4 ciudades para que el simulador funcione,\n si quiere eliminar el hormiguero lo puede realizar desde la pagina de 'Elegir Hormiguero' y cargar un nuevo hormiguero", "Error", WARNING_MESSAGE);
+                }
+        
     }//GEN-LAST:event_deleteCityActionPerformed
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
@@ -329,6 +369,10 @@ public class editData extends javax.swing.JFrame {
         valorI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed
+
+    private void updateAnthillStringViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAnthillStringViewActionPerformed
+        showTextArea.setText(mainGrafo.toString());
+    }//GEN-LAST:event_updateAnthillStringViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,6 +399,9 @@ public class editData extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(editData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -392,6 +439,7 @@ public class editData extends javax.swing.JFrame {
     private javax.swing.JLabel numCitiesLabel;
     private javax.swing.JTextArea showTextArea;
     private javax.swing.JButton startButton;
+    private javax.swing.JButton updateAnthillStringView;
     private javax.swing.JButton updateTXTButton;
     // End of variables declaration//GEN-END:variables
 }

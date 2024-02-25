@@ -186,8 +186,10 @@ public class Grafo {
             Nodo n2 = c.getListAdy().getHead();
             for (int i = 0; i < c.getListAdy().getSize(); i++) {
                 Path p = (Path) n2.getContent();
+                if (p.getOrigin().getNumCity()<p.getDestination().getNumCity()){
                 show.append(String.valueOf(p.getOrigin().getNumCity())).append(",").append(String.valueOf(p.getDestination().getNumCity())).append(",").append(String.valueOf(p.getDistance()));
                 show.append("\n");
+                }
                 n2=n2.getpNext();
             }
             

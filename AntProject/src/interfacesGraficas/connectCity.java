@@ -1,6 +1,9 @@
 package interfacesGraficas;
 
+import EDD.City;
 import EDD.Grafo;
+import EDD.ListaSimple;
+import static interfacesGraficas.editData.mainGrafo;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -20,11 +23,14 @@ public class connectCity extends javax.swing.JFrame {
         antPic.setText("");
         this.mainGrafo=maingrafo;
         this.setLocationRelativeTo(null);
-        this.setLocationRelativeTo(null);
-        for (int i = 0; i < mainGrafo.citiesQuantity(); i++) {
-            cityA.addItem(String.valueOf(i+1));
-            cityB.addItem(String.valueOf(i+1));
+        this.setLocationRelativeTo(null);ListaSimple citiesList=mainGrafo.getCities();
+        for (int i = 0; i < citiesList.getSize(); i++) {
+            City auxCity = (City) citiesList.getContentByIndex(i);
+            int numcity= auxCity.getNumCity();
+            this.cityA.addItem(String.valueOf(numcity));
+            this.cityB.addItem(String.valueOf(numcity));
         }
+        
     }
 
     /**
@@ -55,6 +61,7 @@ public class connectCity extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(997, 619));
         setMinimumSize(new java.awt.Dimension(997, 619));
+        setPreferredSize(new java.awt.Dimension(996, 619));
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,6 +199,9 @@ public class connectCity extends javax.swing.JFrame {
         getContentPane().add(mainCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(97, 143, 74));
+        jPanel1.setMaximumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setMinimumSize(new java.awt.Dimension(996, 619));
+        jPanel1.setPreferredSize(new java.awt.Dimension(996, 619));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         antPic.setText("jLabel2");
