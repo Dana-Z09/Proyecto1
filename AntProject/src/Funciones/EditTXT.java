@@ -35,8 +35,8 @@ public class EditTXT {
             
         
             //Este string de la ruta es de prueba, hay que colocar el anthill del Jchooser
-            String ruta = "C:\\Users\\dams2\\Desktop\\ubicaciontxt\\Grafo.txt";
-            String copia = "C:\\Users\\dams2\\Desktop\\ubicaciontxt\\";
+            String ruta = "C:\\Grafo.txt";
+            String copia = "C:\\";
             System.out.println(copia);
             Path fuente = Paths.get(ruta);
             Scanner newgrafo = new Scanner(System.in);
@@ -102,10 +102,10 @@ public class EditTXT {
      public void deleteCity(int numCity){
         
         try(
-                //Hay que hacer que tome el anhill del file chooser
-                BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Username\\Desktop\\Grafos\\Grafo.txt"));
-                BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt"));
-                BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\Username\\Desktop\\Grafos\\NewGrafo.txt"))
+                //Hay que hacer que tome el anhill del file chooser, o pedir la direccion(parametro)
+                BufferedReader br = new BufferedReader(new FileReader("C:\\Grafo.txt"));
+                BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\NewGrafo.txt"));
+                BufferedReader br2 = new BufferedReader(new FileReader("C:\\NewGrafo.txt"))
                 
                 
                 ) {
@@ -191,5 +191,25 @@ public class EditTXT {
      }
     }
         
+    /**
+     * Limpia el txt original y coloca el String del grafo nuevo 
+     * @param direccion es la direccion donde se encuentra ubicado el archivo txt
+     * @param texto String retornado del toString() de la clase grafo
+     */ 
+     
+     public void actualizarArchivo(String  direccion, String texto) {
+        try(
+                BufferedWriter bw = new BufferedWriter(new FileWriter(direccion));
+                
+                
+                ) {
+
+            bw.write(texto);
+            bw.flush();
+
+        } catch(IOException o) {
+          System.out.println("Error");  
+        }
+    }
  }
 

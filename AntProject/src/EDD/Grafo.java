@@ -134,7 +134,7 @@ public class Grafo {
     public void deleteCity(City city) {
         if (searchCityGrafo(city) == true) {
             cities.deleteElemC(city);
-            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "Waos", 0);
+            JOptionPane.showMessageDialog(null, "Ciudad borrada correctamente", "info", 0);
         } else {
             JOptionPane.showMessageDialog(null, "La ciudad a borrar no existe", "info", 0);
         }
